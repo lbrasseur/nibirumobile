@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>ar.com.oxen.nibiru.mobile</groupId>
+	<artifactId>ar.com.oxen.nibiru.mobile</artifactId>
+	<version>0.2</version>
+	<packaging>pom</packaging>
+	<name>Nibiru Mobile</name>
+	<properties>
+		<nibiru-mobile-version>0.2</nibiru-mobile-version>
+		<android-version>2.1</android-version>
+		<gwt-version>2.4.0</gwt-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<repositories>
+		<repository>
+			<id>oxen</id>
+			<name>oxen</name>
+			<url>http://servidor.oxen.com.ar/artifactory/repo</url>
+		</repository>
+	</repositories>
+	<modules>
+		<module>ar.com.oxen.nibiru.mobile.core</module>
+		<module>ar.com.oxen.nibiru.mobile.gwt</module>
+		<module>ar.com.oxen.nibiru.mobile.android</module>
+		<module>ar.com.oxen.nibiru.mobile.ios</module>
+		<module>ar.com.oxen.nibiru.mobile.mgwt</module>
+    	<module>ar.com.oxen.nibiru.mobile.smartgwt</module>
+    	<module>ar.com.oxen.nibiru.mobile.kendoui</module>
+  	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+			</resource>
+		</resources>
+	</build>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>servidor.oxen.com.ar</id>
+			<name>servidor.oxen.com.ar-snapshots</name>
+			<url>http://servidor.oxen.com.ar/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+		<repository>
+			<id>servidor.oxen.com.ar</id>
+			<name>servidor.oxen.com.ar-release</name>
+			<url>http://servidor.oxen.com.ar/artifactory/libs-release-local</url>
+		</repository>
+	</distributionManagement>
+</project>

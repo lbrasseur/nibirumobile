@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel>
+        <ul data-role="listview" data-style="inset">
+            <li>
+		        <g:Anchor ui:field="alertTrigger"/>
+            </li>
+            <li>
+                <g:TextBox ui:field="nameLoad"/>
+                <g:Label ui:field="nameLoadLabel"/>
+            </li>
+            <li>
+		        <g:Anchor ui:field="greetingTrigger"/>
+            </li>
+            <li>
+                <g:Label ui:field="greetingDisplay"/>
+            </li>
+            <li>
+		        <g:Anchor ui:field="backTrigger"/>
+            </li>
+            <li>
+		        <g:Anchor ui:field="showLocation"/>
+            </li>
+        </ul>
+	</g:HTMLPanel>
+</ui:UiBinder> 
