@@ -34,4 +34,25 @@ public abstract class BaseAndroidView implements AndroidView {
 	public boolean onContextItemSelected(MenuItem item) {
 		return false;
 	}
+
+	@Override
+	public void onStart() {
+	}
+
+	@Override
+	public void onResume() {
+	}
+
+	@Override
+	public void onPause() {
+	}
+
+	@Override
+	public void onDestroy() {
+	}
+
+	@Override
+	public void onRestart() {
+	}
+	
 }

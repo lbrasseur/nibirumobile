@@ -22,4 +22,11 @@ public interface AndroidView extends View {
 			ContextMenuInfo menuInfo);
 
 	boolean onContextItemSelected(MenuItem item);
+	
+	//Activity LifeCycle
+	void onStart();
+	void onResume();
+	void onPause();
+	void onDestroy();
+	void onRestart();
 }

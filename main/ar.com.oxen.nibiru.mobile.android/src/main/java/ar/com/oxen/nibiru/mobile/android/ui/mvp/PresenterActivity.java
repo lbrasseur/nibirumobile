@@ -80,4 +80,34 @@ public class PresenterActivity extends RoboActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		return this.view.onContextItemSelected(item);
 	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		this.view.onDestroy();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		this.view.onPause();
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		this.view.onRestart();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.view.onResume();
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		this.view.onStart();
+	}
 }
