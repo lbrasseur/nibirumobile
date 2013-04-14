@@ -30,8 +30,7 @@ public class HttpClientHttpManager implements HttpManager {
 		try {
 			HttpClient httpClient = new DefaultHttpClient();
 
-			HttpPost request = new HttpPost(this.baseUrl
-					+ "authentication/login");
+			HttpPost request = new HttpPost(this.baseUrl + url);
 			request.setEntity(new StringEntity(httpCallback.buildRequest()));
 
 			HttpResponse response = httpClient.execute(request);
