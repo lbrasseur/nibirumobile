@@ -1,42 +1,42 @@
 package ar.com.oxen.nibiru.mobile.android.common;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.Serializable;
 
 import android.content.Intent;
-import ar.com.oxen.nibiru.mobile.core.api.common.Configurable;
 import ar.com.oxen.nibiru.mobile.core.api.common.Identifiable;
 import ar.com.oxen.nibiru.mobile.core.impl.common.AbstractConfigurable;
 
 public abstract class BaseIntentAdapter<T> extends AbstractConfigurable<T>
-		implements Identifiable<String>, Configurable<T> {
-	private final String KEY_ID = "nibiruKeyId";
-	private Intent intent;
+		implements Identifiable<String> {
+	private final String ID_KEY = "nibiruPlaceId";
+	private final Intent intent;
 
 	public BaseIntentAdapter(Intent intent) {
-		super();
-		this.intent = intent;
+		this.intent = checkNotNull(intent);
 	}
 
 	public BaseIntentAdapter(String id, Intent intent) {
 		this(intent);
-		this.intent.putExtra(KEY_ID, id);
+		this.intent.putExtra(ID_KEY, checkNotNull(id));
 	}
 
 	@Override
 	public String getId() {
-		return this.intent.getExtras().getString(KEY_ID);
+		return intent.getExtras().getString(ID_KEY);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <K> K getParameter(String key) {
-		return (K) this.intent.getExtras().get(key);
+		return (K) intent.getExtras().get(key);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public T addParameter(String key, Object value) {
-		this.intent.putExtra(key, (Serializable) value);
+		intent.putExtra(key, (Serializable) value);
 		return (T) this;
 	}
 

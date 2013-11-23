@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>ar.com.oxen.nibiru.mobile</artifactId>
 		<groupId>ar.com.oxen.nibiru.mobile</groupId>
-		<version>0.2</version>
+		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>ar.com.oxen.nibiru.mobile</groupId>
 	<artifactId>ar.com.oxen.nibiru.mobile.android</artifactId>
@@ -35,12 +35,12 @@
 		<dependency>
 			<groupId>com.j256.ormlite</groupId>
 			<artifactId>ormlite-core</artifactId>
-			<version>4.33</version>
+			<version>4.47</version>
 		</dependency>
 		<dependency>
 			<groupId>com.j256.ormlite</groupId>
 			<artifactId>ormlite-android</artifactId>
-			<version>4.33</version>
+			<version>4.47</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>

@@ -1,15 +1,19 @@
 package ar.com.oxen.nibiru.mobile.core.impl.common;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.common.Configurable;
 
 public abstract class AbstractConfigurable<C> implements Configurable<C> {
 	@Override
 	public <T> T getParameter(Enum<?> key) {
-		return this.getParameter(key.toString());
+		checkNotNull(key);
+		return getParameter(key.toString());
 	}
 
 	@Override
 	public C addParameter(Enum<?> key, Object value) {
-		return this.addParameter(key.toString(), value);
+		checkNotNull(key);
+		checkNotNull(value);
+		return addParameter(key.toString(), value);
 	}
 }

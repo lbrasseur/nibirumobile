@@ -11,8 +11,7 @@ public class SamplePresenterMapper extends BasePresenterMapper {
 	@Inject
 	public SamplePresenterMapper(Provider<LoginPresenter> loginPresenter,
 			Provider<SamplePresenter> samplePresenter) {
-		super();
-		this.map(DefaultPlaces.LOGIN, loginPresenter);
-		this.map(DefaultPlaces.HOME, samplePresenter);
+		map(DefaultPlaces.LOGIN, loginPresenter);
+		map(DefaultPlaces.HOME, samplePresenter);
 	}
 }

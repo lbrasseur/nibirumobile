@@ -36,6 +36,10 @@ public abstract class BaseAndroidView implements AndroidView {
 	}
 
 	@Override
+	public void onCreate() {
+	}
+
+	@Override
 	public void onStart() {
 	}
 

@@ -4,7 +4,7 @@ import ar.com.oxen.nibiru.mobile.android.app.AndroidBootstrap;
 import ar.com.oxen.nibiru.mobile.android.event.BroadcasEventBus;
 import ar.com.oxen.nibiru.mobile.android.http.HttpClientHttpManager;
 import ar.com.oxen.nibiru.mobile.android.preferences.SharedPreferencesImpl;
-import ar.com.oxen.nibiru.mobile.android.serializer.JacksonSerializaer;
+import ar.com.oxen.nibiru.mobile.android.serializer.JacksonSerializer;
 import ar.com.oxen.nibiru.mobile.android.ui.ToastAlertManager;
 import ar.com.oxen.nibiru.mobile.android.ui.place.IntentPlaceManager;
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
@@ -25,7 +25,7 @@ public class DefaultAndroidModule extends AbstractModule {
 		bind(PlaceManager.class).to(IntentPlaceManager.class);
 		bind(EventBus.class).to(BroadcasEventBus.class);
 		bind(HttpManager.class).to(HttpClientHttpManager.class);
-		bind(Serializer.class).to(JacksonSerializaer.class);
+		bind(Serializer.class).to(JacksonSerializer.class);
 		bind(Preferences.class).to(SharedPreferencesImpl.class);
 	}
 }

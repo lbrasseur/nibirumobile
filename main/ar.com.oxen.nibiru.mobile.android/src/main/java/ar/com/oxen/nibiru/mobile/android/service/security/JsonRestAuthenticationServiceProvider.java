@@ -5,7 +5,7 @@ import javax.inject.Provider;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import ar.com.oxen.nibiru.mobile.android.serializer.JacksonSerializaer;
+import ar.com.oxen.nibiru.mobile.android.serializer.JacksonSerializer;
 import ar.com.oxen.nibiru.mobile.core.api.http.HttpManager;
 import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.impl.service.RestService;
@@ -26,6 +26,6 @@ public class JsonRestAuthenticationServiceProvider implements
 	@Override
 	public RemoteService get() {
 		return new RestService("authentication", this.httpManager,
-				new JacksonSerializaer(this.mapper));
+				new JacksonSerializer(this.mapper));
 	}
 }

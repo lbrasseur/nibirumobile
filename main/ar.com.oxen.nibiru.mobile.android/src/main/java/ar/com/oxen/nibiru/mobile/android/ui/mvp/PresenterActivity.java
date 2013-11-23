@@ -45,6 +45,7 @@ public class PresenterActivity extends RoboActivity {
 		}
 
 		this.view = (AndroidView) this.presenter.getView();
+		this.view.onCreate();
 		this.setContentView(this.view.asNative());
 		this.presenter.go(place);
 	}

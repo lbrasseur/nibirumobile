@@ -4,13 +4,15 @@
 
 	<groupId>ar.com.oxen.nibiru.mobile</groupId>
 	<artifactId>ar.com.oxen.nibiru.mobile</artifactId>
-	<version>0.2</version>
+	<version>0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Nibiru Mobile</name>
 	<properties>
-		<nibiru-mobile-version>0.2</nibiru-mobile-version>
+		<nibiru-mobile-version>0.3-SNAPSHOT</nibiru-mobile-version>
 		<android-version>2.1</android-version>
 		<gwt-version>2.4.0</gwt-version>
+		<guava-version>15.0</guava-version>
+		<robovm-version>0.0.6</robovm-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<repositories>

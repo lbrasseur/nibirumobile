@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.android.serializer;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 
 import javax.inject.Inject;
@@ -11,19 +13,19 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import ar.com.oxen.nibiru.mobile.core.api.serializer.Serializer;
 
-public class JacksonSerializaer implements Serializer {
-	private ObjectMapper mapper;
+public class JacksonSerializer implements Serializer {
+	private final ObjectMapper mapper;
 
 	@Inject
-	public JacksonSerializaer(ObjectMapper mapper) {
-		super();
-		this.mapper = mapper;
+	public JacksonSerializer(ObjectMapper mapper) {
+		this.mapper = checkNotNull(mapper);
 	}
 
 	@Override
 	public String serialize(Object object) {
+		checkNotNull(object);
 		try {
-			return this.mapper.writeValueAsString(object);
+			return mapper.writeValueAsString(object);
 		} catch (JsonGenerationException e) {
 			throw exception(object, e);
 		} catch (JsonMappingException e) {
@@ -35,8 +37,10 @@ public class JacksonSerializaer implements Serializer {
 
 	@Override
 	public <T> T deserialize(String data, Class<T> returnType) {
+		checkNotNull(data);
+		checkNotNull(returnType);
 		try {
-			return this.mapper.readValue(data, returnType);
+			return mapper.readValue(data, returnType);
 		} catch (JsonParseException e) {
 			throw exception(data, e);
 		} catch (JsonMappingException e) {

@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.smartgwt.ui.place;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
@@ -9,29 +11,30 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
 import com.smartgwt.mobile.client.widgets.layout.NavStack;
 
 public class NavStackPlaceManager implements PlaceManager {
-	private NavStack<?> navStack;
-	private PresenterMapper presenterMapper;
+	private final NavStack<?> navStack;
+	private final PresenterMapper presenterMapper;
 
 	@Inject
 	public NavStackPlaceManager(NavStack<?> navStack,
 			PresenterMapper presenterMapper) {
-		super();
-		this.navStack = navStack;
-		this.presenterMapper = presenterMapper;
+		this.navStack = checkNotNull(navStack);
+		this.presenterMapper = checkNotNull(presenterMapper);
 	}
 
 	@Override
 	public Place createPlace(String id) {
-		return new NavStackPlace(id, this.navStack, this.presenterMapper);
+		checkNotNull(id);
+		return new NavStackPlace(id, navStack, presenterMapper);
 	}
 
 	@Override
 	public Place createPlace(Enum<?> id) {
-		return this.createPlace(id.toString());
+		checkNotNull(id);
+		return createPlace(id.toString());
 	}
 
 	@Override
 	public void back() {
-		this.navStack.pop();
+		navStack.pop();
 	}
 }

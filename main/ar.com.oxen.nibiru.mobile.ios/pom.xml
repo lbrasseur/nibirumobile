@@ -6,14 +6,30 @@
 	<parent>
 		<artifactId>ar.com.oxen.nibiru.mobile</artifactId>
 		<groupId>ar.com.oxen.nibiru.mobile</groupId>
-		<version>0.2</version>
+		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>ar.com.oxen.nibiru.mobile</groupId>
 	<artifactId>ar.com.oxen.nibiru.mobile.ios</artifactId>
-	<packaging>pom</packaging>
 	<name>ar.com.oxen.nibiru.mobile.ios</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>ar.com.oxen.nibiru.mobile</groupId>
+			<artifactId>ar.com.oxen.nibiru.mobile.core</artifactId>
+			<version>${nibiru-mobile-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.robovm</groupId>
+		    <artifactId>robovm-cocoatouch</artifactId>
+		    <version>${robovm-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.robovm</groupId>
+		    <artifactId>robovm-rt</artifactId>
+		    <version>${robovm-version}</version>
+		</dependency>		
+	</dependencies>
 </project>

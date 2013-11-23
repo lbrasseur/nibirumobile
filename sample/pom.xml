@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>ar.com.oxen.nibiru.mobile</artifactId>
 		<groupId>ar.com.oxen.nibiru.mobile</groupId>
-		<version>0.2</version>
+		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>ar.com.oxen.nibiru.mobile</groupId>
 	<artifactId>ar.com.oxen.nibiru.mobile.sample</artifactId>
@@ -24,9 +24,10 @@
 	<modules>
 		<module>ar.com.oxen.nibiru.mobile.sample.app</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.android</module>
+		<module>ar.com.oxen.nibiru.mobile.sample.ios</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.mgwt</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.smartgwt</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.server</module>
     	<module>ar.com.oxen.nibiru.mobile.sample.kendoui</module>
-  </modules>
+	</modules>
 </project>

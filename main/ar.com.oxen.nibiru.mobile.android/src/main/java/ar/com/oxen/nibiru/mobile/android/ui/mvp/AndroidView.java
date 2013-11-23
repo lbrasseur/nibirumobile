@@ -24,6 +24,7 @@ public interface AndroidView extends View {
 	boolean onContextItemSelected(MenuItem item);
 	
 	//Activity LifeCycle
+	void onCreate();
 	void onStart();
 	void onResume();
 	void onPause();
