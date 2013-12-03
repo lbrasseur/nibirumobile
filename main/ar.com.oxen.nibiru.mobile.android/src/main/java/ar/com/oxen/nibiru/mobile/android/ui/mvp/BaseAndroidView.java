@@ -1,7 +1,9 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,5 +60,13 @@ public abstract class BaseAndroidView implements AndroidView {
 	@Override
 	public void onRestart() {
 	}
-	
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		return false;
+	}
 }

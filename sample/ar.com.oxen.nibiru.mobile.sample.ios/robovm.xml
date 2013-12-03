@@ -11,10 +11,9 @@
   <target>ios</target>
   <iosInfoPList>Info.plist.xml</iosInfoPList>
 	<forceLinkClasses>
-		<pattern>ar.com.oxen.nibiru.mobile.core.impl.ui.security.LoginPresenter</pattern>
-		<pattern>ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter</pattern>
 		<pattern>java.util.logging.ConsoleHandler</pattern>
 		<pattern>java.util.logging.SimpleFormatter</pattern>
 		<pattern>com.google.inject.internal.util.$Finalizer</pattern>
+		
 	</forceLinkClasses>
 </config>

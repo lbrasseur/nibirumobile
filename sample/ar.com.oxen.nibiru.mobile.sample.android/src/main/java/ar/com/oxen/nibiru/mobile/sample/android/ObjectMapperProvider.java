@@ -6,10 +6,10 @@ import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.module.SimpleModule;
 
-import ar.com.oxen.nibiru.mobile.android.service.security.LoginDtoImpl;
-import ar.com.oxen.nibiru.mobile.android.service.security.UserDtoImpl;
 import ar.com.oxen.nibiru.mobile.core.api.service.security.LoginDto;
 import ar.com.oxen.nibiru.mobile.core.api.service.security.UserDto;
+import ar.com.oxen.nibiru.mobile.core.impl.service.security.LoginDtoImpl;
+import ar.com.oxen.nibiru.mobile.core.impl.service.security.UserDtoImpl;
 
 public class ObjectMapperProvider implements Provider<ObjectMapper> {
 

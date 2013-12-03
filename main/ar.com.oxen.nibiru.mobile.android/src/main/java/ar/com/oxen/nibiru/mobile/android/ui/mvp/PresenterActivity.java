@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContextScope;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -37,78 +38,83 @@ public class PresenterActivity extends RoboActivity {
 		synchronized (ContextScope.class) {
 			scope.enter(this);
 			try {
-				this.presenter = this.presenterMapper.getPresenter(place
-						.getId());
+				presenter = presenterMapper.getPresenter(place.getId());
 			} finally {
 				scope.exit(this);
 			}
 		}
 
-		this.view = (AndroidView) this.presenter.getView();
-		this.view.onCreate();
-		this.setContentView(this.view.asNative());
-		this.presenter.go(place);
+		view = (AndroidView) presenter.getView();
+		view.onCreate();
+		setContentView(this.view.asNative());
+		presenter.go(place);
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		this.presenter.onStop();
+		presenter.onStop();
 	}
 
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		return this.view.onPrepareOptionsMenu(menu);
+		return view.onPrepareOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		return this.view.onCreateOptionsMenu(menu);
+		return view.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return this.view.onOptionsItemSelected(item);
+		return view.onOptionsItemSelected(item);
 	}
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-		this.view.onCreateContextMenu(menu, v, menuInfo);
+		view.onCreateContextMenu(menu, v, menuInfo);
 	}
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		return this.view.onContextItemSelected(item);
+		return view.onContextItemSelected(item);
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		this.view.onDestroy();
+		view.onDestroy();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		this.view.onPause();
+		view.onPause();
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		this.view.onRestart();
+		view.onRestart();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		this.view.onResume();
+		view.onResume();
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		this.view.onStart();
+		view.onStart();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		view.onActivityResult(requestCode, resultCode, data);
 	}
 }

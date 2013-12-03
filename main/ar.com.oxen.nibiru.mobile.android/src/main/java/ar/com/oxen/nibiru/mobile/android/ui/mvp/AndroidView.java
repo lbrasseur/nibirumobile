@@ -1,7 +1,9 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
@@ -22,12 +24,21 @@ public interface AndroidView extends View {
 			ContextMenuInfo menuInfo);
 
 	boolean onContextItemSelected(MenuItem item);
-	
-	//Activity LifeCycle
+
+	// Activity LifeCycle
 	void onCreate();
+
 	void onStart();
+
 	void onResume();
+
 	void onPause();
+
 	void onDestroy();
+
 	void onRestart();
+
+	void onActivityResult(int requestCode, int resultCode, Intent data);
+
+	boolean onKeyDown(int keyCode, KeyEvent event);
 }
