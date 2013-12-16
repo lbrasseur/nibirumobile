@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.ios.ui.place;
+package ar.com.oxen.nibiru.mobile.ios.ui;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -6,7 +6,7 @@ import org.robovm.cocoatouch.uikit.UIAlertView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 
-public class AlertViewAlertManager implements AlertManager {
+public class UIAlertViewAlertManager implements AlertManager {
 	@Override
 	public void showMessage(String message) {
 		checkNotNull(message);

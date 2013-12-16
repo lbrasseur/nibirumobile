@@ -5,10 +5,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.util.Map;
 
 import org.robovm.cocoatouch.uikit.UINavigationController;
+import org.robovm.cocoatouch.uikit.UIView;
 import org.robovm.cocoatouch.uikit.UIViewController;
 import org.robovm.cocoatouch.uikit.UIWindow;
-
-import com.google.common.collect.Maps;
 
 import ar.com.oxen.nibiru.mobile.core.api.common.Identifiable;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
@@ -17,15 +16,18 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.impl.common.AbstractConfigurable;
 
-public class NavigationControllerPlace extends AbstractConfigurable<Place>
+import com.google.common.collect.Maps;
+
+public class UINavigationControllerPlace extends AbstractConfigurable<Place>
 		implements Place, Identifiable<String> {
 	private final UINavigationController navigationController;
 	private final UIWindow mainWindow;
 	private final PresenterMapper presenterMapper;
 	private final String id;
 	private final Map<String, Object> parameters;
+	private UIView currentModalView;
 
-	public NavigationControllerPlace(
+	public UINavigationControllerPlace(
 			UINavigationController navigationController, UIWindow mainWindow,
 			PresenterMapper presenterMapper, String id) {
 		this.navigationController = checkNotNull(navigationController);
@@ -65,11 +67,15 @@ public class NavigationControllerPlace extends AbstractConfigurable<Place>
 		Presenter<? extends View> presenter = presenterMapper.getPresenter(id);
 		UIViewController viewController = (UIViewController) presenter
 				.getView().asNative();
+
 		if (push) {
 			navigationController.pushViewController(viewController, true);
 		} else {
-			mainWindow.getInputView().removeFromSuperview();
-			mainWindow.addSubview(viewController.getView());
+			if (currentModalView != null) {
+				currentModalView.removeFromSuperview();
+			}
+			currentModalView = viewController.getView();
+			mainWindow.addSubview(currentModalView);
 		}
 		presenter.go(this);
 	}

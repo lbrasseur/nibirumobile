@@ -15,8 +15,8 @@ import ar.com.oxen.nibiru.mobile.ios.event.DummyEventBus;
 import ar.com.oxen.nibiru.mobile.ios.http.DummyHttpManager;
 import ar.com.oxen.nibiru.mobile.ios.preferences.DummyPreferences;
 import ar.com.oxen.nibiru.mobile.ios.serializer.DummySerializer;
-import ar.com.oxen.nibiru.mobile.ios.ui.place.AlertViewAlertManager;
-import ar.com.oxen.nibiru.mobile.ios.ui.place.NavigationControllerPlaceManager;
+import ar.com.oxen.nibiru.mobile.ios.ui.UIAlertViewAlertManager;
+import ar.com.oxen.nibiru.mobile.ios.ui.place.UINavigationControllerPlaceManager;
 
 import com.google.inject.AbstractModule;
 
@@ -24,8 +24,8 @@ public class DefaultIosModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		bind(Bootstrap.class).to(IosBootstrap.class);
-		bind(AlertManager.class).to(AlertViewAlertManager.class);
-		bind(PlaceManager.class).to(NavigationControllerPlaceManager.class);
+		bind(AlertManager.class).to(UIAlertViewAlertManager.class);
+		bind(PlaceManager.class).to(UINavigationControllerPlaceManager.class);
 		bind(EventBus.class).to(DummyEventBus.class);
 		bind(HttpManager.class).to(DummyHttpManager.class);
 		bind(Serializer.class).to(DummySerializer.class);

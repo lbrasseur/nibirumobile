@@ -12,7 +12,7 @@
 		<android-version>2.1</android-version>
 		<gwt-version>2.4.0</gwt-version>
 		<guava-version>15.0</guava-version>
-		<robovm-version>0.0.6</robovm-version>
+		<robovm-version>0.0.7</robovm-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<repositories>

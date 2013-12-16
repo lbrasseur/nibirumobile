@@ -11,13 +11,13 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
 
-public class NavigationControllerPlaceManager implements PlaceManager {
+public class UINavigationControllerPlaceManager implements PlaceManager {
 	private final UINavigationController navigationController;
 	private final UIWindow mainWindow;
 	private final PresenterMapper presenterMapper;
 
 	@Inject
-	public NavigationControllerPlaceManager(
+	public UINavigationControllerPlaceManager(
 			UINavigationController navigationController, UIWindow mainWindow,
 			PresenterMapper presenterMapper) {
 		this.navigationController = checkNotNull(navigationController);
@@ -27,7 +27,7 @@ public class NavigationControllerPlaceManager implements PlaceManager {
 
 	@Override
 	public Place createPlace(String id) {
-		return new NavigationControllerPlace(navigationController, mainWindow,
+		return new UINavigationControllerPlace(navigationController, mainWindow,
 				presenterMapper, id);
 	}
 

@@ -69,4 +69,9 @@ public abstract class BaseAndroidView implements AndroidView {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		return false;
 	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		return false;
+	}
 }
