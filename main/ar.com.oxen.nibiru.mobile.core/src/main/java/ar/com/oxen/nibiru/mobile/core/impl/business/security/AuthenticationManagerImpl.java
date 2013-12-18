@@ -2,6 +2,8 @@ package ar.com.oxen.nibiru.mobile.core.impl.business.security;
 
 import javax.inject.Inject;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 import ar.com.oxen.nibiru.mobile.core.api.business.security.AuthenticationManager;
 import ar.com.oxen.nibiru.mobile.core.api.business.security.HashManager;
@@ -13,20 +15,19 @@ import ar.com.oxen.nibiru.mobile.core.impl.async.ChainCallback;
 
 public class AuthenticationManagerImpl implements AuthenticationManager {
 
-	private ProfileImpl profile;
-	private HashManager hashManager;
-	private UserDao userDao;
-	private AuthenticationService authenticationService;
+	private final ProfileImpl profile;
+	private final HashManager hashManager;
+	private final UserDao userDao;
+	private final AuthenticationService authenticationService;
 
 	@Inject
 	public AuthenticationManagerImpl(ProfileImpl profile,
 			HashManager hashManager, UserDao userDao,
 			AuthenticationService authenticationService) {
-		super();
-		this.profile = profile;
-		this.hashManager = hashManager;
-		this.userDao = userDao;
-		this.authenticationService = authenticationService;
+		this.profile = checkNotNull(profile);
+		this.hashManager = checkNotNull(hashManager);
+		this.userDao = checkNotNull(userDao);
+		this.authenticationService = checkNotNull(authenticationService);
 	}
 
 	@Override

@@ -9,8 +9,8 @@
 		<version>0.3-SNAPSHOT</version>
 	</parent>
 	<groupId>ar.com.oxen.nibiru.mobile</groupId>
-	<artifactId>ar.com.oxen.nibiru.mobile.ios</artifactId>
-	<name>ar.com.oxen.nibiru.mobile.ios</name>
+	<artifactId>ar.com.oxen.nibiru.mobile.java</artifactId>
+	<name>ar.com.oxen.nibiru.mobile.java</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,18 +18,28 @@
 	<dependencies>
 		<dependency>
 			<groupId>ar.com.oxen.nibiru.mobile</groupId>
-			<artifactId>ar.com.oxen.nibiru.mobile.java</artifactId>
+			<artifactId>ar.com.oxen.nibiru.mobile.core</artifactId>
 			<version>${nibiru-mobile-version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.robovm</groupId>
-		    <artifactId>robovm-cocoatouch</artifactId>
-		    <version>${robovm-version}</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.1.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.robovm</groupId>
-		    <artifactId>robovm-rt</artifactId>
-		    <version>${robovm-version}</version>
-		</dependency>		
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.8</version>
+		</dependency>
 	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+			</resource>
+		</resources>
+	</build>
 </project>

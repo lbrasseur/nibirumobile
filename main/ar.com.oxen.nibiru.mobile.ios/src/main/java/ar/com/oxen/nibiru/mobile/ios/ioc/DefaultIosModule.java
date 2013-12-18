@@ -11,12 +11,12 @@ import ar.com.oxen.nibiru.mobile.core.api.serializer.Serializer;
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
 import ar.com.oxen.nibiru.mobile.ios.app.IosBootstrap;
-import ar.com.oxen.nibiru.mobile.ios.event.DummyEventBus;
-import ar.com.oxen.nibiru.mobile.ios.http.DummyHttpManager;
 import ar.com.oxen.nibiru.mobile.ios.preferences.DummyPreferences;
-import ar.com.oxen.nibiru.mobile.ios.serializer.DummySerializer;
 import ar.com.oxen.nibiru.mobile.ios.ui.UIAlertViewAlertManager;
 import ar.com.oxen.nibiru.mobile.ios.ui.place.UINavigationControllerPlaceManager;
+import ar.com.oxen.nibiru.mobile.java.event.guava.GuavaEventBus;
+import ar.com.oxen.nibiru.mobile.java.http.httpclient.HttpClientHttpManager;
+import ar.com.oxen.nibiru.mobile.java.serializer.jackson.JacksonSerializer;
 
 import com.google.inject.AbstractModule;
 
@@ -26,9 +26,9 @@ public class DefaultIosModule extends AbstractModule {
 		bind(Bootstrap.class).to(IosBootstrap.class);
 		bind(AlertManager.class).to(UIAlertViewAlertManager.class);
 		bind(PlaceManager.class).to(UINavigationControllerPlaceManager.class);
-		bind(EventBus.class).to(DummyEventBus.class);
-		bind(HttpManager.class).to(DummyHttpManager.class);
-		bind(Serializer.class).to(DummySerializer.class);
+		bind(EventBus.class).to(GuavaEventBus.class);
+		bind(HttpManager.class).to(HttpClientHttpManager.class);
+		bind(Serializer.class).to(JacksonSerializer.class);
 		bind(Preferences.class).to(DummyPreferences.class);
 
 		bind(UIWindow.class).toInstance(

@@ -2,9 +2,7 @@ package ar.com.oxen.nibiru.mobile.android.ioc;
 
 import ar.com.oxen.nibiru.mobile.android.app.AndroidBootstrap;
 import ar.com.oxen.nibiru.mobile.android.event.BroadcasEventBus;
-import ar.com.oxen.nibiru.mobile.android.http.HttpClientHttpManager;
 import ar.com.oxen.nibiru.mobile.android.preferences.SharedPreferencesImpl;
-import ar.com.oxen.nibiru.mobile.android.serializer.JacksonSerializer;
 import ar.com.oxen.nibiru.mobile.android.ui.ToastAlertManager;
 import ar.com.oxen.nibiru.mobile.android.ui.place.IntentPlaceManager;
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
@@ -14,6 +12,8 @@ import ar.com.oxen.nibiru.mobile.core.api.preferences.Preferences;
 import ar.com.oxen.nibiru.mobile.core.api.serializer.Serializer;
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
+import ar.com.oxen.nibiru.mobile.java.http.httpclient.HttpClientHttpManager;
+import ar.com.oxen.nibiru.mobile.java.serializer.jackson.JacksonSerializer;
 
 import com.google.inject.AbstractModule;
 

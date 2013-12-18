@@ -1,11 +1,23 @@
-package ar.com.oxen.nibiru.mobile.ios.event;
+package ar.com.oxen.nibiru.mobile.java.event.guava;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.event.Event;
-import ar.com.oxen.nibiru.mobile.core.api.event.EventBus;
 import ar.com.oxen.nibiru.mobile.core.api.event.EventHandler;
 import ar.com.oxen.nibiru.mobile.core.api.handler.HandlerRegistration;
 
-public class DummyEventBus implements EventBus {
+import com.google.common.eventbus.EventBus;
+
+public class GuavaEventBus implements
+		ar.com.oxen.nibiru.mobile.core.api.event.EventBus {
+	private final EventBus eventBus;
+
+	@Inject
+	public GuavaEventBus(EventBus eventBus) {
+		this.eventBus = checkNotNull(eventBus);
+	}
 
 	@Override
 	public Event createEvent(String id) {

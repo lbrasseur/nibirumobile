@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.android.serializer;
+package ar.com.oxen.nibiru.mobile.java.serializer.jackson;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

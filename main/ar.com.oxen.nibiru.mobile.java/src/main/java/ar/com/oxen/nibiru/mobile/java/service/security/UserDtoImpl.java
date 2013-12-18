@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.core.impl.service.security;
+package ar.com.oxen.nibiru.mobile.java.service.security;
 
 import ar.com.oxen.nibiru.mobile.core.api.service.security.UserDto;
 

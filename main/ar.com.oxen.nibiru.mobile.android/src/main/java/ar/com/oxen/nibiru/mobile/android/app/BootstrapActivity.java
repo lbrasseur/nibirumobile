@@ -13,7 +13,7 @@ public class BootstrapActivity extends RoboActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.bootstrap.onBootstrap();
-		this.finish();
+		bootstrap.onBootstrap();
+		finish();
 	}
 }
