@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.ios.ui.security;
 
+import javax.inject.Inject;
+
 import org.robovm.cocoatouch.coregraphics.CGRect;
 import org.robovm.cocoatouch.uikit.UIButton;
 import org.robovm.cocoatouch.uikit.UIButtonType;
@@ -11,6 +13,7 @@ import org.robovm.cocoatouch.uikit.UIView;
 import org.robovm.cocoatouch.uikit.UIViewController;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
+import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
 import ar.com.oxen.nibiru.mobile.core.impl.ui.security.LoginPresenter.Display;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
 
@@ -21,18 +24,19 @@ public class LoginDisplay implements Display {
 	private final UILabel errorLabel;
 	private final UIButton loginButton;
 
-	public LoginDisplay() {
+	@Inject
+	public LoginDisplay(SecurityMessages messages) {
 		UIView container = new UIView(new CGRect(0, 0, 320, 480));
 
 		UILabel usernameLabel = new UILabel(new CGRect(20, 50, 100, 25));
-		usernameLabel.setText("User:");
+		usernameLabel.setText(messages.user() + ":");
 		container.addSubview(usernameLabel);
 		username = new UITextField(new CGRect(120, 50, 150, 25));
 		username.setBorderStyle(UITextBorderStyle.RoundedRect);
 		container.addSubview(username);
 
 		UILabel passwordLabel = new UILabel(new CGRect(20, 100, 100, 25));
-		passwordLabel.setText("Password:");
+		passwordLabel.setText(messages.password() + ":");
 		container.addSubview(passwordLabel);
 		password = new UITextField(new CGRect(120, 100, 150, 25));
 		password.setBorderStyle(UITextBorderStyle.RoundedRect);

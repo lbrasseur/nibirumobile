@@ -15,6 +15,7 @@ public class ObjectMapperProvider implements Provider<ObjectMapper> {
 
 	@Override
 	public ObjectMapper get() {
+		// TODO: Este codigo esta duplicado, podria ir en alguna clase generica
 		SimpleModule jacksonModule = new SimpleModule("NibiruSample",
 				new Version(1, 0, 0, "SNAPSHOT"));
 		jacksonModule

@@ -9,6 +9,7 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
 import ar.com.oxen.nibiru.mobile.core.impl.service.security.AuthenticationServiceImpl;
 import ar.com.oxen.nibiru.mobile.core.impl.ui.security.LoginPresenter;
 import ar.com.oxen.nibiru.mobile.java.service.security.LoginDtoImpl;
+import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 
 import com.google.inject.AbstractModule;
 
