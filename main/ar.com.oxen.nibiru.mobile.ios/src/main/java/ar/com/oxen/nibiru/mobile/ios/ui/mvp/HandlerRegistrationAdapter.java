@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.ios.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import org.robovm.cocoatouch.uikit.UIControl;
 import org.robovm.cocoatouch.uikit.UIControl.Listener;
 
@@ -10,8 +12,8 @@ public class HandlerRegistrationAdapter implements HandlerRegistration {
 	private final Listener listener;
 
 	public HandlerRegistrationAdapter(UIControl control, Listener listener) {
-		this.control = control;
-		this.listener = listener;
+		this.control = checkNotNull(control);
+		this.listener = checkNotNull(listener);
 	}
 
 	@Override

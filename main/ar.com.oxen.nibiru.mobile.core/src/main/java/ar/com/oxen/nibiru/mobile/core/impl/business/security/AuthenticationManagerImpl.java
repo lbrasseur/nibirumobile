@@ -33,7 +33,7 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 	@Override
 	public void login(final String username, final String password,
 			final Callback<Boolean> callback) {
-		this.authenticationService.login(username, password,
+		authenticationService.login(username, password,
 				new Callback<UserDto>() {
 
 					@Override
@@ -65,7 +65,6 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 					@Override
 					public void onFailure(Exception reason) {
 						localLogin(username, password, callback);
-
 					}
 				});
 	}

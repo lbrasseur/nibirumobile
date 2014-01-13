@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.core.impl.service;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 import ar.com.oxen.nibiru.mobile.core.api.http.HttpCallback;
 import ar.com.oxen.nibiru.mobile.core.api.http.HttpManager;
@@ -14,7 +15,11 @@ public class JsonRpcService extends BaseService {
 	@Override
 	public <T> void invoke(final String method, final Object requestDto,
 			final Class<T> responseClass, Callback<T> callback) {
-		this.getHttpManager().send(this.getServiceName(), callback,
+		checkNotNull(method);
+		checkNotNull(requestDto);
+		checkNotNull(responseClass);
+		checkNotNull(callback);
+		getHttpManager().send(getServiceName(), callback,
 				new HttpCallback<T>() {
 
 					@Override

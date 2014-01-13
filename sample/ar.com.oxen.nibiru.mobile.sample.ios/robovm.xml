@@ -14,5 +14,17 @@
 		<pattern>java.util.logging.ConsoleHandler</pattern>
 		<pattern>java.util.logging.SimpleFormatter</pattern>
 		<pattern>com.google.inject.internal.util.$Finalizer</pattern>
+		<pattern>org.apache.commons.logging.impl.WeakHashtable</pattern>
+		<pattern>org.apache.commons.logging.impl.LogFactoryImpl</pattern>
+		<pattern>org.apache.commons.logging.impl.Jdk14Logger</pattern>
+		<!-- SSL classes -->
+		<pattern>org.apache.harmony.xnet.provider.jsse.OpenSSLProvider</pattern>
+		<pattern>org.apache.harmony.security.provider.cert.DRLCertFactory</pattern>
+		<pattern>com.android.org.bouncycastle.jce.provider.BouncyCastleProvider</pattern>
+		<pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
+		<pattern>org.apache.harmony.xnet.provider.jsse.JSSEProvider</pattern>
+		<pattern>com.android.org.bouncycastle.jce.provider.JDKKeyStore</pattern>
+		<pattern>org.apache.harmony.security.provider.cert.X509CertFactoryImpl</pattern>
+		<pattern>com.android.org.bouncycastle.jce.provider.PKIXCertPathValidatorSpi</pattern>
 	</forceLinkClasses>
 </config>

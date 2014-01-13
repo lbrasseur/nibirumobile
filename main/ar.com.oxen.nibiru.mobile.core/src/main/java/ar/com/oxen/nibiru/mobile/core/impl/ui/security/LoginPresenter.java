@@ -27,8 +27,8 @@ public class LoginPresenter extends BasePresenter<Display> {
 		void showLoginError();
 	}
 
-	private AuthenticationManager authenticationManager;
-	private PlaceManager placeManager;
+	private final AuthenticationManager authenticationManager;
+	private final PlaceManager placeManager;
 
 	@Inject
 	public LoginPresenter(Display display, AlertManager alertManager,
@@ -42,7 +42,6 @@ public class LoginPresenter extends BasePresenter<Display> {
 	@Override
 	public void go(Place place) {
 		getView().getLogin().setClickHandler(new ClickHandler() {
-
 			@Override
 			public void onClick() {
 				authenticationManager.login(getView().getUsername(), getView()
@@ -50,7 +49,8 @@ public class LoginPresenter extends BasePresenter<Display> {
 					@Override
 					public void onSuccess(Boolean result) {
 						if (result) {
-							placeManager.createPlace(DefaultPlaces.HOME).go(false);
+							placeManager.createPlace(DefaultPlaces.HOME).go(
+									false);
 						} else {
 							getView().showLoginError();
 						}
