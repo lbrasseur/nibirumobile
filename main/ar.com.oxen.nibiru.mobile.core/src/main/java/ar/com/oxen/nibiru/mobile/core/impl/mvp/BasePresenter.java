@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.core.impl.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
@@ -12,18 +13,17 @@ import ar.com.oxen.nibiru.mobile.core.impl.async.BaseCallback;
  *            The view type
  */
 abstract public class BasePresenter<V extends View> implements Presenter<V> {
-	private V view;
-	private AlertManager alertManager;
+	private final V view;
+	private final AlertManager alertManager;
 
 	public BasePresenter(V view, AlertManager alertManager) {
-		super();
-		this.view = view;
-		this.alertManager = alertManager;
+		this.view = checkNotNull(view);
+		this.alertManager = checkNotNull(alertManager);
 	}
 
 	@Override
 	public V getView() {
-		return this.view;
+		return view;
 	}
 
 	@Override

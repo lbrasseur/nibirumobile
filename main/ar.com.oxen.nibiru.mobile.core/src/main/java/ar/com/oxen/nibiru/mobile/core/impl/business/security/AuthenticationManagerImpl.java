@@ -33,6 +33,9 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 	@Override
 	public void login(final String username, final String password,
 			final Callback<Boolean> callback) {
+		checkNotNull(username);
+		checkNotNull(password);
+		checkNotNull(callback);
 		authenticationService.login(username, password,
 				new Callback<UserDto>() {
 
@@ -71,7 +74,7 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 
 	private void localLogin(final String username, final String password,
 			Callback<Boolean> callback) {
-		this.userDao.findByName(username, new ChainCallback<User, Boolean>(
+		userDao.findByName(username, new ChainCallback<User, Boolean>(
 				callback) {
 
 			@Override
@@ -95,5 +98,4 @@ public class AuthenticationManagerImpl implements AuthenticationManager {
 	public void logout(Callback<Boolean> callback) {
 		callback.onSuccess(true);
 	}
-
 }

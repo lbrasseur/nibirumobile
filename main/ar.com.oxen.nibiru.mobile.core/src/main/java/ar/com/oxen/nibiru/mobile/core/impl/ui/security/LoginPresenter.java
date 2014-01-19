@@ -1,6 +1,10 @@
 package ar.com.oxen.nibiru.mobile.core.impl.ui.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
+
+import com.google.common.base.Strings;
 
 import ar.com.oxen.nibiru.mobile.core.api.business.security.AuthenticationManager;
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
@@ -35,27 +39,31 @@ public class LoginPresenter extends BasePresenter<Display> {
 			AuthenticationManager authenticationManager,
 			PlaceManager placeManager) {
 		super(display, alertManager);
-		this.authenticationManager = authenticationManager;
-		this.placeManager = placeManager;
+		this.authenticationManager = checkNotNull(authenticationManager);
+		this.placeManager = checkNotNull(placeManager);
 	}
 
 	@Override
 	public void go(Place place) {
+		checkNotNull(place);
 		getView().getLogin().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
-				authenticationManager.login(getView().getUsername(), getView()
-						.getPassword(), new Cbk<Boolean>() {
-					@Override
-					public void onSuccess(Boolean result) {
-						if (result) {
-							placeManager.createPlace(DefaultPlaces.HOME).go(
-									false);
-						} else {
-							getView().showLoginError();
-						}
-					}
-				});
+				authenticationManager.login(
+						Strings.nullToEmpty(getView().getUsername()),
+						Strings.nullToEmpty(getView().getPassword()),
+						new Cbk<Boolean>() {
+							@Override
+							public void onSuccess(Boolean result) {
+								if (result) {
+									placeManager
+											.createPlace(DefaultPlaces.HOME)
+											.go(false);
+								} else {
+									getView().showLoginError();
+								}
+							}
+						});
 			}
 		});
 	}

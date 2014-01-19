@@ -11,6 +11,8 @@ public class UIAlertViewAlertManager implements AlertManager {
 	public void showMessage(String message) {
 		checkNotNull(message);
 		UIAlertView alertView = new UIAlertView();
+		alertView.setTitle("Message");
+		alertView.addButton("Ok");
 		alertView.setMessage(message);
 		alertView.show();
 	}

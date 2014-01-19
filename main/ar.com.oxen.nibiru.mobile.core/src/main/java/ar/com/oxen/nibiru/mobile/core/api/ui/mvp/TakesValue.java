@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.core.api.ui.mvp;
 
+import com.sun.istack.internal.Nullable;
+
 /**
  * Something that can holds a value.
  * 
@@ -11,10 +13,11 @@ public interface TakesValue<T> {
 	 * @param value
 	 *            The value
 	 */
-	void setValue(T value);
+	void setValue(@Nullable T value);
 
 	/**
 	 * @return The value
 	 */
+	@Nullable
 	T getValue();
 }

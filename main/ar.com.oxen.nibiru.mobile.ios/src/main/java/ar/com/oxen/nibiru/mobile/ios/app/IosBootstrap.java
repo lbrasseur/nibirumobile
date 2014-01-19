@@ -21,6 +21,7 @@ public class IosBootstrap implements Bootstrap {
 
 	@Override
 	public void onBootstrap() {
+		// TODO: Background color should be application-specific
 		mainWindow.setBackgroundColor(UIColor.lightGrayColor());
 		mainWindow.makeKeyAndVisible();
 		entryPoint.onApplicationStart();

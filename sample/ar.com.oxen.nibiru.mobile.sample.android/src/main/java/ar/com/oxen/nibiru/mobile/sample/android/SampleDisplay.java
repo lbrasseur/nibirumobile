@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.android;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import android.content.Context;
@@ -17,79 +19,80 @@ import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
 public class SampleDisplay extends BaseAndroidView implements Display {
-	private LinearLayout view;
-	private Button alertTrigger;
-	private EditText nameLoad;
-	private Button greetingTrigger;
-	private TextView greetingDisplay;
-	private Button backTrigger;
-	private Button showLocation;
+	private final LinearLayout view;
+	private final Button alertTrigger;
+	private final EditText nameLoad;
+	private final Button greetingTrigger;
+	private final TextView greetingDisplay;
+	private final Button backTrigger;
+	private final Button showLocation;
 
 	@Inject
 	public SampleDisplay(Context context, SampleMessages messages) {
-		super();
-		this.view = new LinearLayout(context);
-		this.view.setOrientation(LinearLayout.VERTICAL);
+		checkNotNull(context);
+		checkNotNull(messages);
+		view = new LinearLayout(context);
+		view.setOrientation(LinearLayout.VERTICAL);
 
 		TextView mensaje = new TextView(context);
 		mensaje.setText(messages.title());
-		this.view.addView(mensaje);
+		view.addView(mensaje);
 
-		this.alertTrigger = new Button(context);
-		this.alertTrigger.setText(messages.showAlert());
-		this.view.addView(this.alertTrigger);
+		alertTrigger = new Button(context);
+		alertTrigger.setText(messages.showAlert());
+		view.addView(alertTrigger);
 
-		this.nameLoad = new EditText(context);
-		this.nameLoad.setText("Pepe");
-		this.view.addView(this.nameLoad);
+		nameLoad = new EditText(context);
+		nameLoad.setText("Pepe");
+		view.addView(nameLoad);
 
-		this.greetingTrigger = new Button(context);
-		this.greetingTrigger.setText(messages.greet());
-		this.view.addView(this.greetingTrigger);
+		greetingTrigger = new Button(context);
+		greetingTrigger.setText(messages.greet());
+		view.addView(greetingTrigger);
 
-		this.greetingDisplay = new TextView(context);
-		this.greetingDisplay.setText("");
-		this.view.addView(this.greetingDisplay);
+		greetingDisplay = new TextView(context);
+		greetingDisplay.setText("");
+		view.addView(greetingDisplay);
 
-		this.showLocation = new Button(context);
-		this.showLocation.setText(messages.getPosition());
-		this.view.addView(this.showLocation);
+		showLocation = new Button(context);
+		showLocation.setText(messages.getPosition());
+		view.addView(showLocation);
 
-		this.backTrigger = new Button(context);
-		this.backTrigger.setText(messages.back());
-		this.view.addView(this.backTrigger);
+		backTrigger = new Button(context);
+		backTrigger.setText(messages.back());
+		view.addView(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getAlertTrigger() {
-		return new ViewAdapter(this.alertTrigger);
+		return new ViewAdapter(alertTrigger);
 	}
 
 	@Override
 	public HasClickHandler getGreetingTrigger() {
-		return new ViewAdapter(this.greetingTrigger);
+		return new ViewAdapter(greetingTrigger);
 	}
 
 	@Override
 	public TakesValue<String> getNameLoad() {
-		return new TextViewAdapter(this.nameLoad);
+		return new TextViewAdapter(nameLoad);
 	}
 
 	@Override
 	public TakesValue<String> getGreetingDisplay() {
-		return new TextViewAdapter(this.greetingDisplay);
+		return new TextViewAdapter(greetingDisplay);
 	}
 
 	@Override
 	public HasClickHandler getBackTrigger() {
-		return new ViewAdapter(this.backTrigger);
+		return new ViewAdapter(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getShowLocation() {
-		return new ViewAdapter(this.showLocation);
+		return new ViewAdapter(showLocation);
 	}
-	
+
 	@Override
 	public View asNative() {
 		return view;
