@@ -43,7 +43,6 @@ class GuavaEvent extends BaseConfigurable<Event> implements Event {
 
 	@Override
 	public void fire() {
-		// TODO Auto-generated method stub
-		
+		eventBus.post(this);
 	}
 }

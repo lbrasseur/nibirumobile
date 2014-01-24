@@ -8,15 +8,21 @@ import ar.com.oxen.nibiru.mobile.core.api.event.Event;
 import ar.com.oxen.nibiru.mobile.core.api.event.EventHandler;
 import ar.com.oxen.nibiru.mobile.core.api.handler.HandlerRegistration;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 
 public class GuavaEventBus implements
 		ar.com.oxen.nibiru.mobile.core.api.event.EventBus {
 	private final EventBus eventBus;
+	private final Multimap<String, EventHandler> handlers;
 
 	@Inject
 	public GuavaEventBus(EventBus eventBus) {
 		this.eventBus = checkNotNull(eventBus);
+		handlers = HashMultimap.create();
+		eventBus.register(this);
 	}
 
 	@Override
@@ -32,10 +38,15 @@ public class GuavaEventBus implements
 	}
 
 	@Override
-	public HandlerRegistration addHandler(String eventId, EventHandler handler) {
-		//eventBus.register(object);
-		// TODO Auto-generated method stub
-		return null;
+	public HandlerRegistration addHandler(final String eventId,
+			final EventHandler handler) {
+		handlers.put(eventId, handler);
+		return new HandlerRegistration() {
+			@Override
+			public void removeHandler() {
+				handlers.remove(eventId, handler);
+			}
+		};
 	}
 
 	@Override
@@ -45,4 +56,11 @@ public class GuavaEventBus implements
 		return addHandler(eventId.toString(), handler);
 	}
 
+	@Subscribe
+	public void onEvent(GuavaEvent event) {
+		checkNotNull(event);
+		for (EventHandler handler : handlers.get(event.getId())) {
+			handler.onEvent(event);
+		}
+	}
 }
