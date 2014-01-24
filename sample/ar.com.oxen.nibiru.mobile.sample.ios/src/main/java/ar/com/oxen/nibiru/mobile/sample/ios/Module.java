@@ -10,6 +10,7 @@ import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.impl.service.security.Authentication;
 import ar.com.oxen.nibiru.mobile.java.service.security.JsonRestAuthenticationServiceProvider;
+import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
@@ -34,7 +35,8 @@ public class Module extends AbstractModule {
 		/* UI bindings */
 		bind(PresenterMapper.class).to(SamplePresenterMapper.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class);
-		bind(SampleMessages.class).to(DummySampleMessages.class);
+		bind(SampleMessages.class).toProvider(
+				new MessageProvider<SampleMessages>(SampleMessages.class));
 
 		/* Service bindings */
 		bind(ObjectMapper.class).toProvider(ObjectMapperProvider.class);

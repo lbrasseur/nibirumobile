@@ -21,26 +21,28 @@ public class GuavaEventBus implements
 
 	@Override
 	public Event createEvent(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		checkNotNull(id);
+		return new GuavaEvent(id, eventBus);
 	}
 
 	@Override
 	public Event createEvent(Enum<?> id) {
-		// TODO Auto-generated method stub
-		return null;
+		checkNotNull(id);
+		return createEvent(id.toString());
 	}
 
 	@Override
 	public HandlerRegistration addHandler(String eventId, EventHandler handler) {
+		//eventBus.register(object);
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public HandlerRegistration addHandler(Enum<?> eventId, EventHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
+		checkNotNull(eventId);
+		checkNotNull(handler);
+		return addHandler(eventId.toString(), handler);
 	}
 
 }

@@ -1,10 +1,10 @@
 package ar.com.oxen.nibiru.mobile.core.impl.preferences;
 
 import ar.com.oxen.nibiru.mobile.core.api.preferences.Preferences;
-import ar.com.oxen.nibiru.mobile.core.impl.common.AbstractConfigurable;
+import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
 public abstract class AbstractPreferences extends
-		AbstractConfigurable<Preferences> implements Preferences {
+		BaseConfigurable<Preferences> implements Preferences {
 
 	private static final char STRING_PREFIX = 's';
 

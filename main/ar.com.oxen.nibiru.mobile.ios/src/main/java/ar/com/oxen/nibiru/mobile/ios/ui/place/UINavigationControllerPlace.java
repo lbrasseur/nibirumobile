@@ -14,11 +14,11 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
-import ar.com.oxen.nibiru.mobile.core.impl.common.AbstractConfigurable;
+import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
 import com.google.common.collect.Maps;
 
-public class UINavigationControllerPlace extends AbstractConfigurable<Place>
+public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		implements Place, Identifiable<String> {
 	private final UINavigationController navigationController;
 	private final UIWindow mainWindow;
@@ -65,16 +65,17 @@ public class UINavigationControllerPlace extends AbstractConfigurable<Place>
 	@Override
 	public void go(boolean push) {
 		Presenter<? extends View> presenter = presenterMapper.getPresenter(id);
-		UIViewController viewController = (UIViewController) presenter
-				.getView().asNative();
+		UIView view = (UIView) presenter.getView().asNative();
 
 		if (push) {
-			navigationController.pushViewController(viewController, true);
+			UIViewController controller = new UIViewController();
+			controller.setView(view);
+			navigationController.pushViewController(controller, true);
 		} else {
 			if (currentModalView != null) {
 				currentModalView.removeFromSuperview();
 			}
-			currentModalView = viewController.getView();
+			currentModalView = view;
 			mainWindow.addSubview(currentModalView);
 		}
 		presenter.go(this);

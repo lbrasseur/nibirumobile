@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.app.ui;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.business.security.Profile;
@@ -34,12 +36,11 @@ public class SamplePresenter extends BasePresenter<Display> {
 		HasClickHandler getShowLocation();
 	}
 
-	private AlertManager alertManager;
-	private GeolocationManager geolocationManager;
-	private EventBus eventBus;
-	private Profile profile;
-	private PlaceManager placeManager;
-	private SampleMessages messages;
+	private final GeolocationManager geolocationManager;
+	private final EventBus eventBus;
+	private final Profile profile;
+	private final PlaceManager placeManager;
+	private final SampleMessages messages;
 	private HandlerRegistration handlerRegistration;
 
 	@Inject
@@ -47,20 +48,19 @@ public class SamplePresenter extends BasePresenter<Display> {
 			GeolocationManager geolocationManager, EventBus eventBus,
 			Profile profile, PlaceManager placeManager, SampleMessages messages) {
 		super(view, alertManager);
-		this.alertManager = alertManager;
-		this.geolocationManager = geolocationManager;
-		this.eventBus = eventBus;
-		this.profile = profile;
-		this.placeManager = placeManager;
-		this.messages = messages;
+		this.geolocationManager = checkNotNull(geolocationManager);
+		this.eventBus = checkNotNull(eventBus);
+		this.profile = checkNotNull(profile);
+		this.placeManager = checkNotNull(placeManager);
+		this.messages = checkNotNull(messages);
 	}
 
 	@Override
 	public void go(Place place) {
-		this.getView().getGreetingDisplay()
-				.setValue(this.messages.hi(profile.getUsername()));
+		getView().getGreetingDisplay().setValue(
+				messages.hi(profile.getUsername()));
 
-		this.getView().getAlertTrigger().setClickHandler(new ClickHandler() {
+		getView().getAlertTrigger().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
 				String message = messages.testMessage(profile.getFirstName(),
@@ -70,17 +70,17 @@ public class SamplePresenter extends BasePresenter<Display> {
 			}
 		});
 
-		this.handlerRegistration = this.eventBus.addHandler("showAlert",
+		handlerRegistration = eventBus.addHandler("showAlert",
 				new EventHandler() {
 
 					@Override
 					public void onEvent(Event event) {
 						String message = event.getParameter("message");
-						alertManager.showMessage(message);
+						getAlertManager().showMessage(message);
 					}
 				});
 
-		this.getView().getGreetingTrigger().setClickHandler(new ClickHandler() {
+		getView().getGreetingTrigger().setClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick() {
@@ -90,14 +90,14 @@ public class SamplePresenter extends BasePresenter<Display> {
 			}
 		});
 
-		this.getView().getBackTrigger().setClickHandler(new ClickHandler() {
+		getView().getBackTrigger().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
 				placeManager.back();
 			}
 		});
 
-		this.getView().getShowLocation().setClickHandler(new ClickHandler() {
+		getView().getShowLocation().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
 				geolocationManager.watchPosition(new Cbk<Position>() {

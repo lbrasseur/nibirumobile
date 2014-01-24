@@ -9,6 +9,7 @@ import org.robovm.cocoatouch.uikit.UIButton;
 import org.robovm.cocoatouch.uikit.UIButtonType;
 import org.robovm.cocoatouch.uikit.UIControlState;
 import org.robovm.cocoatouch.uikit.UILabel;
+import org.robovm.cocoatouch.uikit.UIScreen;
 import org.robovm.cocoatouch.uikit.UITextBorderStyle;
 import org.robovm.cocoatouch.uikit.UITextField;
 import org.robovm.cocoatouch.uikit.UIView;
@@ -16,10 +17,11 @@ import org.robovm.cocoatouch.uikit.UIView;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
 import ar.com.oxen.nibiru.mobile.core.impl.ui.security.LoginPresenter.Display;
-import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewControllerView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
+import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIViewView;
 
-public class LoginDisplay extends BaseUIViewControllerView implements Display {
+public class LoginDisplay implements UIViewView, Display {
+	private final UIView container;
 	private final UITextField username;
 	private final UITextField password;
 	private final UILabel errorLabel;
@@ -28,8 +30,7 @@ public class LoginDisplay extends BaseUIViewControllerView implements Display {
 	@Inject
 	public LoginDisplay(SecurityMessages messages) {
 		checkNotNull(messages);
-		UIView container = new UIView(new CGRect(0, 0, 320, 480));
-		getController().setView(container);
+		container = new UIView(UIScreen.getMainScreen().getBounds());
 
 		UILabel usernameLabel = new UILabel(new CGRect(20, 50, 100, 25));
 		usernameLabel.setText(messages.user() + ":");
@@ -73,5 +74,10 @@ public class LoginDisplay extends BaseUIViewControllerView implements Display {
 	@Override
 	public void showLoginError() {
 		errorLabel.setText("Invalid credentials");
+	}
+
+	@Override
+	public UIView asNative() {
+		return container;
 	}
 }

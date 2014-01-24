@@ -9,20 +9,22 @@ import org.robovm.cocoatouch.uikit.UIButton;
 import org.robovm.cocoatouch.uikit.UIButtonType;
 import org.robovm.cocoatouch.uikit.UIControlState;
 import org.robovm.cocoatouch.uikit.UILabel;
+import org.robovm.cocoatouch.uikit.UIScreen;
 import org.robovm.cocoatouch.uikit.UITextBorderStyle;
 import org.robovm.cocoatouch.uikit.UITextField;
 import org.robovm.cocoatouch.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
-import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewControllerView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UILabelAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UITextFieldAdapter;
+import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIViewView;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
-public class SampleDisplay extends BaseUIViewControllerView implements Display {
+public class SampleDisplay implements UIViewView, Display {
+	private final UIView container;
 	private final UIButton alertTrigger;
 	private final UITextField nameLoad;
 	private final UIButton greetingTrigger;
@@ -33,8 +35,7 @@ public class SampleDisplay extends BaseUIViewControllerView implements Display {
 	@Inject
 	public SampleDisplay(SampleMessages messages) {
 		checkNotNull(messages);
-		UIView container = new UIView(new CGRect(0, 0, 320, 480));
-		getController().setView(container);
+		container = new UIView(UIScreen.getMainScreen().getBounds());
 
 		UILabel mensaje = new UILabel(new CGRect(20, 50, 100, 25));
 		mensaje.setText(messages.title());
@@ -98,5 +99,10 @@ public class SampleDisplay extends BaseUIViewControllerView implements Display {
 	@Override
 	public HasClickHandler getShowLocation() {
 		return new UIButtonAdapter(showLocation);
+	}
+
+	@Override
+	public UIView asNative() {
+		return container;
 	}
 }

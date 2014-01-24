@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.android.event;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import android.content.BroadcastReceiver;
@@ -12,28 +14,31 @@ import ar.com.oxen.nibiru.mobile.core.api.event.EventHandler;
 import ar.com.oxen.nibiru.mobile.core.api.handler.HandlerRegistration;
 
 public class BroadcasEventBus implements EventBus {
-	private Context context;
-	private final String EVENT_PREFIX = "ar.com.oxen.nibiru.mobile.android.event.";
+	private static final String EVENT_PREFIX = "ar.com.oxen.nibiru.mobile.android.event.";
+	private final Context context;
 
 	@Inject
 	public BroadcasEventBus(Context context) {
-		super();
-		this.context = context;
+		this.context = checkNotNull(context);
 	}
 
 	@Override
 	public Event createEvent(String id) {
-		return new IntentEvent(id, new Intent(EVENT_PREFIX + id), this.context);
+		checkNotNull(id);
+		return new IntentEvent(id, new Intent(EVENT_PREFIX + id), context);
 	}
 
 	@Override
 	public Event createEvent(Enum<?> id) {
-		return this.createEvent(id.toString());
+		checkNotNull(id);
+		return createEvent(id.toString());
 	}
 
 	@Override
 	public HandlerRegistration addHandler(String event,
 			final EventHandler handler) {
+		checkNotNull(event);
+		checkNotNull(handler);
 		IntentFilter filter = new IntentFilter(EVENT_PREFIX + event);
 
 		final BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -43,7 +48,7 @@ public class BroadcasEventBus implements EventBus {
 			}
 		};
 
-		this.context.registerReceiver(receiver, filter);
+		context.registerReceiver(receiver, filter);
 
 		return new HandlerRegistration() {
 			@Override
@@ -55,6 +60,8 @@ public class BroadcasEventBus implements EventBus {
 
 	@Override
 	public HandlerRegistration addHandler(Enum<?> eventId, EventHandler handler) {
-		return this.addHandler(eventId.toString(), handler);
+		checkNotNull(eventId);
+		checkNotNull(handler);
+		return addHandler(eventId.toString(), handler);
 	}
 }

@@ -6,6 +6,8 @@ import org.robovm.cocoatouch.uikit.UITextField;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
 
+import com.google.common.base.Strings;
+
 public class UITextFieldAdapter implements TakesValue<String> {
 	private final UITextField textField;
 
@@ -20,6 +22,6 @@ public class UITextFieldAdapter implements TakesValue<String> {
 
 	@Override
 	public String getValue() {
-		return textField.getText();
+		return Strings.nullToEmpty(textField.getText());
 	}
 }

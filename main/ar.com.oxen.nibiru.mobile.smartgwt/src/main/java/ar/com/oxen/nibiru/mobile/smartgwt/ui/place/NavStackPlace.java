@@ -9,13 +9,13 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
-import ar.com.oxen.nibiru.mobile.core.impl.common.AbstractConfigurable;
+import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
 import com.smartgwt.mobile.client.internal.util.AnimationUtil.Direction;
 import com.smartgwt.mobile.client.widgets.Panel;
 import com.smartgwt.mobile.client.widgets.layout.NavStack;
 
-public class NavStackPlace extends AbstractConfigurable<Place> implements Place {
+public class NavStackPlace extends BaseConfigurable<Place> implements Place {
 	private final String id;
 	private final NavStack<?> navStack;
 	private final PresenterMapper presenterMapper;

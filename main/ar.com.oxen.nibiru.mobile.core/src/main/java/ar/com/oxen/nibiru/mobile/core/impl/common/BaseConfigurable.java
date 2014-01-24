@@ -3,7 +3,7 @@ package ar.com.oxen.nibiru.mobile.core.impl.common;
 import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.common.Configurable;
 
-public abstract class AbstractConfigurable<C> implements Configurable<C> {
+public abstract class BaseConfigurable<C> implements Configurable<C> {
 	@Override
 	public <T> T getParameter(Enum<?> key) {
 		checkNotNull(key);
