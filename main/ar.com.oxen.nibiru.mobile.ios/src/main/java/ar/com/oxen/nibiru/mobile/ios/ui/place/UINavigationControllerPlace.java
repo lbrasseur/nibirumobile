@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Map;
 
+import javax.inject.Provider;
+
 import org.robovm.cocoatouch.uikit.UINavigationController;
 import org.robovm.cocoatouch.uikit.UIView;
 import org.robovm.cocoatouch.uikit.UIViewController;
@@ -20,18 +22,18 @@ import com.google.common.collect.Maps;
 
 public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		implements Place, Identifiable<String> {
-	private final UINavigationController navigationController;
 	private final UIWindow mainWindow;
+	private final Provider<UINavigationController> navigationControllerProvider;
 	private final PresenterMapper presenterMapper;
 	private final String id;
 	private final Map<String, Object> parameters;
-	private UIView currentModalView;
 
 	public UINavigationControllerPlace(
-			UINavigationController navigationController, UIWindow mainWindow,
+			UIWindow mainWindow,
+			Provider<UINavigationController> navigationControllerProvider,
 			PresenterMapper presenterMapper, String id) {
-		this.navigationController = checkNotNull(navigationController);
 		this.mainWindow = checkNotNull(mainWindow);
+		this.navigationControllerProvider = checkNotNull(navigationControllerProvider);
 		this.presenterMapper = checkNotNull(presenterMapper);
 		this.id = checkNotNull(id);
 		parameters = Maps.newHashMap();
@@ -67,17 +69,18 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		Presenter<? extends View> presenter = presenterMapper.getPresenter(id);
 		UIView view = (UIView) presenter.getView().asNative();
 
-		if (push) {
-			UIViewController controller = new UIViewController();
-			controller.setView(view);
-			navigationController.pushViewController(controller, true);
-		} else {
-			if (currentModalView != null) {
-				currentModalView.removeFromSuperview();
-			}
-			currentModalView = view;
-			mainWindow.addSubview(currentModalView);
+		UINavigationController navigationController = (UINavigationController) mainWindow
+				.getRootViewController();
+		UIViewController viewController = new UIViewController();
+		viewController.setView(view);
+		if (!push) {
+			navigationController.getView().removeFromSuperview();
+			navigationController = navigationControllerProvider.get();
+			mainWindow
+					.setRootViewController(navigationController);
+			mainWindow.addSubview(navigationController.getView());
 		}
+		navigationController.pushViewController(viewController, true);
 		presenter.go(this);
 	}
 }

@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.ios.ioc;
 
+import org.robovm.cocoatouch.uikit.UINavigationController;
 import org.robovm.cocoatouch.uikit.UIScreen;
 import org.robovm.cocoatouch.uikit.UIWindow;
 
@@ -19,6 +20,7 @@ import ar.com.oxen.nibiru.mobile.java.http.httpclient.HttpClientHttpManager;
 import ar.com.oxen.nibiru.mobile.java.serializer.jackson.JacksonSerializer;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 
 public class DefaultIosModule extends AbstractModule {
 	@Override
@@ -33,5 +35,12 @@ public class DefaultIosModule extends AbstractModule {
 
 		bind(UIWindow.class).toInstance(
 				new UIWindow(UIScreen.getMainScreen().getBounds()));
+	}
+
+	@Provides
+	public UINavigationController getUINavigationController() {
+		UINavigationController controller = new UINavigationController();
+		controller.setTitle("CHANGE ME");
+		return controller;
 	}
 }

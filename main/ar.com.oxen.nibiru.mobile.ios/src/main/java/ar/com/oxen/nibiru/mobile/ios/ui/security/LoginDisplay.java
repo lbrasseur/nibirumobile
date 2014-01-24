@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.robovm.cocoatouch.coregraphics.CGRect;
 import org.robovm.cocoatouch.uikit.UIButton;
 import org.robovm.cocoatouch.uikit.UIButtonType;
+import org.robovm.cocoatouch.uikit.UIColor;
 import org.robovm.cocoatouch.uikit.UIControlState;
 import org.robovm.cocoatouch.uikit.UILabel;
 import org.robovm.cocoatouch.uikit.UIScreen;
@@ -34,24 +35,29 @@ public class LoginDisplay implements UIViewView, Display {
 
 		UILabel usernameLabel = new UILabel(new CGRect(20, 50, 100, 25));
 		usernameLabel.setText(messages.user() + ":");
+		usernameLabel.setBackgroundColor(UIColor.clearColor());
 		container.addSubview(usernameLabel);
+
 		username = new UITextField(new CGRect(120, 50, 150, 25));
 		username.setBorderStyle(UITextBorderStyle.RoundedRect);
 		container.addSubview(username);
 
 		UILabel passwordLabel = new UILabel(new CGRect(20, 100, 100, 25));
 		passwordLabel.setText(messages.password() + ":");
+		passwordLabel.setBackgroundColor(UIColor.clearColor());
 		container.addSubview(passwordLabel);
+
 		password = new UITextField(new CGRect(120, 100, 150, 25));
 		password.setBorderStyle(UITextBorderStyle.RoundedRect);
 		password.setSecureTextEntry(true);
 		container.addSubview(password);
 
 		errorLabel = new UILabel(new CGRect(20, 150, 200, 25));
+		errorLabel.setBackgroundColor(UIColor.clearColor());
 		container.addSubview(errorLabel);
 
 		loginButton = UIButton.fromType(UIButtonType.RoundedRect);
-		loginButton.setFrame(new CGRect(80, 200, 40, 30));
+		loginButton.setFrame(new CGRect(80, 200, 100, 30));
 		loginButton.setTitle("Login", UIControlState.Normal);
 		container.addSubview(loginButton);
 	}

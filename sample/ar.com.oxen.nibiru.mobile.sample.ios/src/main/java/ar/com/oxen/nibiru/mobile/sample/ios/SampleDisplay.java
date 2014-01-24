@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.robovm.cocoatouch.coregraphics.CGRect;
 import org.robovm.cocoatouch.uikit.UIButton;
 import org.robovm.cocoatouch.uikit.UIButtonType;
+import org.robovm.cocoatouch.uikit.UIColor;
 import org.robovm.cocoatouch.uikit.UIControlState;
 import org.robovm.cocoatouch.uikit.UILabel;
 import org.robovm.cocoatouch.uikit.UIScreen;
@@ -36,9 +37,11 @@ public class SampleDisplay implements UIViewView, Display {
 	public SampleDisplay(SampleMessages messages) {
 		checkNotNull(messages);
 		container = new UIView(UIScreen.getMainScreen().getBounds());
+		container.setBackgroundColor(UIColor.lightGrayColor());
 
-		UILabel mensaje = new UILabel(new CGRect(20, 50, 100, 25));
+		UILabel mensaje = new UILabel(new CGRect(20, 50, 200, 25));
 		mensaje.setText(messages.title());
+		mensaje.setBackgroundColor(UIColor.clearColor());
 		container.addSubview(mensaje);
 
 		alertTrigger = UIButton.fromType(UIButtonType.RoundedRect);
@@ -46,7 +49,7 @@ public class SampleDisplay implements UIViewView, Display {
 		alertTrigger.setTitle(messages.showAlert(), UIControlState.Normal);
 		container.addSubview(alertTrigger);
 
-		nameLoad = new UITextField(new CGRect(20, 110, 100, 25));
+		nameLoad = new UITextField(new CGRect(20, 110, 200, 25));
 		nameLoad.setText("Pepe");
 		nameLoad.setBorderStyle(UITextBorderStyle.RoundedRect);
 		container.addSubview(nameLoad);
@@ -56,8 +59,9 @@ public class SampleDisplay implements UIViewView, Display {
 		greetingTrigger.setTitle(messages.greet(), UIControlState.Normal);
 		container.addSubview(greetingTrigger);
 
-		greetingDisplay = new UILabel(new CGRect(20, 170, 100, 25));
+		greetingDisplay = new UILabel(new CGRect(20, 170, 200, 25));
 		greetingDisplay.setText("");
+		greetingDisplay.setBackgroundColor(UIColor.clearColor());
 		container.addSubview(greetingDisplay);
 
 		showLocation = UIButton.fromType(UIButtonType.RoundedRect);
