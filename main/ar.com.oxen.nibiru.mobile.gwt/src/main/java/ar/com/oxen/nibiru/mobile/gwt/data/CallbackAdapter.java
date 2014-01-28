@@ -1,18 +1,18 @@
 package ar.com.oxen.nibiru.mobile.gwt.data;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 
-public class CallbackAdapter implements com.gwtmobile.persistence.client.Callback {
-	private Callback<Void> callback;
+public class CallbackAdapter implements
+		com.gwtmobile.persistence.client.Callback {
+	private final Callback<Void> callback;
 
 	public CallbackAdapter(Callback<Void> callback) {
-		super();
-		this.callback = callback;
+		this.callback = checkNotNull(callback);
 	}
 
 	@Override
 	public void onSuccess() {
-		this.callback.onSuccess(null);
-
+		callback.onSuccess(null);
 	}
 }

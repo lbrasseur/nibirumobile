@@ -1,5 +1,9 @@
 package ar.com.oxen.nibiru.mobile.gwt.data.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import javax.annotation.Nullable;
+
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 import ar.com.oxen.nibiru.mobile.core.api.data.security.User;
 import ar.com.oxen.nibiru.mobile.core.api.data.security.UserDao;
@@ -11,18 +15,22 @@ import com.gwtmobile.persistence.client.Entity;
 import com.gwtmobile.persistence.client.Persistence;
 
 public class GwtMobileUserDao implements UserDao {
-	private Entity<PUser> entity = GWT.create(PUser.class);
+	private final Entity<PUser> entity = GWT.create(PUser.class);
 
 	@Override
 	public void findByName(String username, Callback<User> callback) {
+		checkNotNull(username);
+		checkNotNull(callback);
 		this.entity.findBy("Username", username,
 				new ScalarCallbackAdapter<User, PUser>(callback));
 	}
 
 	@Override
-	public User create(String username, String passwordHash, String firstName,
-			String lastName) {
-		PUser puser = this.entity.newInstance();
+	public User create(String username, String passwordHash,
+			@Nullable String firstName, @Nullable String lastName) {
+		checkNotNull(username);
+		checkNotNull(passwordHash);
+		PUser puser = entity.newInstance();
 		puser.setUsername(username);
 		puser.setPasswordHash(passwordHash);
 		puser.setFirstName(firstName);
@@ -33,6 +41,7 @@ public class GwtMobileUserDao implements UserDao {
 
 	@Override
 	public void deleteAll(Callback<Void> callback) {
-		this.entity.all().destroyAll(new CallbackAdapter(callback));
+		checkNotNull(callback);
+		entity.all().destroyAll(new CallbackAdapter(callback));
 	}
 }

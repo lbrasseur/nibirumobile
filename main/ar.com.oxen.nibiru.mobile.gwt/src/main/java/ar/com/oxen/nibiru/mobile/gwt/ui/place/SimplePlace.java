@@ -1,64 +1,71 @@
 package ar.com.oxen.nibiru.mobile.gwt.ui.place;
 
-import java.util.HashMap;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Map;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 
+import com.google.common.collect.Maps;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class SimplePlace extends com.google.gwt.place.shared.Place implements
 		Place {
-	private String id;
-	private PlaceController placeController;
-	private Map<String, Object> parameters;
-	private int order;
+	private final String id;
+	private final PlaceController placeController;
+	private final Map<String, Object> parameters;
+	private final int order;
 
 	public SimplePlace(String id, int order, PlaceController placeController) {
-		super();
-		this.id = id;
-		this.placeController = placeController;
-		this.parameters = new HashMap<String, Object>();
+		this.id = checkNotNull(id);
+		this.placeController = checkNotNull(placeController);
+		this.parameters = Maps.newHashMap();
 		this.order = order;
 	}
 
 	@Override
 	public String getId() {
-		return this.id;
+		return id;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getParameter(String key) {
-		return (T) this.parameters.get(key);
+		checkNotNull(key);
+		return (T) parameters.get(key);
 	}
 
 	@Override
 	public <T> T getParameter(Enum<?> key) {
-		return this.getParameter(key.toString());
+		checkNotNull(key);
+		return getParameter(key.toString());
 	}
 
 	@Override
 	public Place addParameter(String key, Object value) {
-		this.parameters.put(key, value);
+		checkNotNull(key);
+		checkNotNull(value);
+		parameters.put(key, value);
 		return this;
 	}
 
 	@Override
 	public Place addParameter(Enum<?> key, Object value) {
-		return this.addParameter(key.toString(), value);
+		checkNotNull(key);
+		checkNotNull(value);
+		return addParameter(key.toString(), value);
 	}
 
 	@Override
 	public void go(boolean push) {
-		this.placeController.goTo(this);
+		placeController.goTo(this);
 	}
 
 	@Override
 	public void go() {
-		this.go(false);
+		go(false);
 	}
 
 	public static class Tokenizer implements PlaceTokenizer<SimplePlace> {
@@ -68,6 +75,7 @@ public class SimplePlace extends com.google.gwt.place.shared.Place implements
 
 		@Override
 		public String getToken(SimplePlace place) {
+			checkNotNull(place);
 			StringBuilder sb = new StringBuilder();
 
 			sb.append(place.getId());
@@ -94,6 +102,7 @@ public class SimplePlace extends com.google.gwt.place.shared.Place implements
 
 		@Override
 		public SimplePlace getPlace(String token) {
+			checkNotNull(token);
 			String[] tokens = token.split("/");
 			SimplePlace place = new SimplePlace(tokens[0],
 					Integer.valueOf(tokens[1]), null);
@@ -110,6 +119,7 @@ public class SimplePlace extends com.google.gwt.place.shared.Place implements
 	}
 
 	public boolean forwardFrom(SimplePlace other) {
+		checkNotNull(other);
 		return order > other.order;
 	}
 }

@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.gwt.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
@@ -13,25 +14,26 @@ import com.google.gwt.user.client.ui.IsWidget;
  * Presenter-based activity.
  */
 public class PresenterActivity extends AbstractActivity {
-	private Presenter<? extends View> presenter;
-	private Place place;
+	private final Presenter<? extends View> presenter;
+	private final Place place;
 
 	public PresenterActivity(Presenter<? extends View> presenter, Place place) {
-		super();
-		this.presenter = presenter;
-		this.place = place;
+		this.presenter = checkNotNull(presenter);
+		this.place = checkNotNull(place);
 	}
 
 	@Override
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
-		IsWidget widget = (IsWidget) this.presenter.getView().asNative();
+		checkNotNull(containerWidget);
+		checkNotNull(eventBus);
+		IsWidget widget = (IsWidget) presenter.getView().asNative();
 		containerWidget.setWidget(widget);
-		this.presenter.go(this.place);
+		presenter.go(place);
 	}
 
 	@Override
 	public void onStop() {
 		super.onStop();
-		this.presenter.onStop();
+		presenter.onStop();
 	}
 }

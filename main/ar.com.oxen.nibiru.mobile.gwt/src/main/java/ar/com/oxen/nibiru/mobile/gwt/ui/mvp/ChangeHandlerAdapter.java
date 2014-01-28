@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.gwt.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ChangeHandler;
 
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -11,16 +12,16 @@ public class ChangeHandlerAdapter<T> implements
 	private final ChangeHandler changeHandler;
 
 	public ChangeHandlerAdapter(ChangeHandler changeHandler) {
-		this.changeHandler = changeHandler;
+		this.changeHandler = checkNotNull(changeHandler);
 	}
 
 	@Override
 	public void onChange(ChangeEvent event) {
-		this.changeHandler.onChange();
+		changeHandler.onChange();
 	}
 
 	@Override
 	public void onValueChange(ValueChangeEvent<T> event) {
-		this.changeHandler.onChange();
+		changeHandler.onChange();
 	}
 }

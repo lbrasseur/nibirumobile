@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.gwt.geolocation;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
@@ -13,20 +15,21 @@ import com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions;
 import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
 public class PhoneGapGeolocationManager implements GeolocationManager {
-	private Geolocation geolocation;
+	private final Geolocation geolocation;
 
 	@Inject
 	public PhoneGapGeolocationManager(PhoneGap phoneGap) {
-		super();
+		checkNotNull(phoneGap);
 		this.geolocation = phoneGap.getGeolocation();
 	}
 
 	@Override
 	public void watchPosition(final Callback<Position> callback) {
+		checkNotNull(callback);
 		GeolocationOptions options = new GeolocationOptions();
 		options.setFrequency(1000);
 
-		this.geolocation.watchPosition(options, new GeolocationCallback() {
+		geolocation.watchPosition(options, new GeolocationCallback() {
 			@Override
 			public void onSuccess(
 					com.googlecode.gwtphonegap.client.geolocation.Position position) {
@@ -39,5 +42,4 @@ public class PhoneGapGeolocationManager implements GeolocationManager {
 			}
 		});
 	}
-
 }

@@ -1,7 +1,10 @@
 package ar.com.oxen.nibiru.mobile.android.data.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.sun.istack.internal.Nullable;
 
 import ar.com.oxen.nibiru.mobile.core.api.data.security.User;
 
@@ -23,6 +26,7 @@ public class UserImpl implements User {
 
 	@Override
 	public void setUsername(String username) {
+		checkNotNull(username);
 		this.username = username;
 	}
 
@@ -33,6 +37,7 @@ public class UserImpl implements User {
 
 	@Override
 	public void setPasswordHash(String passwordHash) {
+		checkNotNull(username);
 		this.passwordHash = passwordHash;
 	}
 
@@ -42,7 +47,7 @@ public class UserImpl implements User {
 	}
 
 	@Override
-	public void setFirstName(String firstName) {
+	public void setFirstName(@Nullable String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -52,7 +57,7 @@ public class UserImpl implements User {
 	}
 
 	@Override
-	public void setLastName(String lastName) {
+	public void setLastName(@Nullable String lastName) {
 		this.lastName = lastName;
 	}
 }

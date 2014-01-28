@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.gwt.http;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
@@ -14,12 +16,11 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 
 public class RequestBuilderHttpManager implements HttpManager {
-	private String baseUrl;
+	private final String baseUrl;
 
 	@Inject
 	public RequestBuilderHttpManager(@BaseUrl String baseUrl) {
-		super();
-		this.baseUrl = baseUrl;
+		this.baseUrl = checkNotNull(baseUrl);
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class RequestBuilderHttpManager implements HttpManager {
 
 		try {
 			RequestBuilder requestBuilder = new RequestBuilder(
-					RequestBuilder.POST, this.baseUrl + url);
+					RequestBuilder.POST, baseUrl + url);
 
 			requestBuilder.sendRequest(httpCallback.buildRequest(),
 					new RequestCallback() {

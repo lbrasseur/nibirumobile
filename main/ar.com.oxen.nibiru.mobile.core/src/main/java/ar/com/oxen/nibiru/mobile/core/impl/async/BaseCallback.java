@@ -19,6 +19,7 @@ public abstract class BaseCallback<T> implements Callback<T> {
 
 	@Override
 	public void onFailure(Exception error) {
+		checkNotNull(error);
 		alertManager.showException(error);
 	}
 }

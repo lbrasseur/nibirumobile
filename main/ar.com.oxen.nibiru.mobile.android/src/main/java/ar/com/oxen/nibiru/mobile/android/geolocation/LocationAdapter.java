@@ -1,15 +1,15 @@
 package ar.com.oxen.nibiru.mobile.android.geolocation;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import android.location.Location;
 import ar.com.oxen.nibiru.mobile.core.api.geolocation.Coordinates;
 import ar.com.oxen.nibiru.mobile.core.api.geolocation.Position;
 
 public class LocationAdapter implements Position, Coordinates {
-	private Location location;
+	private final Location location;
 
 	public LocationAdapter(Location location) {
-		super();
-		this.location = location;
+		this.location = checkNotNull(location);
 	}
 
 	@Override
@@ -19,31 +19,31 @@ public class LocationAdapter implements Position, Coordinates {
 
 	@Override
 	public long getTimeStamp() {
-		return this.location.getTime();
+		return location.getTime();
 	}
 
 	@Override
 	public double getLatitude() {
-		return this.location.getLatitude();
+		return location.getLatitude();
 	}
 
 	@Override
 	public double getLongitude() {
-		return this.location.getLongitude();
+		return location.getLongitude();
 	}
 
 	@Override
 	public double getAltitude() {
-		return this.location.getAltitude();
+		return location.getAltitude();
 	}
 
 	@Override
 	public double getAccuracy() {
-		return this.location.getAccuracy();
+		return location.getAccuracy();
 	}
 
 	@Override
 	public double getSpeed() {
-		return this.location.getSpeed();
+		return location.getSpeed();
 	}
 }

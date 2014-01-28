@@ -3,13 +3,15 @@ package ar.com.oxen.nibiru.mobile.core.impl.preferences;
 import ar.com.oxen.nibiru.mobile.core.api.preferences.Preferences;
 import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
+import com.sun.istack.internal.Nullable;
+
 public abstract class AbstractPreferences extends
 		BaseConfigurable<Preferences> implements Preferences {
 
 	private static final char STRING_PREFIX = 's';
 
 	@SuppressWarnings("unchecked")
-	protected <T> T objectFromString(String data) {
+	protected <T> T objectFromString(@Nullable String data) {
 		if (data != null && data.length() > 0) {
 			String body = data.substring(1);
 			switch (data.charAt(0)) {
@@ -24,7 +26,7 @@ public abstract class AbstractPreferences extends
 		}
 	}
 
-	protected String stringFromObject(Object object) {
+	protected String stringFromObject(@Nullable Object object) {
 		if (object != null) {
 			if (object instanceof String) {
 				return "" + STRING_PREFIX + object;

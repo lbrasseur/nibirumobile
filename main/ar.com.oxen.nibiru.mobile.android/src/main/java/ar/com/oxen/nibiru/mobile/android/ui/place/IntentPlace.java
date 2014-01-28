@@ -1,33 +1,34 @@
 package ar.com.oxen.nibiru.mobile.android.ui.place;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import ar.com.oxen.nibiru.mobile.android.common.BaseIntentAdapter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 
 public class IntentPlace extends BaseIntentAdapter<Place> implements Place {
-	private Activity activity;
+	private final Activity activity;
 
 	public IntentPlace(Intent intent, Activity activity) {
 		super(intent);
-		this.activity = activity;
+		this.activity = checkNotNull(activity);
 	}
 
 	public IntentPlace(String id, Intent intent, Activity activity) {
 		super(id, intent);
-		this.activity = activity;
+		this.activity = checkNotNull(activity);
 	}
 
 	@Override
 	public void go(boolean push) {
-		this.activity.startActivity(this.getIntent());
+		activity.startActivity(getIntent());
 		if (!push) {
-			this.activity.finish();
+			activity.finish();
 		}
 	}
 
 	@Override
 	public void go() {
-		this.go(false);
+		go(false);
 	}
 }

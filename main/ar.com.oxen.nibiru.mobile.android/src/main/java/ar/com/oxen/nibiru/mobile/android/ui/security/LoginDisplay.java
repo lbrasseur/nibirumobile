@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.android.ui.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import android.content.Context;
@@ -25,6 +27,8 @@ public class LoginDisplay extends BaseAndroidView implements Display {
 
 	@Inject
 	public LoginDisplay(Context context, SecurityMessages messages) {
+		checkNotNull(context);
+		checkNotNull(messages);
 		view = new LinearLayout(context);
 		view.setOrientation(LinearLayout.VERTICAL);
 
@@ -42,16 +46,16 @@ public class LoginDisplay extends BaseAndroidView implements Display {
 		password = new EditText(context);
 		password
 				.setTransformationMethod(new PasswordTransformationMethod());
-		view.addView(this.password);
+		view.addView(password);
 
 		login = new Button(context);
 		login.setText(messages.login());
-		view.addView(this.login);
+		view.addView(login);
 
-		this.error = new TextView(context);
+		error = new TextView(context);
 		view.addView(error);
 
-		this.loginError = messages.loginError();
+		loginError = messages.loginError();
 	}
 
 	@Override
@@ -71,7 +75,7 @@ public class LoginDisplay extends BaseAndroidView implements Display {
 
 	@Override
 	public void showLoginError() {
-		this.error.setText(loginError);
+		error.setText(loginError);
 	}
 
 	@Override

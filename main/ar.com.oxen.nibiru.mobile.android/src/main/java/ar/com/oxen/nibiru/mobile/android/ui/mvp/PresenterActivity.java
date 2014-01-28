@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
@@ -31,9 +33,10 @@ public class PresenterActivity extends RoboActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		checkNotNull(savedInstanceState);
 		super.onCreate(savedInstanceState);
 
-		Place place = new IntentPlace(this.getIntent(), this);
+		Place place = new IntentPlace(getIntent(), this);
 
 		synchronized (ContextScope.class) {
 			scope.enter(this);
@@ -46,7 +49,7 @@ public class PresenterActivity extends RoboActivity {
 
 		view = (AndroidView) presenter.getView();
 		view.onCreate();
-		setContentView(this.view.asNative());
+		setContentView(view.asNative());
 		presenter.go(place);
 	}
 

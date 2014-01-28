@@ -1,8 +1,9 @@
 package ar.com.oxen.nibiru.mobile.android.geolocation;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
-import android.app.Activity;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,20 +13,18 @@ import ar.com.oxen.nibiru.mobile.core.api.geolocation.GeolocationManager;
 import ar.com.oxen.nibiru.mobile.core.api.geolocation.Position;
 
 public class AndroidGeolocationManager implements GeolocationManager {
-	private LocationManager locationManager;
+	private final LocationManager locationManager;
 
 	@Inject
-	public AndroidGeolocationManager(LocationManager locationManager,
-			Activity activity) {
-		super();
-		this.locationManager = locationManager;
+	public AndroidGeolocationManager(LocationManager locationManager) {
+		this.locationManager = checkNotNull(locationManager);
 	}
 
 	@Override
 	public void watchPosition(final Callback<Position> callback) {
 		// TODO El tipo de provider deberia ser configurable.
-		this.locationManager.requestLocationUpdates(
-				LocationManager.GPS_PROVIDER, 1000, 10, new LocationListener() {
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+				1000, 10, new LocationListener() {
 					@Override
 					public void onLocationChanged(Location location) {
 						if (location != null) {

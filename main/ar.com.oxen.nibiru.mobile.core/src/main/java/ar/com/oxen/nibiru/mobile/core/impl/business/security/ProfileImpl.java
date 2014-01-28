@@ -2,6 +2,8 @@ package ar.com.oxen.nibiru.mobile.core.impl.business.security;
 
 import javax.inject.Singleton;
 
+import com.sun.istack.internal.Nullable;
+
 import ar.com.oxen.nibiru.mobile.core.api.business.security.Profile;
 
 @Singleton
@@ -18,28 +20,28 @@ public class ProfileImpl implements Profile {
 
 	@Override
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	@Override
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
 
 	@Override
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
 
-	public void setUsername(String userName) {
+	public void setUsername(@Nullable String userName) {
 		this.username = userName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(@Nullable String firstName) {
 		this.firstName = firstName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(@Nullable String lastName) {
 		this.lastName = lastName;
 	}
 

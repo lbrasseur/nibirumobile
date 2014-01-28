@@ -1,20 +1,20 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import android.text.Editable;
 import android.text.TextWatcher;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ChangeHandler;
 
 public class ChangeHandlerAdapter implements TextWatcher {
-	private ChangeHandler changeHandler;
+	private final ChangeHandler changeHandler;
 
 	public ChangeHandlerAdapter(ChangeHandler changeHandler) {
-		super();
-		this.changeHandler = changeHandler;
+		this.changeHandler = checkNotNull(changeHandler);
 	}
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		this.changeHandler.onChange();
+		changeHandler.onChange();
 	}
 
 	@Override

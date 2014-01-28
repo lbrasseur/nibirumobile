@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.core.impl.async;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 
 /**
@@ -11,11 +12,10 @@ import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
  *            The type returned by the chained callback
  */
 public abstract class ChainCallback<T, C> implements Callback<T> {
-	private Callback<C> chained;
+	private final Callback<C> chained;
 
 	public ChainCallback(Callback<C> chained) {
-		super();
-		this.chained = chained;
+		this.chained = checkNotNull(chained);
 	}
 
 	protected Callback<C> getChained() {
@@ -24,6 +24,7 @@ public abstract class ChainCallback<T, C> implements Callback<T> {
 
 	@Override
 	public void onFailure(Exception error) {
-		this.chained.onFailure(error);
+		checkNotNull(error);
+		chained.onFailure(error);
 	}
 }

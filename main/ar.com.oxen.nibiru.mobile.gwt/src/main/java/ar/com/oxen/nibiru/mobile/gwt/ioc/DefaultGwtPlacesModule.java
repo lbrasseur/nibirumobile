@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.gwt.ioc;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
@@ -29,18 +31,17 @@ public class DefaultGwtPlacesModule extends AbstractGinModule {
 
 	public static class PlaceControllerProvider implements
 			Provider<PlaceController> {
-		private com.google.web.bindery.event.shared.EventBus eventBus;
+		private final com.google.web.bindery.event.shared.EventBus eventBus;
 
 		@Inject
 		public PlaceControllerProvider(
 				com.google.web.bindery.event.shared.EventBus eventBus) {
-			super();
-			this.eventBus = eventBus;
+			this.eventBus = checkNotNull(eventBus);
 		}
 
 		@Override
 		public PlaceController get() {
-			return new PlaceController(this.eventBus);
+			return new PlaceController(eventBus);
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.gwt.app;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
@@ -15,41 +17,41 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.web.bindery.event.shared.EventBus;
 
 public class GwtPlacesBootstrap implements Bootstrap {
-	private EntryPoint entryPoint;
-	private EventBus eventBus;
-	private PlaceController placeController;
-	private PlaceHistoryMapper placeHistoryMapper;
-	private AppWidgetBootstrap appWidgetBootstrap;
-	private DatabaseBootstrap databaseBootstrap;
+	private final EntryPoint entryPoint;
+	private final EventBus eventBus;
+	private final PlaceController placeController;
+	private final PlaceHistoryMapper placeHistoryMapper;
+	private final AppWidgetBootstrap appWidgetBootstrap;
+	private final DatabaseBootstrap databaseBootstrap;
 
 	@Inject
-	public GwtPlacesBootstrap(EntryPoint entryPoint, EventBus eventBus,
+	public GwtPlacesBootstrap(EntryPoint entryPoint,
+			EventBus eventBus,
 			PlaceController placeController,
 			PlaceHistoryMapper placeHistoryMapper,
 			AppWidgetBootstrap appWidgetBootstrap,
 			DatabaseBootstrap databaseBootstrap) {
-		super();
-		this.entryPoint = entryPoint;
-		this.eventBus = eventBus;
-		this.placeController = placeController;
-		this.placeHistoryMapper = placeHistoryMapper;
-		this.appWidgetBootstrap = appWidgetBootstrap;
-		this.databaseBootstrap = databaseBootstrap;
+		this.entryPoint = checkNotNull(entryPoint);
+		this.eventBus = checkNotNull(eventBus);
+		this.placeController = checkNotNull(placeController);
+		this.placeHistoryMapper = checkNotNull(placeHistoryMapper);
+		this.appWidgetBootstrap = checkNotNull(appWidgetBootstrap);
+		this.databaseBootstrap = checkNotNull(databaseBootstrap);
 	}
 
 	@Override
 	public void onBootstrap() {
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(
-				this.placeHistoryMapper);
+				placeHistoryMapper);
 
-		historyHandler.register(this.placeController, this.eventBus,
+		historyHandler.register(placeController, eventBus,
 				new SimplePlace(null, 0, null));
 
-		RootPanel.get().add(this.appWidgetBootstrap.createAppWidget());
+		RootPanel.get().add(appWidgetBootstrap.createAppWidget());
 
 		historyHandler.handleCurrentHistory();
 
-		this.databaseBootstrap.createDatabase(new Callback<Void>() {
+		databaseBootstrap.createDatabase(new Callback<Void>() {
 			@Override
 			public void onSuccess(Void result) {
 				entryPoint.onApplicationStart();

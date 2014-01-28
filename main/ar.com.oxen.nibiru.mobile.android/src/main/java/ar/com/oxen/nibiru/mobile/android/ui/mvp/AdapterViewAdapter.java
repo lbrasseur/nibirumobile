@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import android.view.View;
 import android.widget.AdapterView;
 import ar.com.oxen.nibiru.mobile.core.api.handler.HandlerRegistration;
@@ -7,18 +8,18 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ChangeHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasChangeHandler;
 
 public class AdapterViewAdapter implements HasChangeHandler {
-	private AdapterView<?> view;
+	private final AdapterView<?> view;
 	private HandlerRegistration changeHandlerRegistration;
 
 	public AdapterViewAdapter(AdapterView<?> view) {
-		super();
-		this.view = view;
+		this.view = checkNotNull(view);
 	}
 
 	@Override
 	public HandlerRegistration setChangeHandler(final ChangeHandler changeHandler) {
-		if (this.changeHandlerRegistration!=null) {
-			this.changeHandlerRegistration.removeHandler();
+		checkNotNull(changeHandler);
+		if (changeHandlerRegistration!=null) {
+			changeHandlerRegistration.removeHandler();
 		}
 		
 		AdapterView.OnItemSelectedListener listener =new AdapterView.OnItemSelectedListener() {
@@ -35,7 +36,7 @@ public class AdapterViewAdapter implements HasChangeHandler {
 		};
 		view.setOnItemSelectedListener(listener);
 		
-		this.changeHandlerRegistration = new HandlerRegistration() {
+		changeHandlerRegistration = new HandlerRegistration() {
 			
 			@Override
 			public void removeHandler() {
@@ -43,6 +44,6 @@ public class AdapterViewAdapter implements HasChangeHandler {
 			}
 		};
 		
-		return this.changeHandlerRegistration;
+		return changeHandlerRegistration;
 	}
 }
