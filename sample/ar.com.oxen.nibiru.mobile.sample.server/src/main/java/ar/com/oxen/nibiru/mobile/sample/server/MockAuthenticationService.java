@@ -4,23 +4,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MockAuthenticationService {
-	private Map<String, MockUserDto> users;
+	private final Map<String, MockUserDto> users;
 
 	public MockAuthenticationService() {
-		super();
-		this.users = new HashMap<String, MockUserDto>();
-		this.addUser("pepe", "popo", "Pepe", "Sanchez");
-		this.addUser("toto", "toto", "Toto", "s");
+		users = new HashMap<String, MockUserDto>();
+		addUser("pepe", "popo", "Pepe", "Sanchez");
+		addUser("toto", "toto", "Toto", "s");
 	}
 
 	private void addUser(String username, String password, String firstName,
 			String lastName) {
-		this.users.put(username, new MockUserDto(username, password, firstName,
+		users.put(username, new MockUserDto(username, password, firstName,
 				lastName));
 	}
 
 	public MockUserDto login(MockUserDto dto) {
-		MockUserDto user = this.users.get(dto.getUsername());
+		MockUserDto user = users.get(dto.getUsername());
 
 		if (user != null && user.getPassword().equals(dto.getPassword())) {
 			return new MockUserDto(null, null, user.getFirstName(), user.getLastName());

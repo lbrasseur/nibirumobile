@@ -7,18 +7,17 @@ import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 public abstract class BaseFormView extends BaseGwtView {
-	private Panel formPanel;
+	private final Panel formPanel;
 
 	public BaseFormView() {
-		super();
 		ScrollPanel scrollPanel = new ScrollPanel();
 		initWidget(scrollPanel);
 
-		this.formPanel = new RoundPanel();
-		scrollPanel.add(this.formPanel);
+		formPanel = new RoundPanel();
+		scrollPanel.add(formPanel);
 	}
 
 	protected Panel getFormPanel() {
-		return this.formPanel;
+		return formPanel;
 	}
 }

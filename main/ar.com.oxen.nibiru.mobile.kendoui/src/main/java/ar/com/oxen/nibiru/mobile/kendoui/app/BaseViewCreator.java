@@ -1,35 +1,40 @@
 package ar.com.oxen.nibiru.mobile.kendoui.app;
 
-import java.util.HashMap;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.Map;
 
 import javax.inject.Provider;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 
+import com.google.common.collect.Maps;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class BaseViewCreator implements ViewCreator {
-	private Map<String, Provider<? extends View>> viewProviders = new HashMap<String, Provider<? extends View>>();
+	private final Map<String, Provider<? extends View>> viewProviders = Maps.newHashMap();
 
 	protected void registerView(String place,
 			Provider<? extends View> viewProvider) {
-		this.viewProviders.put(place, viewProvider);
+		checkNotNull(place);
+		checkNotNull(viewProvider);
+		viewProviders.put(place, viewProvider);
 	}
 
 	protected void registerView(Enum<?> place,
 			Provider<? extends View> viewProvider) {
-		this.registerView(place.toString(), viewProvider);
+		checkNotNull(place);
+		checkNotNull(viewProvider);
+		registerView(place.toString(), viewProvider);
 	}
 
 	@Override
 	public void createViews() {
-		for (Map.Entry<String, Provider<? extends View>> entry : this.viewProviders
+		for (Map.Entry<String, Provider<? extends View>> entry : viewProviders
 				.entrySet()) {
 			addView(entry.getKey(), entry.getValue().get());
-
 		}
 		startKendo();
 	}

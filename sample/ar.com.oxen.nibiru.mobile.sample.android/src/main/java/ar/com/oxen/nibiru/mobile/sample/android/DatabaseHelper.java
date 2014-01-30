@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.android;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.sql.SQLException;
 
 import javax.inject.Inject;
@@ -23,6 +25,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
+		checkNotNull(db);
+		checkNotNull(connectionSource);
 		try {
 			TableUtils.createTable(connectionSource, UserImpl.class);
 		} catch (SQLException e) {
@@ -34,7 +38,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		user.setPasswordHash("a");
 		user.setFirstName("Pepe");
 		user.setLastName("Sanchez");
-		this.getRuntimeExceptionDao(UserImpl.class).create(user);
+		getRuntimeExceptionDao(UserImpl.class).create(user);
 	}
 
 	@Override

@@ -13,22 +13,22 @@ import com.google.gson.Gson;
 
 public class JsonRestServlet extends BaseServlet {
 	private static final long serialVersionUID = -5998772958053275463L;
-	private Gson gson = new Gson();
+	private final Gson gson = new Gson();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		try {
-			Method method = this.findMethod(req.getRequestURI().substring(
+			Method method = findMethod(req.getRequestURI().substring(
 					req.getRequestURI().lastIndexOf('/') + 1));
 
 			Object result;
 			if (method.getParameterTypes().length == 1) {
-				result = method.invoke(this.getService(), gson.fromJson(
+				result = method.invoke(getService(), gson.fromJson(
 						new InputStreamReader(req.getInputStream()),
 						method.getParameterTypes()[0]));
 			} else {
-				result = method.invoke(this.getService());
+				result = method.invoke(getService());
 			}
 
 			if (result != null) {
@@ -42,7 +42,7 @@ public class JsonRestServlet extends BaseServlet {
 	}
 
 	private Method findMethod(String methodName) {
-		for (Method method : this.getService().getClass().getMethods()) {
+		for (Method method : getService().getClass().getMethods()) {
 			if (method.getName().equalsIgnoreCase(methodName)
 					&& method.getParameterTypes().length <= 1) {
 				return method;

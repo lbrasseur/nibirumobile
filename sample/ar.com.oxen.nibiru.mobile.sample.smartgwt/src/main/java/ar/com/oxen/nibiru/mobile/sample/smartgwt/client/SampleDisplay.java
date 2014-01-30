@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.smartgwt.client;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
@@ -17,65 +19,66 @@ import com.smartgwt.mobile.client.widgets.form.fields.TextItem;
 
 public class SampleDisplay extends BaseFormView implements
 		SamplePresenter.Display {
-	private Button alertTrigger;
-	private TextItem nameLoad;
-	private Button greetingTrigger;
-	private Label greetingDisplay;
-	private Button backTrigger;
-	private Button showLocation;
+	private final Button alertTrigger;
+	private final TextItem nameLoad;
+	private final Button greetingTrigger;
+	private final Label greetingDisplay;
+	private final Button backTrigger;
+	private final Button showLocation;
 
 	@Inject
 	public SampleDisplay(SampleMessages messages) {
-		super(messages.title());
-		this.nameLoad = new TextItem("nameLoad", messages.title());
-		this.nameLoad.setValue("Pepe");
+		super(checkNotNull(messages).title());
+
+		nameLoad = new TextItem("nameLoad", messages.title());
+		nameLoad.setValue("Pepe");
 		
-		this.getForm().setFields(nameLoad);
+		getForm().setFields(nameLoad);
 
-		this.alertTrigger = new Button(messages.showAlert());
-		this.asNative().addMember(alertTrigger);
+		alertTrigger = new Button(messages.showAlert());
+		asNative().addMember(alertTrigger);
 
-		this.greetingTrigger = new Button(messages.greet());
-		this.asNative().addMember(greetingTrigger);
+		greetingTrigger = new Button(messages.greet());
+		asNative().addMember(greetingTrigger);
 
-		this.greetingDisplay = new Label("");
-		this.asNative().addMember(greetingDisplay);
-		this.greetingDisplay.setSize("213px", "60px");
+		greetingDisplay = new Label("");
+		asNative().addMember(greetingDisplay);
+		greetingDisplay.setSize("213px", "60px");
 
-		this.showLocation = new Button(messages.getPosition());
-		this.asNative().addMember(this.showLocation);
+		showLocation = new Button(messages.getPosition());
+		asNative().addMember(showLocation);
 
-		this.backTrigger = new Button(messages.back());
-		this.asNative().addMember(backTrigger);
+		backTrigger = new Button(messages.back());
+		asNative().addMember(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getAlertTrigger() {
-		return new HasClickHandlersAdapter(this.alertTrigger);
+		return new HasClickHandlersAdapter(alertTrigger);
 	}
 
 	@Override
 	public HasClickHandler getGreetingTrigger() {
-		return new HasClickHandlersAdapter(this.greetingTrigger);
+		return new HasClickHandlersAdapter(greetingTrigger);
 	}
 
 	@Override
 	public TakesValue<String> getNameLoad() {
-		return new FormItemAdapter<String>(this.nameLoad);
+		return new FormItemAdapter<String>(nameLoad);
 	}
 
 	@Override
 	public TakesValue<String> getGreetingDisplay() {
-		return new LabelAdapter(this.greetingDisplay);
+		return new LabelAdapter(greetingDisplay);
 	}
 
 	@Override
 	public HasClickHandler getBackTrigger() {
-		return new HasClickHandlersAdapter(this.backTrigger);
+		return new HasClickHandlersAdapter(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getShowLocation() {
-		return new HasClickHandlersAdapter(this.showLocation);
+		return new HasClickHandlersAdapter(showLocation);
 	}
 }

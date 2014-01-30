@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.mgwt.app;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.gwt.app.AppWidgetBootstrap;
@@ -13,17 +15,16 @@ import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 
 public class MgwtAppWidgetBootstrap implements AppWidgetBootstrap {
-	private EventBus eventBus;
-	private ActivityMapper activityMapper;
-	private AnimationMapper animationMapper;
+	private final EventBus eventBus;
+	private final ActivityMapper activityMapper;
+	private final AnimationMapper animationMapper;
 
 	@Inject
 	public MgwtAppWidgetBootstrap(EventBus eventBus,
 			ActivityMapper activityMapper, AnimationMapper animationMapper) {
-		super();
-		this.eventBus = eventBus;
-		this.activityMapper = activityMapper;
-		this.animationMapper = animationMapper;
+		this.eventBus = checkNotNull(eventBus);
+		this.activityMapper = checkNotNull(activityMapper);
+		this.animationMapper = checkNotNull(animationMapper);
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class MgwtAppWidgetBootstrap implements AppWidgetBootstrap {
 		AnimatableDisplay appWidget = GWT.create(AnimatableDisplay.class);
 
 		AnimatingActivityManager activityManager = new AnimatingActivityManager(
-				this.activityMapper, this.animationMapper, this.eventBus);
+				activityMapper, animationMapper, eventBus);
 		activityManager.setDisplay(appWidget);
 
 		return appWidget;

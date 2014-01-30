@@ -10,6 +10,6 @@ public class GwtEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		this.injector.getBootstrap().onBootstrap();
+		injector.getBootstrap().onBootstrap();
 	}
 }

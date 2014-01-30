@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.mgwt.ui.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
@@ -15,14 +17,16 @@ import com.googlecode.mgwt.ui.client.widget.MTextBox;
 
 
 public class LoginDisplay extends BaseFormView implements LoginPresenter.Display {
-	private MTextBox userTextBox;
-	private MPasswordTextBox passwordTextBox;
-	private Button loginButton;
-	private Label errorLabel;
-	private String loginError;
+	private final MTextBox userTextBox;
+	private final MPasswordTextBox passwordTextBox;
+	private final Button loginButton;
+	private final Label errorLabel;
+	private final String loginError;
 
 	@Inject
 	public LoginDisplay(SecurityMessages messages) {
+		checkNotNull(messages);
+
 		Label lblUsuario = new Label(messages.user() + ":");
 		getFormPanel().add(lblUsuario);
 
@@ -41,26 +45,26 @@ public class LoginDisplay extends BaseFormView implements LoginPresenter.Display
 		errorLabel = new Label("");
 		getFormPanel().add(errorLabel);
 
-		this.loginError = messages.loginError();
+		loginError = messages.loginError();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.userTextBox.getValue();
+		return userTextBox.getValue();
 	}
 
 	@Override
 	public String getPassword() {
-		return this.passwordTextBox.getValue();
+		return passwordTextBox.getValue();
 	}
 
 	@Override
 	public HasClickHandler getLogin() {
-		return new HasTapHandlersAdapter(this.loginButton);
+		return new HasTapHandlersAdapter(loginButton);
 	}
 
 	@Override
 	public void showLoginError() {
-		this.errorLabel.setText(this.loginError);
+		errorLabel.setText(loginError);
 	}
 }

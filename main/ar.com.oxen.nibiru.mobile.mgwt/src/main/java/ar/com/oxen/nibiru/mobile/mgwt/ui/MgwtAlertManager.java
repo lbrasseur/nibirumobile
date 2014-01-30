@@ -12,6 +12,6 @@ public class MgwtAlertManager implements AlertManager {
 
 	@Override
 	public void showException(Exception exception) {
-		this.showMessage(exception.getClass() + ": " + exception.getMessage());
+		showMessage(exception.getClass() + ": " + exception.getMessage());
 	}
 }

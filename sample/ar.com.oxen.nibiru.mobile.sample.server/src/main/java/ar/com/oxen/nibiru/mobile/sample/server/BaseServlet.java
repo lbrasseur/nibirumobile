@@ -13,14 +13,14 @@ public abstract class BaseServlet extends HttpServlet {
 		try {
 			Class<?> serviceClass = Class.forName(config
 					.getInitParameter("serviceClass"));
-			this.service = serviceClass.newInstance();
+			service = serviceClass.newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	protected Object getService() {
-		return this.service;
+		return service;
 	}
 
 }

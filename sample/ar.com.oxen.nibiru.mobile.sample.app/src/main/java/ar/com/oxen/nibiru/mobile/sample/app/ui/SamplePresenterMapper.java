@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.app.ui;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
@@ -11,6 +13,8 @@ public class SamplePresenterMapper extends BasePresenterMapper {
 	@Inject
 	public SamplePresenterMapper(Provider<LoginPresenter> loginPresenter,
 			Provider<SamplePresenter> samplePresenter) {
+		checkNotNull(loginPresenter);
+		checkNotNull(samplePresenter);
 		map(DefaultPlaces.LOGIN, loginPresenter);
 		map(DefaultPlaces.HOME, samplePresenter);
 	}

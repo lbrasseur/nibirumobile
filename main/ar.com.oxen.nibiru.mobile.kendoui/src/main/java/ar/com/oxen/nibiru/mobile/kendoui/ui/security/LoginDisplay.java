@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.kendoui.ui.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
@@ -47,7 +49,8 @@ public class LoginDisplay extends BaseFormView implements
 
 	@Inject
 	public LoginDisplay(LoginDisplayUiBinder uiBinder, SecurityMessages messages) {
-		super();
+		checkNotNull(uiBinder);
+		checkNotNull(messages);
 		initWidget(uiBinder.createAndBindUi(this));
 		this.title.setText(messages.login());
 		this.userLabel.setText(messages.user());
@@ -58,21 +61,21 @@ public class LoginDisplay extends BaseFormView implements
 
 	@Override
 	public String getUsername() {
-		return this.user.getText();
+		return user.getText();
 	}
 
 	@Override
 	public String getPassword() {
-		return this.password.getText();
+		return password.getText();
 	}
 
 	@Override
 	public HasClickHandler getLogin() {
-		return new HasClickHandlersAdapter(this.login);
+		return new HasClickHandlersAdapter(login);
 	}
 
 	@Override
 	public void showLoginError() {
-		this.errorLabel.setText(this.loginError);
+		errorLabel.setText(loginError);
 	}
 }

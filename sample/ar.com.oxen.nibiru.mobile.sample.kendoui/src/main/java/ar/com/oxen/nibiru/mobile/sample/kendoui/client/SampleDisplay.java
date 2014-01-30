@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.kendoui.client;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
@@ -47,48 +49,49 @@ public class SampleDisplay extends BaseFormView implements
 
 	@Inject
 	public SampleDisplay(SampleDisplayUiBinder uiBinder, SampleMessages messages) {
-		super();
+		checkNotNull(uiBinder);
+		checkNotNull(messages);
 		initWidget(uiBinder.createAndBindUi(this));
 
-		this.nameLoad.setText(messages.title());
-		this.nameLoad.setValue("Pepe");
+		nameLoad.setText(messages.title());
+		nameLoad.setValue("Pepe");
 
-		this.alertTrigger.setText(messages.showAlert());
+		alertTrigger.setText(messages.showAlert());
 
-		this.greetingTrigger.setText(messages.greet());
+		greetingTrigger.setText(messages.greet());
 
-		this.showLocation.setText(messages.getPosition());
+		showLocation.setText(messages.getPosition());
 
-		this.backTrigger.setText(messages.back());
+		backTrigger.setText(messages.back());
 	}
 
 	@Override
 	public HasClickHandler getAlertTrigger() {
-		return new HasClickHandlersAdapter(this.alertTrigger);
+		return new HasClickHandlersAdapter(alertTrigger);
 	}
 
 	@Override
 	public HasClickHandler getGreetingTrigger() {
-		return new HasClickHandlersAdapter(this.greetingTrigger);
+		return new HasClickHandlersAdapter(greetingTrigger);
 	}
 
 	@Override
 	public TakesValue<String> getNameLoad() {
-		return new TakesValueAdapter<String>(this.nameLoad);
+		return new TakesValueAdapter<String>(nameLoad);
 	}
 
 	@Override
 	public TakesValue<String> getGreetingDisplay() {
-		return new LabelAdapter(this.greetingDisplay);
+		return new LabelAdapter(greetingDisplay);
 	}
 
 	@Override
 	public HasClickHandler getBackTrigger() {
-		return new HasClickHandlersAdapter(this.backTrigger);
+		return new HasClickHandlersAdapter(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getShowLocation() {
-		return new HasClickHandlersAdapter(this.showLocation);
+		return new HasClickHandlersAdapter(showLocation);
 	}
 }

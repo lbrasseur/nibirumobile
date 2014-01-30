@@ -2,7 +2,6 @@ package ar.com.oxen.nibiru.mobile.smartgwt.ui.place;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
@@ -11,6 +10,7 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
+import com.google.common.collect.Maps;
 import com.smartgwt.mobile.client.internal.util.AnimationUtil.Direction;
 import com.smartgwt.mobile.client.widgets.Panel;
 import com.smartgwt.mobile.client.widgets.layout.NavStack;
@@ -26,7 +26,7 @@ public class NavStackPlace extends BaseConfigurable<Place> implements Place {
 		this.id = checkNotNull(id);
 		this.navStack = checkNotNull(navStack);
 		this.presenterMapper = checkNotNull(presenterMapper);
-		parameters = new HashMap<String, Object>();
+		parameters = Maps.newHashMap();
 	}
 
 	@Override

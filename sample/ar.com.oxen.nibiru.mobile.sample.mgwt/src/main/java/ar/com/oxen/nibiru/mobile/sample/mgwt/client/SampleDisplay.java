@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.mgwt.client;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
@@ -17,15 +19,17 @@ import com.googlecode.mgwt.ui.client.widget.MTextBox;
 
 public class SampleDisplay extends BaseFormView implements
 		SamplePresenter.Display {
-	private Button alertTrigger;
-	private MTextBox nameLoad;
-	private Button greetingTrigger;
-	private Label greetingDisplay;
-	private Button backTrigger;
-	private Button showLocation;
+	private final Button alertTrigger;
+	private final MTextBox nameLoad;
+	private final Button greetingTrigger;
+	private final Label greetingDisplay;
+	private final Button backTrigger;
+	private final Button showLocation;
 
 	@Inject
 	public SampleDisplay(SampleMessages messages) {
+		checkNotNull(messages);
+
 		Label lblEjemploDeVista = new Label(messages.title());
 		getFormPanel().add(lblEjemploDeVista);
 
@@ -56,31 +60,31 @@ public class SampleDisplay extends BaseFormView implements
 
 	@Override
 	public HasClickHandler getAlertTrigger() {
-		return new HasTapHandlersAdapter(this.alertTrigger);
+		return new HasTapHandlersAdapter(alertTrigger);
 	}
 
 	@Override
 	public HasClickHandler getGreetingTrigger() {
-		return new HasTapHandlersAdapter(this.greetingTrigger);
+		return new HasTapHandlersAdapter(greetingTrigger);
 	}
 
 	@Override
 	public TakesValue<String> getNameLoad() {
-		return new TakesValueAdapter<String>(this.nameLoad);
+		return new TakesValueAdapter<String>(nameLoad);
 	}
 
 	@Override
 	public TakesValue<String> getGreetingDisplay() {
-		return new LabelAdapter(this.greetingDisplay);
+		return new LabelAdapter(greetingDisplay);
 	}
 
 	@Override
 	public HasClickHandler getBackTrigger() {
-		return new HasTapHandlersAdapter(this.backTrigger);
+		return new HasTapHandlersAdapter(backTrigger);
 	}
 
 	@Override
 	public HasClickHandler getShowLocation() {
-		return new HasTapHandlersAdapter(this.showLocation);
+		return new HasTapHandlersAdapter(showLocation);
 	}
 }

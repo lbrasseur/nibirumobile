@@ -7,12 +7,10 @@ public class MockUserDto {
 	private String lastName;
 
 	public MockUserDto() {
-		super();
 	}
 
 	public MockUserDto(String username, String password, String firstName,
 			String lastName) {
-		super();
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
