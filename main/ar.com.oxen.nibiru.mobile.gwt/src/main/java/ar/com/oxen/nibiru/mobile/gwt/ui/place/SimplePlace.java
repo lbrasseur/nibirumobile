@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 
 import com.google.common.collect.Maps;
@@ -18,8 +20,11 @@ public class SimplePlace extends com.google.gwt.place.shared.Place implements
 	private final Map<String, Object> parameters;
 	private final int order;
 
-	public SimplePlace(String id, int order, PlaceController placeController) {
-		this.id = checkNotNull(id);
+	//TODO: No esta bueno que el ID sea nullable, pero en
+	// ar.com.oxen.nibiru.mobile.gwt.app.GwtPlacesBootstrap.onBootstrap()
+	// le estoy pasando null
+	public SimplePlace(@Nullable String id, int order, PlaceController placeController) {
+		this.id = id;
 		this.placeController = checkNotNull(placeController);
 		this.parameters = Maps.newHashMap();
 		this.order = order;

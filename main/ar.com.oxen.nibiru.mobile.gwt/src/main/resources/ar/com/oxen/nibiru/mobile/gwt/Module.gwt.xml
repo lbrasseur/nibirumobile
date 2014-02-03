@@ -9,6 +9,8 @@
 	<inherits name='com.googlecode.gwtphonegap.PhoneGap' />
 	<inherits name="com.google.gwt.http.HTTP" />
 	<inherits name="com.google.web.bindery.autobean.AutoBean" />
+	<inherits name="com.google.common.base.Base" />
+	<inherits name="com.google.common.collect.Collect" />
 	<inherits name="ar.com.oxen.nibiru.mobile.core.Module" />
 	<source path="app" />
 	<source path="data" />

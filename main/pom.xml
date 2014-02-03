@@ -10,7 +10,7 @@
 	<properties>
 		<nibiru-mobile-version>0.3-SNAPSHOT</nibiru-mobile-version>
 		<android-version>2.1</android-version>
-		<gwt-version>2.4.0</gwt-version>
+		<gwt-version>2.5.1</gwt-version>
 		<guava-version>15.0</guava-version>
 		<robovm-version>0.0.8</robovm-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
