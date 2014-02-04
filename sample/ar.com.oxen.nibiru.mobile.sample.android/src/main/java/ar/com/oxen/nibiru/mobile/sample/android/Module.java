@@ -2,7 +2,6 @@ package ar.com.oxen.nibiru.mobile.sample.android;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import ar.com.oxen.nibiru.mobile.android.ioc.MessageProvider;
 import ar.com.oxen.nibiru.mobile.core.api.app.EntryPoint;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
@@ -11,10 +10,12 @@ import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.impl.service.security.Authentication;
 import ar.com.oxen.nibiru.mobile.java.service.security.JsonRestAuthenticationServiceProvider;
+import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
+import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
 
 import com.google.inject.AbstractModule;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -36,6 +37,7 @@ public class Module extends AbstractModule {
 		/* UI bindings */
 		bind(PresenterMapper.class).to(SamplePresenterMapper.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class);
+		bind(SecondPresenter.Display.class).to(SecondDisplay.class);
 		bind(SampleMessages.class).toProvider(
 				new MessageProvider<SampleMessages>(SampleMessages.class));
 

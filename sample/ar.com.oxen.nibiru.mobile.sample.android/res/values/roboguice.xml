@@ -4,7 +4,7 @@
         <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidModule</item>
         <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidHardwareModule</item>
         <item>ar.com.oxen.nibiru.mobile.core.ioc.DefaultSecurityModule</item>
-        <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultSecurityModule</item>
+        <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidSecurityModule</item>
         <item>ar.com.oxen.nibiru.mobile.sample.android.Module</item>
     </string-array>
 </resources>

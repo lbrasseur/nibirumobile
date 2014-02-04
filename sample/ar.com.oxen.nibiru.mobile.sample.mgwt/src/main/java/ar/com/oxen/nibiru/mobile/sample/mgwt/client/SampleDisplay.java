@@ -11,19 +11,18 @@ import ar.com.oxen.nibiru.mobile.gwt.ui.mvp.TakesValueAdapter;
 import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.BaseFormView;
 import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.HasTapHandlersAdapter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
+import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
 import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
 
-public class SampleDisplay extends BaseFormView implements
-		SamplePresenter.Display {
+public class SampleDisplay extends BaseFormView implements Display {
 	private final Button alertTrigger;
 	private final MTextBox nameLoad;
 	private final Button greetingTrigger;
 	private final Label greetingDisplay;
-	private final Button backTrigger;
+	private final Button navigateTrigger;
 	private final Button showLocation;
 
 	@Inject
@@ -53,9 +52,9 @@ public class SampleDisplay extends BaseFormView implements
 		getFormPanel().add(showLocation);
 		showLocation.setSize("130px", "19px");
 
-		backTrigger = new Button(messages.back());
-		getFormPanel().add(backTrigger);
-		backTrigger.setSize("78px", "19px");
+		navigateTrigger = new Button(messages.navigate());
+		getFormPanel().add(navigateTrigger);
+		navigateTrigger.setSize("78px", "19px");
 	}
 
 	@Override
@@ -79,8 +78,8 @@ public class SampleDisplay extends BaseFormView implements
 	}
 
 	@Override
-	public HasClickHandler getBackTrigger() {
-		return new HasTapHandlersAdapter(backTrigger);
+	public HasClickHandler getNavigateTrigger() {
+		return new HasTapHandlersAdapter(navigateTrigger);
 	}
 
 	@Override

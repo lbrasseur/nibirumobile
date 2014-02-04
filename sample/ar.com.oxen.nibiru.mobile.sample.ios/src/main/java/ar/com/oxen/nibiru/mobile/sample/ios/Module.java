@@ -15,6 +15,7 @@ import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
+import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
 
 import com.google.inject.AbstractModule;
 
@@ -35,6 +36,7 @@ public class Module extends AbstractModule {
 		/* UI bindings */
 		bind(PresenterMapper.class).to(SamplePresenterMapper.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class);
+		bind(SecondPresenter.Display.class).to(SecondDisplay.class);
 		bind(SampleMessages.class).toProvider(
 				new MessageProvider<SampleMessages>(SampleMessages.class));
 

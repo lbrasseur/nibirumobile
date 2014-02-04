@@ -24,7 +24,7 @@ public class SampleDisplay extends BaseAndroidView implements Display {
 	private final EditText nameLoad;
 	private final Button greetingTrigger;
 	private final TextView greetingDisplay;
-	private final Button backTrigger;
+	private final Button navigateTrigger;
 	private final Button showLocation;
 
 	@Inject
@@ -58,9 +58,9 @@ public class SampleDisplay extends BaseAndroidView implements Display {
 		showLocation.setText(messages.getPosition());
 		view.addView(showLocation);
 
-		backTrigger = new Button(context);
-		backTrigger.setText(messages.back());
-		view.addView(backTrigger);
+		navigateTrigger = new Button(context);
+		navigateTrigger.setText(messages.navigate());
+		view.addView(navigateTrigger);
 	}
 
 	@Override
@@ -84,8 +84,8 @@ public class SampleDisplay extends BaseAndroidView implements Display {
 	}
 
 	@Override
-	public HasClickHandler getBackTrigger() {
-		return new ViewAdapter(backTrigger);
+	public HasClickHandler getNavigateTrigger() {
+		return new ViewAdapter(navigateTrigger);
 	}
 
 	@Override

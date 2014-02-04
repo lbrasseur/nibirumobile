@@ -51,6 +51,11 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter >
+                <action android:name="ar.com.oxen.nibiru.mobile.sample.android.place.SECOND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

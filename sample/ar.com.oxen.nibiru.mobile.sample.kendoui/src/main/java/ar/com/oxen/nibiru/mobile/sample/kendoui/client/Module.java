@@ -19,6 +19,7 @@ import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
+import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -42,6 +43,7 @@ public class Module extends AbstractGinModule {
 		bind(ViewCreator.class).to(SampleViewCreator.class);
 		bind(LoginDisplay.class).in(Singleton.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class).in(Singleton.class);
+		bind(SecondPresenter.Display.class).to(SecondDisplay.class).in(Singleton.class);
 		bind(SampleMessages.class).to(GwtSampleMessages.class);
 
 		/* Database bindings */

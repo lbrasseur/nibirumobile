@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:HTMLPanel>
+        <ul data-role="listview" data-style="inset">
+            <li>
+		        <g:Anchor ui:field="backTrigger"/>
+            </li>
+        </ul>
+	</g:HTMLPanel>
+</ui:UiBinder> 

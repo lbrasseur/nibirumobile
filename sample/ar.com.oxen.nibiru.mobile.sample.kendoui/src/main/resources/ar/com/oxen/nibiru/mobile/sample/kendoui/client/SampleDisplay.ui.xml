@@ -17,7 +17,7 @@
                 <g:Label ui:field="greetingDisplay"/>
             </li>
             <li>
-		        <g:Anchor ui:field="backTrigger"/>
+		        <g:Anchor ui:field="navigateTrigger"/>
             </li>
             <li>
 		        <g:Anchor ui:field="showLocation"/>

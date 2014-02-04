@@ -30,7 +30,7 @@ public class SampleDisplay implements UIViewView, Display {
 	private final UITextField nameLoad;
 	private final UIButton greetingTrigger;
 	private final UILabel greetingDisplay;
-	private final UIButton backTrigger;
+	private final UIButton navigateTrigger;
 	private final UIButton showLocation;
 
 	@Inject
@@ -69,10 +69,10 @@ public class SampleDisplay implements UIViewView, Display {
 		showLocation.setTitle(messages.getPosition(), UIControlState.Normal);
 		container.addSubview(showLocation);
 
-		backTrigger = UIButton.fromType(UIButtonType.RoundedRect);
-		backTrigger.setFrame(new CGRect(20, 230, 100, 25));
-		backTrigger.setTitle(messages.back(), UIControlState.Normal);
-		container.addSubview(backTrigger);
+		navigateTrigger = UIButton.fromType(UIButtonType.RoundedRect);
+		navigateTrigger.setFrame(new CGRect(20, 230, 100, 25));
+		navigateTrigger.setTitle(messages.navigate(), UIControlState.Normal);
+		container.addSubview(navigateTrigger);
 	}
 
 	@Override
@@ -96,8 +96,8 @@ public class SampleDisplay implements UIViewView, Display {
 	}
 
 	@Override
-	public HasClickHandler getBackTrigger() {
-		return new UIButtonAdapter(backTrigger);
+	public HasClickHandler getNavigateTrigger() {
+		return new UIButtonAdapter(navigateTrigger);
 	}
 
 	@Override

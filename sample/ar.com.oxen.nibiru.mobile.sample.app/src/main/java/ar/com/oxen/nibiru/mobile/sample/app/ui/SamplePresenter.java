@@ -31,7 +31,7 @@ public class SamplePresenter extends BasePresenter<Display> {
 
 		TakesValue<String> getGreetingDisplay();
 
-		HasClickHandler getBackTrigger();
+		HasClickHandler getNavigateTrigger();
 
 		HasClickHandler getShowLocation();
 	}
@@ -90,10 +90,10 @@ public class SamplePresenter extends BasePresenter<Display> {
 			}
 		});
 
-		getView().getBackTrigger().setClickHandler(new ClickHandler() {
+		getView().getNavigateTrigger().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
-				placeManager.back();
+				placeManager.createPlace(SamplePlaces.SECOND).go(true);
 			}
 		});
 

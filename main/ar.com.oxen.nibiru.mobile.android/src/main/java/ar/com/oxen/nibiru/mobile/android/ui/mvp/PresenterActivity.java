@@ -1,7 +1,5 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
@@ -9,14 +7,16 @@ import roboguice.inject.ContextScope;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import ar.com.oxen.nibiru.mobile.android.ui.place.IntentPlace;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
+
+import com.sun.istack.internal.Nullable;
 
 /**
  * An activity that delegates logic to a presenter.
@@ -32,8 +32,7 @@ public class PresenterActivity extends RoboActivity {
 	private AndroidView view;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		checkNotNull(savedInstanceState);
+	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		Place place = new IntentPlace(getIntent(), this);
