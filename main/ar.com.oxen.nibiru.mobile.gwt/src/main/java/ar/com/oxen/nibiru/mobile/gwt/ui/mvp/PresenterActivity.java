@@ -29,6 +29,7 @@ public class PresenterActivity extends AbstractActivity {
 		IsWidget widget = (IsWidget) presenter.getView().asNative();
 		containerWidget.setWidget(widget);
 		presenter.go(place);
+		presenter.onStart();
 	}
 
 	@Override

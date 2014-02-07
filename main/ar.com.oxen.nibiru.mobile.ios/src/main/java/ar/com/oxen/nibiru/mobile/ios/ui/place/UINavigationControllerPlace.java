@@ -2,6 +2,7 @@ package ar.com.oxen.nibiru.mobile.ios.ui.place;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Deque;
 import java.util.Map;
 
 import javax.inject.Provider;
@@ -25,16 +26,20 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 	private final UIWindow mainWindow;
 	private final Provider<UINavigationController> navigationControllerProvider;
 	private final PresenterMapper presenterMapper;
+	private final Deque<Presenter<?>> presenterStack;
 	private final String id;
 	private final Map<String, Object> parameters;
 
 	public UINavigationControllerPlace(
 			UIWindow mainWindow,
 			Provider<UINavigationController> navigationControllerProvider,
-			PresenterMapper presenterMapper, String id) {
+			PresenterMapper presenterMapper,
+			Deque<Presenter<?>> presenterStack,
+			String id) {
 		this.mainWindow = checkNotNull(mainWindow);
 		this.navigationControllerProvider = checkNotNull(navigationControllerProvider);
 		this.presenterMapper = checkNotNull(presenterMapper);
+		this.presenterStack = checkNotNull(presenterStack);
 		this.id = checkNotNull(id);
 		parameters = Maps.newHashMap();
 	}
@@ -69,9 +74,14 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		Presenter<? extends View> presenter = presenterMapper.getPresenter(id);
 		UIView view = (UIView) presenter.getView().asNative();
 
+		if (!presenterStack.isEmpty()) {
+			presenterStack.peek().onStop();;
+		}
+
 		UINavigationController navigationController = (UINavigationController) mainWindow
 				.getRootViewController();
 		UIViewController viewController = new UIViewController();
+		
 		viewController.setView(view);
 		if (!push) {
 			navigationController.getView().removeFromSuperview();
@@ -79,8 +89,14 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 			mainWindow
 					.setRootViewController(navigationController);
 			mainWindow.addSubview(navigationController.getView());
+			
+			presenterStack.clear();
 		}
+		
 		navigationController.pushViewController(viewController, true);
 		presenter.go(this);
+
+		presenterStack.push(presenter);
+		presenter.onStart();
 	}
 }

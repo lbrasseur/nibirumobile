@@ -46,6 +46,10 @@ public abstract class BaseAndroidView implements AndroidView {
 	}
 
 	@Override
+	public void onStop() {
+	}
+
+	@Override
 	public void onResume() {
 	}
 

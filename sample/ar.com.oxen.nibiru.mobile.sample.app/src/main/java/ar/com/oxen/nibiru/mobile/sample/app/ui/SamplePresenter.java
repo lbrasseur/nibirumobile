@@ -70,16 +70,6 @@ public class SamplePresenter extends BasePresenter<Display> {
 			}
 		});
 
-		handlerRegistration = eventBus.addHandler("showAlert",
-				new EventHandler() {
-
-					@Override
-					public void onEvent(Event event) {
-						String message = event.getParameter("message");
-						getAlertManager().showMessage(message);
-					}
-				});
-
 		getView().getGreetingTrigger().setClickHandler(new ClickHandler() {
 
 			@Override
@@ -93,7 +83,8 @@ public class SamplePresenter extends BasePresenter<Display> {
 		getView().getNavigateTrigger().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
-				placeManager.createPlace(SamplePlaces.SECOND).go(true);
+				placeManager.createPlace(SamplePlaces.SECOND)
+						.addParameter("message", "Hi, how is it going?").go(true);
 			}
 		});
 
@@ -114,6 +105,19 @@ public class SamplePresenter extends BasePresenter<Display> {
 				});
 			}
 		});
+	}
+
+	@Override
+	public void onStart() {
+		handlerRegistration = eventBus.addHandler("showAlert",
+				new EventHandler() {
+
+					@Override
+					public void onEvent(Event event) {
+						String message = event.getParameter("message");
+						getAlertManager().showMessage(message);
+					}
+				});
 	}
 
 	@Override

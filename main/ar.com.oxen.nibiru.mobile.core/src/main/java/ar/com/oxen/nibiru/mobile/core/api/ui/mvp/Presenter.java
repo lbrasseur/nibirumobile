@@ -23,6 +23,11 @@ public interface Presenter<V extends View> {
 	void go(Place place);
 
 	/**
+	 * Callback method called when entering the presenter.
+	 */
+	void onStart();
+
+	/**
 	 * Callback method called when leaving the presenter.
 	 */
 	void onStop();

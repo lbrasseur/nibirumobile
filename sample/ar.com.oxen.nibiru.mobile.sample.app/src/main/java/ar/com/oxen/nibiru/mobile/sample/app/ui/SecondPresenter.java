@@ -35,5 +35,6 @@ public class SecondPresenter extends BasePresenter<Display> {
 				placeManager.back();
 			}
 		});
+		getAlertManager().showMessage(place.getParameter("message").toString());
 	}
 }

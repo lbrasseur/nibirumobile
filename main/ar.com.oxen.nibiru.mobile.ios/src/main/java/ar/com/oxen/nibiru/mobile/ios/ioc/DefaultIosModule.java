@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.ios.ioc;
 
+import javax.inject.Singleton;
+
 import org.robovm.cocoatouch.uikit.UINavigationController;
 import org.robovm.cocoatouch.uikit.UIScreen;
 import org.robovm.cocoatouch.uikit.UIWindow;
@@ -27,7 +29,8 @@ public class DefaultIosModule extends AbstractModule {
 	protected void configure() {
 		bind(Bootstrap.class).to(IosBootstrap.class);
 		bind(AlertManager.class).to(UIAlertViewAlertManager.class);
-		bind(PlaceManager.class).to(UINavigationControllerPlaceManager.class);
+		bind(PlaceManager.class).to(UINavigationControllerPlaceManager.class)
+				.in(Singleton.class);
 		bind(EventBus.class).to(GuavaEventBus.class);
 		bind(HttpManager.class).to(HttpClientHttpManager.class);
 		bind(Serializer.class).to(JacksonSerializer.class);

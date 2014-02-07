@@ -30,6 +30,8 @@ public interface AndroidView extends View {
 
 	void onStart();
 
+	void onStop();
+
 	void onResume();
 
 	void onPause();

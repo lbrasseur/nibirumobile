@@ -27,6 +27,10 @@ abstract public class BasePresenter<V extends View> implements Presenter<V> {
 	}
 
 	@Override
+	public void onStart() {
+	}
+
+	@Override
 	public void onStop() {
 	}
 

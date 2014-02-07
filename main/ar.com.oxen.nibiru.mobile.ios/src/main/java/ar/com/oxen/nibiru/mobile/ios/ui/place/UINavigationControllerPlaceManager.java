@@ -2,12 +2,17 @@ package ar.com.oxen.nibiru.mobile.ios.ui.place;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Deque;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
 import org.robovm.cocoatouch.uikit.UINavigationController;
 import org.robovm.cocoatouch.uikit.UIWindow;
 
+import com.google.common.collect.Queues;
+
+import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
@@ -16,21 +21,23 @@ public class UINavigationControllerPlaceManager implements PlaceManager {
 	private final UIWindow mainWindow;
 	private final Provider<UINavigationController> navigationControllerProvider;
 	private final PresenterMapper presenterMapper;
+	private final Deque<Presenter<?>> presenterStack;
 
 	@Inject
-	public UINavigationControllerPlaceManager(
-			UIWindow mainWindow,
+	public UINavigationControllerPlaceManager(UIWindow mainWindow,
 			Provider<UINavigationController> navigationControllerProvider,
 			PresenterMapper presenterMapper) {
 		this.mainWindow = checkNotNull(mainWindow);
 		this.navigationControllerProvider = checkNotNull(navigationControllerProvider);
 		this.presenterMapper = checkNotNull(presenterMapper);
+		presenterStack = Queues.newArrayDeque();
 	}
 
 	@Override
 	public Place createPlace(String id) {
 		return new UINavigationControllerPlace(mainWindow,
-				navigationControllerProvider, presenterMapper, id);
+				navigationControllerProvider, presenterMapper, presenterStack,
+				id);
 	}
 
 	@Override
@@ -40,7 +47,12 @@ public class UINavigationControllerPlaceManager implements PlaceManager {
 
 	@Override
 	public void back() {
-		UINavigationController navigationController = (UINavigationController) mainWindow.getRootViewController();
+		presenterStack.pop().onStop();
+		UINavigationController navigationController = (UINavigationController) mainWindow
+				.getRootViewController();
 		navigationController.popViewControllerAnimated(true);
+		if (!presenterStack.isEmpty()) {
+			presenterStack.peek().onStart();
+		}
 	}
 }
