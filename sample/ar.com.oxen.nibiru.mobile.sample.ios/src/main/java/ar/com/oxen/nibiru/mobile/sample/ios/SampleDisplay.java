@@ -17,14 +17,14 @@ import org.robovm.cocoatouch.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
+import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UILabelAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UITextFieldAdapter;
-import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIViewView;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
-public class SampleDisplay implements UIViewView, Display {
+public class SampleDisplay extends BaseUIViewView implements Display {
 	private final UIView container;
 	private final UIButton alertTrigger;
 	private final UITextField nameLoad;
@@ -52,6 +52,7 @@ public class SampleDisplay implements UIViewView, Display {
 		nameLoad = new UITextField(new CGRect(20, 110, 200, 25));
 		nameLoad.setText("Pepe");
 		nameLoad.setBorderStyle(UITextBorderStyle.RoundedRect);
+		nameLoad.setDelegate(getTextFieldDelegate());
 		container.addSubview(nameLoad);
 
 		greetingTrigger = UIButton.fromType(UIButtonType.RoundedRect);

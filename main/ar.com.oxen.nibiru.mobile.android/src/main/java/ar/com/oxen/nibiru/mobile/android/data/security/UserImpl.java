@@ -2,11 +2,12 @@ package ar.com.oxen.nibiru.mobile.android.data.security;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
 
 import ar.com.oxen.nibiru.mobile.core.api.data.security.User;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "users")
 public class UserImpl implements User {

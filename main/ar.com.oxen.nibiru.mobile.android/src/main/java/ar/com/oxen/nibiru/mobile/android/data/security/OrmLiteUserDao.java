@@ -2,6 +2,7 @@ package ar.com.oxen.nibiru.mobile.android.data.security;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
@@ -10,7 +11,6 @@ import ar.com.oxen.nibiru.mobile.core.api.data.security.UserDao;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
-import com.sun.istack.internal.Nullable;
 
 public class OrmLiteUserDao implements UserDao {
 	private final RuntimeExceptionDao<UserImpl, String> ormLiteDao;

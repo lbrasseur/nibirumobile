@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import roboguice.activity.RoboActivity;
@@ -16,7 +17,6 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 
-import com.sun.istack.internal.Nullable;
 
 /**
  * An activity that delegates logic to a presenter.

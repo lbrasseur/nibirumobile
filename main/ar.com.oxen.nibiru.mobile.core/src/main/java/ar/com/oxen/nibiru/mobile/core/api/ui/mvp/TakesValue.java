@@ -1,6 +1,7 @@
 package ar.com.oxen.nibiru.mobile.core.api.ui.mvp;
 
-import com.sun.istack.internal.Nullable;
+import javax.annotation.Nullable;
+
 
 /**
  * Something that can holds a value.

@@ -18,10 +18,10 @@ import org.robovm.cocoatouch.uikit.UIView;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
 import ar.com.oxen.nibiru.mobile.core.impl.ui.security.LoginPresenter.Display;
+import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
-import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIViewView;
 
-public class LoginDisplay implements UIViewView, Display {
+public class LoginDisplay extends BaseUIViewView implements Display {
 	private final UIView container;
 	private final UITextField username;
 	private final UITextField password;
@@ -40,6 +40,7 @@ public class LoginDisplay implements UIViewView, Display {
 
 		username = new UITextField(new CGRect(120, 50, 150, 25));
 		username.setBorderStyle(UITextBorderStyle.RoundedRect);
+		username.setDelegate(getTextFieldDelegate());
 		container.addSubview(username);
 
 		UILabel passwordLabel = new UILabel(new CGRect(20, 100, 100, 25));
@@ -50,6 +51,7 @@ public class LoginDisplay implements UIViewView, Display {
 		password = new UITextField(new CGRect(120, 100, 150, 25));
 		password.setBorderStyle(UITextBorderStyle.RoundedRect);
 		password.setSecureTextEntry(true);
+		password.setDelegate(getTextFieldDelegate());
 		container.addSubview(password);
 
 		errorLabel = new UILabel(new CGRect(20, 150, 200, 25));

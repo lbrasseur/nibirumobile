@@ -1,8 +1,7 @@
 package ar.com.oxen.nibiru.mobile.core.impl.business.security;
 
+import javax.annotation.Nullable;
 import javax.inject.Singleton;
-
-import com.sun.istack.internal.Nullable;
 
 import ar.com.oxen.nibiru.mobile.core.api.business.security.Profile;
 

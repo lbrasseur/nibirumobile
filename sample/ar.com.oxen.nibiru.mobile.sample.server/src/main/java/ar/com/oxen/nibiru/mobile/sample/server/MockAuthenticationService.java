@@ -8,8 +8,7 @@ public class MockAuthenticationService {
 
 	public MockAuthenticationService() {
 		users = new HashMap<String, MockUserDto>();
-		addUser("pepe", "popo", "Pepe", "Sanchez");
-		addUser("toto", "toto", "Toto", "s");
+		addUser("g", "g", "Rick", "Hunter");
 	}
 
 	private void addUser(String username, String password, String firstName,

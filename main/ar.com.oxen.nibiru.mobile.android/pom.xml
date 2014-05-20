@@ -20,6 +20,17 @@
 			<groupId>ar.com.oxen.nibiru.mobile</groupId>
 			<artifactId>ar.com.oxen.nibiru.mobile.java</artifactId>
 			<version>${nibiru-mobile-version}</version>
+			<exclusions>
+	            <exclusion>
+	                <groupId>com.google.guava</groupId>
+	                <artifactId>guava</artifactId>
+	            </exclusion>
+	        </exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava-jdk5</artifactId>
+			<version>${guava-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.android</groupId>

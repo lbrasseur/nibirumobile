@@ -1,9 +1,10 @@
 package ar.com.oxen.nibiru.mobile.core.impl.preferences;
 
+import javax.annotation.Nullable;
+
 import ar.com.oxen.nibiru.mobile.core.api.preferences.Preferences;
 import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
-import com.sun.istack.internal.Nullable;
 
 public abstract class AbstractPreferences extends
 		BaseConfigurable<Preferences> implements Preferences {

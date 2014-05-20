@@ -30,7 +30,7 @@ public class Module extends AbstractModule {
 		bind(String.class)
 				.annotatedWith(BaseUrl.class)
 				.toInstance(
-						"http://servidor.oxen.com.ar/ar.com.oxen.nibiru.mobile.sample.server/");
+						"http://192.168.0.10:8080/ar.com.oxen.nibiru.mobile.sample.server/");
 
 		bind(EntryPoint.class).to(SampleEntryPoint.class);
 

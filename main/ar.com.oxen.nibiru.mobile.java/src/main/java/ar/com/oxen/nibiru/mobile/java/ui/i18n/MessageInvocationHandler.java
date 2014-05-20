@@ -1,13 +1,13 @@
 package ar.com.oxen.nibiru.mobile.java.ui.i18n;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
-import com.sun.istack.internal.Nullable;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+import javax.annotation.Nullable;
 
 public class MessageInvocationHandler implements InvocationHandler {
 	private final ResourceBundle resourceBundle;

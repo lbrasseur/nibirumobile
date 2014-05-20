@@ -11,16 +11,22 @@
 		<nibiru-mobile-version>0.3-SNAPSHOT</nibiru-mobile-version>
 		<android-version>2.1</android-version>
 		<gwt-version>2.5.1</gwt-version>
-		<guava-version>15.0</guava-version>
-		<robovm-version>0.0.8</robovm-version>
+		<guava-version>17.0</guava-version>
+		<robovm-version>0.0.12</robovm-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<repositories>
+	<!-- 
 		<repository>
 			<id>oxen</id>
 			<name>oxen</name>
 			<url>http://servidor.oxen.com.ar/artifactory/repo</url>
 		</repository>
+	 -->
+		<repository> 
+			<id>sonatype-snapshots</id> 
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url> 
+		</repository> 
 	</repositories>
 	<modules>
 		<module>ar.com.oxen.nibiru.mobile.core</module>
