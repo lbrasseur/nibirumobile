@@ -16,13 +16,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<repositories>
-	<!-- 
 		<repository>
-			<id>oxen</id>
-			<name>oxen</name>
-			<url>http://servidor.oxen.com.ar/artifactory/repo</url>
+			<id>dropbox</id>
+			<name>dropbox</name>
+			<url>https://dl.dropboxusercontent.com/u/20702229/m2repo</url>
 		</repository>
-	 -->
 		<repository> 
 			<id>sonatype-snapshots</id> 
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url> 
@@ -60,14 +58,14 @@
 	</build>
 	<distributionManagement>
 		<snapshotRepository>
-			<id>servidor.oxen.com.ar</id>
-			<name>servidor.oxen.com.ar-snapshots</name>
-			<url>http://servidor.oxen.com.ar/artifactory/libs-snapshot-local</url>
+			<id>dropbox</id>
+			<name>dropbox-snapshots</name>
+			<url>file://${user.home}/Dropbox/Public/m2repo</url>
 		</snapshotRepository>
 		<repository>
-			<id>servidor.oxen.com.ar</id>
-			<name>servidor.oxen.com.ar-release</name>
-			<url>http://servidor.oxen.com.ar/artifactory/libs-release-local</url>
+			<id>dropbox</id>
+			<name>dropbox-release</name>
+			<url>file://${user.home}/Dropbox/Public/m2repo</url>
 		</repository>
 	</distributionManagement>
 </project>
