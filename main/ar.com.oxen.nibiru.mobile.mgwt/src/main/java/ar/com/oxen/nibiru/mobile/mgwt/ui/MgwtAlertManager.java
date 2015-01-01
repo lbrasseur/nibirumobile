@@ -2,7 +2,7 @@ package ar.com.oxen.nibiru.mobile.mgwt.ui;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 
-import com.googlecode.mgwt.ui.client.dialog.Dialogs;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialogs;
 
 public class MgwtAlertManager implements AlertManager {
 	@Override

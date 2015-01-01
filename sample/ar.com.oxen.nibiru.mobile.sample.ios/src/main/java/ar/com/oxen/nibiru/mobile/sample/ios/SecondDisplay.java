@@ -4,13 +4,13 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.inject.Inject;
 
-import org.robovm.cocoatouch.coregraphics.CGRect;
-import org.robovm.cocoatouch.uikit.UIButton;
-import org.robovm.cocoatouch.uikit.UIButtonType;
-import org.robovm.cocoatouch.uikit.UIColor;
-import org.robovm.cocoatouch.uikit.UIControlState;
-import org.robovm.cocoatouch.uikit.UIScreen;
-import org.robovm.cocoatouch.uikit.UIView;
+import org.robovm.apple.coregraphics.CGRect;
+import org.robovm.apple.uikit.UIButton;
+import org.robovm.apple.uikit.UIButtonType;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UIControlState;
+import org.robovm.apple.uikit.UIScreen;
+import org.robovm.apple.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
@@ -26,9 +26,9 @@ public class SecondDisplay extends BaseUIViewView implements Display {
 	public SecondDisplay(SampleMessages messages) {
 		checkNotNull(messages);
 		container = new UIView(UIScreen.getMainScreen().getBounds());
-		container.setBackgroundColor(UIColor.lightGrayColor());
+		container.setBackgroundColor(UIColor.lightGray());
 
-		backTrigger = UIButton.fromType(UIButtonType.RoundedRect);
+		backTrigger = UIButton.create(UIButtonType.RoundedRect);
 		backTrigger.setFrame(new CGRect(20, 230, 100, 25));
 		backTrigger.setTitle(messages.back(), UIControlState.Normal);
 		container.addSubview(backTrigger);

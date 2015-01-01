@@ -1,6 +1,6 @@
 package ar.com.oxen.nibiru.mobile.ios.ui.mvp;
 
-import org.robovm.cocoatouch.uikit.UIView;
+import org.robovm.apple.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 

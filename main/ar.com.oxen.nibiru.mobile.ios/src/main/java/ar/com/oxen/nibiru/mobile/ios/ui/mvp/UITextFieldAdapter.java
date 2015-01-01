@@ -2,7 +2,7 @@ package ar.com.oxen.nibiru.mobile.ios.ui.mvp;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import org.robovm.cocoatouch.uikit.UITextField;
+import org.robovm.apple.uikit.UITextField;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
 

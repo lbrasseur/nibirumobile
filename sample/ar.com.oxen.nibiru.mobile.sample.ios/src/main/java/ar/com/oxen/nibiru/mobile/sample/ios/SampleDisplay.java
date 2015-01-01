@@ -4,16 +4,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.inject.Inject;
 
-import org.robovm.cocoatouch.coregraphics.CGRect;
-import org.robovm.cocoatouch.uikit.UIButton;
-import org.robovm.cocoatouch.uikit.UIButtonType;
-import org.robovm.cocoatouch.uikit.UIColor;
-import org.robovm.cocoatouch.uikit.UIControlState;
-import org.robovm.cocoatouch.uikit.UILabel;
-import org.robovm.cocoatouch.uikit.UIScreen;
-import org.robovm.cocoatouch.uikit.UITextBorderStyle;
-import org.robovm.cocoatouch.uikit.UITextField;
-import org.robovm.cocoatouch.uikit.UIView;
+import org.robovm.apple.coregraphics.CGRect;
+import org.robovm.apple.uikit.UIButton;
+import org.robovm.apple.uikit.UIButtonType;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UIControlState;
+import org.robovm.apple.uikit.UILabel;
+import org.robovm.apple.uikit.UIScreen;
+import org.robovm.apple.uikit.UITextBorderStyle;
+import org.robovm.apple.uikit.UITextField;
+import org.robovm.apple.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
@@ -37,14 +37,14 @@ public class SampleDisplay extends BaseUIViewView implements Display {
 	public SampleDisplay(SampleMessages messages) {
 		checkNotNull(messages);
 		container = new UIView(UIScreen.getMainScreen().getBounds());
-		container.setBackgroundColor(UIColor.lightGrayColor());
+		container.setBackgroundColor(UIColor.lightGray());
 
 		UILabel mensaje = new UILabel(new CGRect(20, 50, 200, 25));
 		mensaje.setText(messages.title());
-		mensaje.setBackgroundColor(UIColor.clearColor());
+		mensaje.setBackgroundColor(UIColor.clear());
 		container.addSubview(mensaje);
 
-		alertTrigger = UIButton.fromType(UIButtonType.RoundedRect);
+		alertTrigger = UIButton.create(UIButtonType.RoundedRect);
 		alertTrigger.setFrame(new CGRect(20, 80, 100, 25));
 		alertTrigger.setTitle(messages.showAlert(), UIControlState.Normal);
 		container.addSubview(alertTrigger);
@@ -55,22 +55,22 @@ public class SampleDisplay extends BaseUIViewView implements Display {
 		nameLoad.setDelegate(getTextFieldDelegate());
 		container.addSubview(nameLoad);
 
-		greetingTrigger = UIButton.fromType(UIButtonType.RoundedRect);
+		greetingTrigger = UIButton.create(UIButtonType.RoundedRect);
 		greetingTrigger.setFrame(new CGRect(20, 140, 100, 25));
 		greetingTrigger.setTitle(messages.greet(), UIControlState.Normal);
 		container.addSubview(greetingTrigger);
 
 		greetingDisplay = new UILabel(new CGRect(20, 170, 200, 25));
 		greetingDisplay.setText("");
-		greetingDisplay.setBackgroundColor(UIColor.clearColor());
+		greetingDisplay.setBackgroundColor(UIColor.clear());
 		container.addSubview(greetingDisplay);
 
-		showLocation = UIButton.fromType(UIButtonType.RoundedRect);
+		showLocation = UIButton.create(UIButtonType.RoundedRect);
 		showLocation.setFrame(new CGRect(20, 200, 100, 25));
 		showLocation.setTitle(messages.getPosition(), UIControlState.Normal);
 		container.addSubview(showLocation);
 
-		navigateTrigger = UIButton.fromType(UIButtonType.RoundedRect);
+		navigateTrigger = UIButton.create(UIButtonType.RoundedRect);
 		navigateTrigger.setFrame(new CGRect(20, 230, 100, 25));
 		navigateTrigger.setTitle(messages.navigate(), UIControlState.Normal);
 		container.addSubview(navigateTrigger);

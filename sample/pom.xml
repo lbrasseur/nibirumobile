@@ -15,13 +15,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<repositories>
-	<!-- 
-		<repository>
-			<id>oxen</id>
-			<name>oxen</name>
-			<url>http://servidor.oxen.com.ar/artifactory/repo</url>
-		</repository>
-	 -->
 		<repository> 
 			<id>sonatype-snapshots</id> 
 			<url>https://oss.sonatype.org/content/repositories/snapshots/</url> 
@@ -32,8 +25,6 @@
 		<module>ar.com.oxen.nibiru.mobile.sample.android</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.ios</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.mgwt</module>
-		<module>ar.com.oxen.nibiru.mobile.sample.smartgwt</module>
 		<module>ar.com.oxen.nibiru.mobile.sample.server</module>
-    	<module>ar.com.oxen.nibiru.mobile.sample.kendoui</module>
 	</modules>
 </project>

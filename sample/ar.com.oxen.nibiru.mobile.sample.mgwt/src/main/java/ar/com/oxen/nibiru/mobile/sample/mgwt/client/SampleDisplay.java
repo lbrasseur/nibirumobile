@@ -14,8 +14,8 @@ import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
 import com.google.gwt.user.client.ui.Label;
-import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.MTextBox;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
 
 public class SampleDisplay extends BaseFormView implements Display {
 	private final Button alertTrigger;

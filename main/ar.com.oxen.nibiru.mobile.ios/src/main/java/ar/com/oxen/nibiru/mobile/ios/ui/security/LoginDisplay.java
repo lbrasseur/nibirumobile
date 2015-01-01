@@ -4,16 +4,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.inject.Inject;
 
-import org.robovm.cocoatouch.coregraphics.CGRect;
-import org.robovm.cocoatouch.uikit.UIButton;
-import org.robovm.cocoatouch.uikit.UIButtonType;
-import org.robovm.cocoatouch.uikit.UIColor;
-import org.robovm.cocoatouch.uikit.UIControlState;
-import org.robovm.cocoatouch.uikit.UILabel;
-import org.robovm.cocoatouch.uikit.UIScreen;
-import org.robovm.cocoatouch.uikit.UITextBorderStyle;
-import org.robovm.cocoatouch.uikit.UITextField;
-import org.robovm.cocoatouch.uikit.UIView;
+import org.robovm.apple.coregraphics.CGRect;
+import org.robovm.apple.uikit.UIButton;
+import org.robovm.apple.uikit.UIButtonType;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UIControlState;
+import org.robovm.apple.uikit.UILabel;
+import org.robovm.apple.uikit.UIScreen;
+import org.robovm.apple.uikit.UITextBorderStyle;
+import org.robovm.apple.uikit.UITextField;
+import org.robovm.apple.uikit.UIView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
@@ -35,7 +35,7 @@ public class LoginDisplay extends BaseUIViewView implements Display {
 
 		UILabel usernameLabel = new UILabel(new CGRect(20, 50, 100, 25));
 		usernameLabel.setText(messages.user() + ":");
-		usernameLabel.setBackgroundColor(UIColor.clearColor());
+		usernameLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(usernameLabel);
 
 		username = new UITextField(new CGRect(120, 50, 150, 25));
@@ -45,7 +45,7 @@ public class LoginDisplay extends BaseUIViewView implements Display {
 
 		UILabel passwordLabel = new UILabel(new CGRect(20, 100, 100, 25));
 		passwordLabel.setText(messages.password() + ":");
-		passwordLabel.setBackgroundColor(UIColor.clearColor());
+		passwordLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(passwordLabel);
 
 		password = new UITextField(new CGRect(120, 100, 150, 25));
@@ -55,10 +55,10 @@ public class LoginDisplay extends BaseUIViewView implements Display {
 		container.addSubview(password);
 
 		errorLabel = new UILabel(new CGRect(20, 150, 200, 25));
-		errorLabel.setBackgroundColor(UIColor.clearColor());
+		errorLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(errorLabel);
 
-		loginButton = UIButton.fromType(UIButtonType.RoundedRect);
+		loginButton = UIButton.create(UIButtonType.RoundedRect);
 		loginButton.setFrame(new CGRect(80, 200, 100, 30));
 		loginButton.setTitle("Login", UIControlState.Normal);
 		container.addSubview(loginButton);

@@ -1,9 +1,9 @@
 package ar.com.oxen.nibiru.mobile.ios.ui.mvp;
 
-import org.robovm.cocoatouch.foundation.NSObject;
-import org.robovm.cocoatouch.foundation.NSRange;
-import org.robovm.cocoatouch.uikit.UITextField;
-import org.robovm.cocoatouch.uikit.UITextFieldDelegate;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.foundation.NSRange;
+import org.robovm.apple.uikit.UITextField;
+import org.robovm.apple.uikit.UITextFieldDelegate;
 
 public class TextFieldDelegate extends NSObject implements UITextFieldDelegate {
 	@Override

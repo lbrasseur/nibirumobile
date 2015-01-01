@@ -11,9 +11,9 @@ import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.BaseFormView;
 import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.HasTapHandlersAdapter;
 
 import com.google.gwt.user.client.ui.Label;
-import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.MPasswordTextBox;
-import com.googlecode.mgwt.ui.client.widget.MTextBox;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.input.MPasswordTextBox;
+import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
 
 
 public class LoginDisplay extends BaseFormView implements LoginPresenter.Display {

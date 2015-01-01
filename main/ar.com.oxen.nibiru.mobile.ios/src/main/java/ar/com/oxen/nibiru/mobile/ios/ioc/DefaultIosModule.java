@@ -2,9 +2,9 @@ package ar.com.oxen.nibiru.mobile.ios.ioc;
 
 import javax.inject.Singleton;
 
-import org.robovm.cocoatouch.uikit.UINavigationController;
-import org.robovm.cocoatouch.uikit.UIScreen;
-import org.robovm.cocoatouch.uikit.UIWindow;
+import org.robovm.apple.uikit.UINavigationController;
+import org.robovm.apple.uikit.UIScreen;
+import org.robovm.apple.uikit.UIWindow;
 
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
 import ar.com.oxen.nibiru.mobile.core.api.event.EventBus;

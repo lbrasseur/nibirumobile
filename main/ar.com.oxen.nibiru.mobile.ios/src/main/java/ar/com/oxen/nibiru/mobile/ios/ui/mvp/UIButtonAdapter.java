@@ -2,8 +2,8 @@ package ar.com.oxen.nibiru.mobile.ios.ui.mvp;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import org.robovm.cocoatouch.uikit.UIButton;
-import org.robovm.cocoatouch.uikit.UIControl.OnTouchUpInsideListener;
+import org.robovm.apple.uikit.UIButton;
+import org.robovm.apple.uikit.UIControl.OnTouchUpInsideListener;
 
 import ar.com.oxen.nibiru.mobile.core.api.handler.HandlerRegistration;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ClickHandler;
@@ -20,6 +20,6 @@ public class UIButtonAdapter implements HasClickHandler {
 	public HandlerRegistration setClickHandler(ClickHandler clickHandler) {
 		OnTouchUpInsideListener listener = new ClickHandlerAdapter(clickHandler);
 		button.addOnTouchUpInsideListener(listener);
-		return new HandlerRegistrationAdapter(button, listener);
+		return new TouchUpInsideHandlerRegistration(button, listener);
 	}
 }

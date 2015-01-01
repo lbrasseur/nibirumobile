@@ -5,9 +5,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import org.robovm.cocoatouch.uikit.UIColor;
-import org.robovm.cocoatouch.uikit.UINavigationController;
-import org.robovm.cocoatouch.uikit.UIWindow;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UINavigationController;
+import org.robovm.apple.uikit.UIWindow;
 
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
 import ar.com.oxen.nibiru.mobile.core.api.app.EntryPoint;
@@ -28,7 +28,7 @@ public class IosBootstrap implements Bootstrap {
 	@Override
 	public void onBootstrap() {
 		// TODO: Background color should be application-specific?
-		mainWindow.setBackgroundColor(UIColor.lightGrayColor());
+		mainWindow.setBackgroundColor(UIColor.lightGray());
 		mainWindow.makeKeyAndVisible();
 		UINavigationController navigationController = navigationControllerProvider
 				.get();

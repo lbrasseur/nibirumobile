@@ -2,7 +2,7 @@ package ar.com.oxen.nibiru.mobile.ios.ui;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import org.robovm.cocoatouch.uikit.UIAlertView;
+import org.robovm.apple.uikit.UIAlertView;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 

@@ -10,7 +10,7 @@ import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.HasTapHandlersAdapter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter.Display;
 
-import com.googlecode.mgwt.ui.client.widget.Button;
+import com.googlecode.mgwt.ui.client.widget.button.Button;
 
 public class SecondDisplay extends BaseFormView implements Display {
 	private final Button backTrigger;

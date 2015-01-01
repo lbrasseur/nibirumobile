@@ -7,15 +7,15 @@ import java.util.Deque;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import org.robovm.cocoatouch.uikit.UINavigationController;
-import org.robovm.cocoatouch.uikit.UIWindow;
-
-import com.google.common.collect.Queues;
+import org.robovm.apple.uikit.UINavigationController;
+import org.robovm.apple.uikit.UIWindow;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
+
+import com.google.common.collect.Queues;
 
 public class UINavigationControllerPlaceManager implements PlaceManager {
 	private final UIWindow mainWindow;
@@ -50,7 +50,7 @@ public class UINavigationControllerPlaceManager implements PlaceManager {
 		presenterStack.pop().onStop();
 		UINavigationController navigationController = (UINavigationController) mainWindow
 				.getRootViewController();
-		navigationController.popViewControllerAnimated(true);
+		navigationController.popViewController(true);
 		if (!presenterStack.isEmpty()) {
 			presenterStack.peek().onStart();
 		}

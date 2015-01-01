@@ -7,10 +7,10 @@ import java.util.Map;
 
 import javax.inject.Provider;
 
-import org.robovm.cocoatouch.uikit.UINavigationController;
-import org.robovm.cocoatouch.uikit.UIView;
-import org.robovm.cocoatouch.uikit.UIViewController;
-import org.robovm.cocoatouch.uikit.UIWindow;
+import org.robovm.apple.uikit.UINavigationController;
+import org.robovm.apple.uikit.UIView;
+import org.robovm.apple.uikit.UIViewController;
+import org.robovm.apple.uikit.UIWindow;
 
 import ar.com.oxen.nibiru.mobile.core.api.common.Identifiable;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
