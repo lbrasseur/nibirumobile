@@ -7,12 +7,14 @@ import javax.inject.Inject;
 import ar.com.oxen.nibiru.mobile.gwt.app.AppWidgetBootstrap;
 
 import com.google.gwt.activity.shared.ActivityMapper;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimatableDisplay;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
 
 public class MgwtAppWidgetBootstrap implements AppWidgetBootstrap {
 	private final EventBus eventBus;
@@ -21,7 +23,8 @@ public class MgwtAppWidgetBootstrap implements AppWidgetBootstrap {
 
 	@Inject
 	public MgwtAppWidgetBootstrap(EventBus eventBus,
-			ActivityMapper activityMapper, AnimationMapper animationMapper) {
+			ActivityMapper activityMapper,
+			AnimationMapper animationMapper) {
 		this.eventBus = checkNotNull(eventBus);
 		this.activityMapper = checkNotNull(activityMapper);
 		this.animationMapper = checkNotNull(animationMapper);
@@ -29,7 +32,9 @@ public class MgwtAppWidgetBootstrap implements AppWidgetBootstrap {
 
 	@Override
 	public IsWidget createAppWidget() {
-		AnimatableDisplay appWidget = GWT.create(AnimatableDisplay.class);
+		MGWT.applySettings(MGWTSettings.getAppSetting());
+
+		AnimatableDisplay appWidget = new AnimationWidget();
 
 		AnimatingActivityManager activityManager = new AnimatingActivityManager(
 				activityMapper, animationMapper, eventBus);

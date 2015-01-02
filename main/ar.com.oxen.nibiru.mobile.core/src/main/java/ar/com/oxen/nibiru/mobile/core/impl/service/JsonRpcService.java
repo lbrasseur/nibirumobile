@@ -39,8 +39,9 @@ public class JsonRpcService extends BaseService {
 
 					@Override
 					public T parseResponse(String responseMessage) {
-						return getSerializer().deserialize(
-								extractResult(responseMessage), responseClass);
+						return responseMessage != null ? getSerializer()
+								.deserialize(extractResult(responseMessage),
+										responseClass) : null;
 					}
 
 				});

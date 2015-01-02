@@ -49,16 +49,4 @@
 			</resource>
 		</resources>
 	</build>
-	<distributionManagement>
-		<snapshotRepository>
-			<id>dropbox</id>
-			<name>dropbox-snapshots</name>
-			<url>file://${user.home}/Dropbox/Public/m2repo</url>
-		</snapshotRepository>
-		<repository>
-			<id>dropbox</id>
-			<name>dropbox-release</name>
-			<url>file://${user.home}/Dropbox/Public/m2repo</url>
-		</repository>
-	</distributionManagement>
 </project>

@@ -29,8 +29,8 @@ public class RestService extends BaseService {
 
 					@Override
 					public T parseResponse(String responseMessage) {
-						return getSerializer().deserialize(responseMessage,
-								responseClass);
+						return responseMessage != null ?getSerializer().deserialize(responseMessage,
+								responseClass) : null;
 					}
 				});
 
