@@ -1,7 +1,9 @@
 target
+build
 .settings
 .project
 .classpath
+.gradle
 gwt-unitCache
 classes
 bin

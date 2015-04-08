@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.6
+version = '0.3-SNAPSHOT'
+
+project.ext {
+	androidVersion = '2.1.2'
+	gwtVersion = '2.6.0'
+	guavaVersion = '17.0'
+	robovmVersion = '1.0.0-beta-02'
+}
+
+allprojects {
+
+	repositories {
+	    mavenCentral()
+	    jcenter()
+	    maven {
+	        url "https://oss.sonatype.org/content/repositories/snapshots/"
+	    }
+	}
+	
+	sourceSets {
+	    main {
+	        resources {
+	            srcDir 'src/java'
+	            srcDir 'src/resources'
+	        }
+	    }
+	}
+}
