@@ -27,7 +27,7 @@ public class PhoneGapGeolocationManager implements GeolocationManager {
 	public void watchPosition(final Callback<Position> callback) {
 		checkNotNull(callback);
 		GeolocationOptions options = new GeolocationOptions();
-		options.setFrequency(1000);
+		options.setTimeout(1000);
 
 		geolocation.watchPosition(options, new GeolocationCallback() {
 			@Override

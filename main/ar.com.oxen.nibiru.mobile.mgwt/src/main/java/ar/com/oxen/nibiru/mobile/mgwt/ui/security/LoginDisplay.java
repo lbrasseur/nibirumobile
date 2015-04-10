@@ -12,6 +12,7 @@ import ar.com.oxen.nibiru.mobile.mgwt.ui.mvp.HasTapHandlersAdapter;
 
 import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.form.FormEntry;
 import com.googlecode.mgwt.ui.client.widget.input.MPasswordTextBox;
 import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
 
@@ -27,23 +28,17 @@ public class LoginDisplay extends BaseFormView implements LoginPresenter.Display
 	public LoginDisplay(SecurityMessages messages) {
 		checkNotNull(messages);
 
-		Label lblUsuario = new Label(messages.user() + ":");
-		getFormPanel().add(lblUsuario);
-
 		userTextBox = new MTextBox();
-		getFormPanel().add(userTextBox);
-
-		Label lblClave = new Label(messages.password() + ":");
-		getFormPanel().add(lblClave);
+		getFormPanel().add(new FormEntry(messages.user(), userTextBox));
 
 		passwordTextBox = new MPasswordTextBox();
-		getFormPanel().add(passwordTextBox);
+		getFormPanel().add(new FormEntry(messages.password(), passwordTextBox));
 
 		loginButton = new Button(messages.login());
-		getFormPanel().add(loginButton);
+		getFormPanel().add(new FormEntry("", loginButton));
 
 		errorLabel = new Label("");
-		getFormPanel().add(errorLabel);
+		getFormPanel().add(new FormEntry("", errorLabel));
 
 		loginError = messages.loginError();
 	}

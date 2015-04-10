@@ -3,6 +3,7 @@
 <module rename-to="nibiru_mobile_sample">
 	<inherits name="ar.com.oxen.nibiru.mobile.mgwt.Module" />
 	<inherits name="ar.com.oxen.nibiru.mobile.sample.app.Module" />
+	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 	<entry-point
 		class="ar.com.oxen.nibiru.mobile.sample.mgwt.client.GwtEntryPoint" />
 </module>

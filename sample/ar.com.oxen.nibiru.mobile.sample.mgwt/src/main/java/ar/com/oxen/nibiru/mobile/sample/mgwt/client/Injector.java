@@ -6,11 +6,13 @@ import ar.com.oxen.nibiru.mobile.gwt.ioc.DefaultGwtPlacesModule;
 import ar.com.oxen.nibiru.mobile.gwt.ioc.DefaultSecurityModule;
 import ar.com.oxen.nibiru.mobile.gwt.ioc.GwtInjector;
 import ar.com.oxen.nibiru.mobile.mgwt.ioc.DefaultMgwtUiModule;
+import ar.com.oxen.nibiru.mobile.mgwt.ui.security.DefaultMgwtSecurityModule;
 
 import com.google.gwt.inject.client.GinModules;
 
 @GinModules({ Module.class, DefaultGwtModule.class,
 		DefaultGwtHardwareModule.class, DefaultGwtPlacesModule.class,
-		DefaultMgwtUiModule.class, DefaultSecurityModule.class })
+		DefaultMgwtUiModule.class, DefaultSecurityModule.class,
+		DefaultMgwtSecurityModule.class })
 public interface Injector extends GwtInjector {
 }

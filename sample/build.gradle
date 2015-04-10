@@ -7,7 +7,7 @@ project.ext {
 
 allprojects {
 	version = '0.3-SNAPSHOT'
-	group = 'ar.com.oxen.nibiru.mobile'
+	group = 'ar.com.oxen.nibiru.mobile.sample'
 
 	repositories {
 		mavenLocal()
@@ -17,12 +17,20 @@ allprojects {
 	        url "https://oss.sonatype.org/content/repositories/snapshots/"
 	    }
 	}
+
+	buildscript {
+	    dependencies {
+			repositories {
+			    mavenCentral()
+			    jcenter()
+			    maven {
+			        url "https://oss.sonatype.org/content/repositories/snapshots/"
+			    }
+			}
+	    }
+	}
 }
 
 subprojects {
-	apply plugin: 'java'
-	apply plugin: 'eclipse'
 	apply plugin: 'maven'
-
-	sourceCompatibility = 1.6
 }

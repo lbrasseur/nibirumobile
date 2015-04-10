@@ -22,10 +22,10 @@ public class SimplePlace extends com.google.gwt.place.shared.Place implements
 
 	//TODO: No esta bueno que el ID sea nullable, pero en
 	// ar.com.oxen.nibiru.mobile.gwt.app.GwtPlacesBootstrap.onBootstrap()
-	// le estoy pasando null
-	public SimplePlace(@Nullable String id, int order, PlaceController placeController) {
+	// le estoy pasando null. Lo mismo para el place controller.
+	public SimplePlace(@Nullable String id, int order, @Nullable PlaceController placeController) {
 		this.id = id;
-		this.placeController = checkNotNull(placeController);
+		this.placeController = placeController;
 		this.parameters = Maps.newHashMap();
 		this.order = order;
 	}

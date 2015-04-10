@@ -15,6 +15,7 @@ import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
 import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.form.FormEntry;
 import com.googlecode.mgwt.ui.client.widget.input.MTextBox;
 
 public class SampleDisplay extends BaseFormView implements Display {
@@ -30,30 +31,30 @@ public class SampleDisplay extends BaseFormView implements Display {
 		checkNotNull(messages);
 
 		Label lblEjemploDeVista = new Label(messages.title());
-		getFormPanel().add(lblEjemploDeVista);
+		getFormPanel().add(new FormEntry(messages.title(), lblEjemploDeVista));
 
 		alertTrigger = new Button(messages.showAlert());
-		getFormPanel().add(alertTrigger);
+		getFormPanel().add(new FormEntry(messages.showAlert(), alertTrigger));
 		alertTrigger.setSize("130px", "26px");
 
 		nameLoad = new MTextBox();
 		nameLoad.setText("Pepe");
-		getFormPanel().add(nameLoad);
+		getFormPanel().add(new FormEntry("", nameLoad));
 
 		greetingTrigger = new Button(messages.greet());
-		getFormPanel().add(greetingTrigger);
+		getFormPanel().add(new FormEntry(messages.greet(), greetingTrigger));
 		greetingTrigger.setSize("78px", "19px");
 
 		greetingDisplay = new Label("");
-		getFormPanel().add(greetingDisplay);
+		getFormPanel().add(new FormEntry("", greetingDisplay));
 		greetingDisplay.setSize("213px", "60px");
 
 		showLocation = new Button(messages.getPosition());
-		getFormPanel().add(showLocation);
+		getFormPanel().add(new FormEntry(messages.getPosition(), showLocation));
 		showLocation.setSize("130px", "19px");
 
 		navigateTrigger = new Button(messages.navigate());
-		getFormPanel().add(navigateTrigger);
+		getFormPanel().add(new FormEntry(messages.getPosition(), navigateTrigger));
 		navigateTrigger.setSize("78px", "19px");
 	}
 

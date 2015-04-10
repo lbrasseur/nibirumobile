@@ -11,6 +11,7 @@ import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter.Display;
 
 import com.googlecode.mgwt.ui.client.widget.button.Button;
+import com.googlecode.mgwt.ui.client.widget.form.FormEntry;
 
 public class SecondDisplay extends BaseFormView implements Display {
 	private final Button backTrigger;
@@ -19,7 +20,7 @@ public class SecondDisplay extends BaseFormView implements Display {
 	public SecondDisplay(SampleMessages messages) {
 		checkNotNull(messages);
 		backTrigger = new Button(messages.back());
-		getFormPanel().add(backTrigger);
+		getFormPanel().add(new FormEntry(messages.back(), backTrigger));
 		backTrigger.setSize("78px", "19px");
 	}
 
