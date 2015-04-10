@@ -12,7 +12,7 @@ It was built with the same philosophy used in [Nibiru Framework](https://github.
 The components are based on JSR330 dependency injection, but implementations are based on many technologies, such as:
 
  * Android: [Guice](http://code.google.com/p/google-guice/), [RoboGuice](http://code.google.com/p/roboguice/), [OrmLite](http://ormlite.com/).
- * GWT: [GIN](http://code.google.com/p/google-gin/), [Apache Cordova](http://incubator.apache.org/cordova/) [PhoneGap](http://phonegap.com/)), [persistence.js](http://persistencejs.org/), [MGWT](http://www.m-gwt.com/).
+ * GWT: [GIN](http://code.google.com/p/google-gin/), [Apache Cordova](http://incubator.apache.org/cordova/), [PhoneGap](http://phonegap.com/), [persistence.js](http://persistencejs.org/), [MGWT](http://www.m-gwt.com/).
  * iOS: [RoboVM](http://robovm.com/).
 
 just to name the main ones.
