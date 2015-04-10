@@ -22,6 +22,6 @@ Please check the reference documentation:
 
 Look at the [GettingStarted Getting Started] section for a quick start. Also check the [brainstorming] section for ideas about the future of the framework.
 
-Believe it or not, there are [people using](WhoIsUsingThis) this framework!
+Believe it or not, there are [people using](https://github.com/lbrasseur/nibirumobile/wiki/WhoIsUsingThis) this framework!
 
-The API is still unstable. Wer'e working on many improvements, as you can see on the [releases page](Releases).
+The API is still unstable. Wer'e working on many improvements, as you can see on the [releases page](https://github.com/lbrasseur/nibirumobile/wiki/Releases).
