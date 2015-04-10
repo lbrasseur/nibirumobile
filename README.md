@@ -20,7 +20,7 @@ just to name the main ones.
 Please check the reference documentation:
  * http://nibirumobile.googlecode.com/git/main/docs/Nibiru_Mobile_Reference_en.pdf (English)
 
-Look at the [GettingStarted Getting Started] section for a quick start. Also check the [brainstorming] section for ideas about the future of the framework.
+Look at the [Getting Started](https://github.com/lbrasseur/nibirumobile/wiki/GettingStarted) section for a quick start. Also check the [brainstorming](https://github.com/lbrasseur/nibirumobile/wiki/Brainstorming) section for ideas about the future of the framework.
 
 Believe it or not, there are [people using](https://github.com/lbrasseur/nibirumobile/wiki/WhoIsUsingThis) this framework!
 
