@@ -33,3 +33,7 @@ dependencies {
 	}
 	compile files("lib/com.gwtmobile.persistence-1.0.jar")
 }
+
+tasks.eclipse.doLast {
+	delete fileTree("src/main/webapp/WEB-INF/lib")
+}
