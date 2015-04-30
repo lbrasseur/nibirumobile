@@ -33,33 +33,33 @@ public class LoginDisplay extends BaseUIViewView implements Display {
 		checkNotNull(messages);
 		container = new UIView(UIScreen.getMainScreen().getBounds());
 
-		UILabel usernameLabel = new UILabel(new CGRect(20, 50, 100, 25));
+		UILabel usernameLabel = new UILabel(new CGRect(20, 100, 100, 25));
 		usernameLabel.setText(messages.user() + ":");
 		usernameLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(usernameLabel);
 
-		username = new UITextField(new CGRect(120, 50, 150, 25));
+		username = new UITextField(new CGRect(120, 100, 150, 25));
 		username.setBorderStyle(UITextBorderStyle.RoundedRect);
 		username.setDelegate(getTextFieldDelegate());
 		container.addSubview(username);
 
-		UILabel passwordLabel = new UILabel(new CGRect(20, 100, 100, 25));
+		UILabel passwordLabel = new UILabel(new CGRect(20, 150, 100, 25));
 		passwordLabel.setText(messages.password() + ":");
 		passwordLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(passwordLabel);
 
-		password = new UITextField(new CGRect(120, 100, 150, 25));
+		password = new UITextField(new CGRect(120, 150, 150, 25));
 		password.setBorderStyle(UITextBorderStyle.RoundedRect);
 		password.setSecureTextEntry(true);
 		password.setDelegate(getTextFieldDelegate());
 		container.addSubview(password);
 
-		errorLabel = new UILabel(new CGRect(20, 150, 200, 25));
+		errorLabel = new UILabel(new CGRect(20, 200, 200, 25));
 		errorLabel.setBackgroundColor(UIColor.clear());
 		container.addSubview(errorLabel);
 
 		loginButton = UIButton.create(UIButtonType.RoundedRect);
-		loginButton.setFrame(new CGRect(80, 200, 100, 30));
+		loginButton.setFrame(new CGRect(80, 250, 100, 30));
 		loginButton.setTitle("Login", UIControlState.Normal);
 		container.addSubview(loginButton);
 	}

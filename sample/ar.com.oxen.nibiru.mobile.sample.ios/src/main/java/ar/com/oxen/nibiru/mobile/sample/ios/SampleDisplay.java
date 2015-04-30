@@ -39,39 +39,39 @@ public class SampleDisplay extends BaseUIViewView implements Display {
 		container = new UIView(UIScreen.getMainScreen().getBounds());
 		container.setBackgroundColor(UIColor.lightGray());
 
-		UILabel mensaje = new UILabel(new CGRect(20, 50, 200, 25));
+		UILabel mensaje = new UILabel(new CGRect(20, 100, 200, 25));
 		mensaje.setText(messages.title());
 		mensaje.setBackgroundColor(UIColor.clear());
 		container.addSubview(mensaje);
 
 		alertTrigger = UIButton.create(UIButtonType.RoundedRect);
-		alertTrigger.setFrame(new CGRect(20, 80, 100, 25));
+		alertTrigger.setFrame(new CGRect(20, 130, 100, 25));
 		alertTrigger.setTitle(messages.showAlert(), UIControlState.Normal);
 		container.addSubview(alertTrigger);
 
-		nameLoad = new UITextField(new CGRect(20, 110, 200, 25));
+		nameLoad = new UITextField(new CGRect(20, 210, 200, 25));
 		nameLoad.setText("Pepe");
 		nameLoad.setBorderStyle(UITextBorderStyle.RoundedRect);
 		nameLoad.setDelegate(getTextFieldDelegate());
 		container.addSubview(nameLoad);
 
 		greetingTrigger = UIButton.create(UIButtonType.RoundedRect);
-		greetingTrigger.setFrame(new CGRect(20, 140, 100, 25));
+		greetingTrigger.setFrame(new CGRect(20, 240, 100, 25));
 		greetingTrigger.setTitle(messages.greet(), UIControlState.Normal);
 		container.addSubview(greetingTrigger);
 
-		greetingDisplay = new UILabel(new CGRect(20, 170, 200, 25));
+		greetingDisplay = new UILabel(new CGRect(20, 270, 200, 25));
 		greetingDisplay.setText("");
 		greetingDisplay.setBackgroundColor(UIColor.clear());
 		container.addSubview(greetingDisplay);
 
 		showLocation = UIButton.create(UIButtonType.RoundedRect);
-		showLocation.setFrame(new CGRect(20, 200, 100, 25));
+		showLocation.setFrame(new CGRect(20, 300, 100, 25));
 		showLocation.setTitle(messages.getPosition(), UIControlState.Normal);
 		container.addSubview(showLocation);
 
 		navigateTrigger = UIButton.create(UIButtonType.RoundedRect);
-		navigateTrigger.setFrame(new CGRect(20, 230, 100, 25));
+		navigateTrigger.setFrame(new CGRect(20, 330, 100, 25));
 		navigateTrigger.setTitle(messages.navigate(), UIControlState.Normal);
 		container.addSubview(navigateTrigger);
 	}
