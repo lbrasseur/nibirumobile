@@ -1,4 +1,3 @@
-target
 build
 .settings
 .project
@@ -8,14 +7,9 @@ gwt-unitCache
 classes
 bin
 gen
-/main/ar.com.oxen.nibiru.mobile.kendoui/src/main/resources/ar/com/oxen/nibiru/mobile/kendoui/public/js
-/main/ar.com.oxen.nibiru.mobile.kendoui/src/main/resources/ar/com/oxen/nibiru/mobile/kendoui/public/styles
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/nibiru_mobile_sample/
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/WEB-INF/deploy/
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/WEB-INF/lib/
-/sample/ar.com.oxen.nibiru.mobile.sample.smartgwt/src/main/webapp/nibiru_mobile_sample/
-/sample/ar.com.oxen.nibiru.mobile.sample.smartgwt/src/main/webapp/WEB-INF/deploy/
-/sample/ar.com.oxen.nibiru.mobile.sample.smartgwt/src/main/webapp/WEB-INF/lib/
-/sample/ar.com.oxen.nibiru.mobile.sample.kendoui/src/main/webapp/nibiru_mobile_sample/
-/sample/ar.com.oxen.nibiru.mobile.sample.kendoui/src/main/webapp/WEB-INF/deploy/
-/sample/ar.com.oxen.nibiru.mobile.sample.kendoui/src/main/webapp/WEB-INF/lib/
+/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/nibiru_mobile_sample/
+/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/WEB-INF/deploy/
+/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/WEB-INF/lib/
