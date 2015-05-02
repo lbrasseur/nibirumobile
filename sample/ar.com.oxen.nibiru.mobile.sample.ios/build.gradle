@@ -11,6 +11,7 @@ buildscript {
 dependencies {
 	compile project(":ar.com.oxen.nibiru.mobile.sample.app")
     compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.ios:${version}"
+    compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.security.ios:${version}"
 }
 
 eclipse.project {

@@ -3,8 +3,8 @@
     <string-array name="roboguice_modules">
         <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidModule</item>
         <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidHardwareModule</item>
-        <item>ar.com.oxen.nibiru.mobile.core.ioc.DefaultSecurityModule</item>
-        <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidSecurityModule</item>
+        <item>ar.com.oxen.nibiru.mobile.security.android.ioc.DefaultAndroidSecurityModule</item>
+        <item>ar.com.oxen.nibiru.mobile.security.core.ioc.DefaultSecurityModule</item>
         <item>ar.com.oxen.nibiru.mobile.sample.android.Module</item>
     </string-array>
 </resources>

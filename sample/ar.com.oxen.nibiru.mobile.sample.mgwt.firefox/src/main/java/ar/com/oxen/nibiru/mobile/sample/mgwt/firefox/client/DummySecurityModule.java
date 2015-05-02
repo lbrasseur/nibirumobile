@@ -1,10 +1,10 @@
 package ar.com.oxen.nibiru.mobile.sample.mgwt.firefox.client;
 
-import ar.com.oxen.nibiru.mobile.core.api.business.security.AuthenticationManager;
-import ar.com.oxen.nibiru.mobile.core.api.business.security.Profile;
-import ar.com.oxen.nibiru.mobile.core.api.ui.security.SecurityMessages;
-import ar.com.oxen.nibiru.mobile.core.impl.business.security.ProfileImpl;
-import ar.com.oxen.nibiru.mobile.gwt.ui.security.GwtSecurityMessages;
+import ar.com.oxen.nibiru.mobile.security.core.api.business.AuthenticationManager;
+import ar.com.oxen.nibiru.mobile.security.core.api.business.Profile;
+import ar.com.oxen.nibiru.mobile.security.core.api.ui.SecurityMessages;
+import ar.com.oxen.nibiru.mobile.security.core.impl.business.ProfileImpl;
+import ar.com.oxen.nibiru.mobile.security.gwt.ui.GwtSecurityMessages;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 

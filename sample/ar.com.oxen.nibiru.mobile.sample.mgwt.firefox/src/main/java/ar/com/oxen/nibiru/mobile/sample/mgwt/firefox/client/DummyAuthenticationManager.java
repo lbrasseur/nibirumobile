@@ -5,8 +5,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
-import ar.com.oxen.nibiru.mobile.core.api.business.security.AuthenticationManager;
-import ar.com.oxen.nibiru.mobile.core.impl.business.security.ProfileImpl;
+import ar.com.oxen.nibiru.mobile.security.core.api.business.AuthenticationManager;
+import ar.com.oxen.nibiru.mobile.security.core.impl.business.ProfileImpl;
 
 public class DummyAuthenticationManager implements AuthenticationManager {
 	private final ProfileImpl profile;

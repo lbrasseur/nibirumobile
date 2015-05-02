@@ -8,9 +8,9 @@ import javax.inject.Inject;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import ar.com.oxen.nibiru.mobile.android.data.security.UserImpl;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
+import ar.com.oxen.nibiru.mobile.security.android.data.UserImpl;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;

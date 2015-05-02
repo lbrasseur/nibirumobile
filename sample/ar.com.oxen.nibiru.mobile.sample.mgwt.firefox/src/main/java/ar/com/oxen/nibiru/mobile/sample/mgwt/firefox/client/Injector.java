@@ -5,7 +5,7 @@ import ar.com.oxen.nibiru.mobile.gwt.ioc.DefaultGwtModule;
 import ar.com.oxen.nibiru.mobile.gwt.ioc.DefaultGwtPlacesModule;
 import ar.com.oxen.nibiru.mobile.gwt.ioc.GwtInjector;
 import ar.com.oxen.nibiru.mobile.mgwt.ioc.DefaultMgwtUiModule;
-import ar.com.oxen.nibiru.mobile.mgwt.ui.security.DefaultMgwtSecurityModule;
+import ar.com.oxen.nibiru.mobile.security.mgwt.ioc.DefaultMgwtSecurityModule;
 
 import com.google.gwt.inject.client.GinModules;
 

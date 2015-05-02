@@ -8,14 +8,14 @@ import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
 import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
-import ar.com.oxen.nibiru.mobile.core.impl.service.security.Authentication;
-import ar.com.oxen.nibiru.mobile.java.service.security.JsonRestAuthenticationServiceProvider;
 import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
+import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
+import ar.com.oxen.nibiru.mobile.security.java.service.JsonRestAuthenticationServiceProvider;
 
 import com.google.inject.AbstractModule;
 

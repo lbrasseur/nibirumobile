@@ -4,7 +4,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.inject.Inject;
 
-import ar.com.oxen.nibiru.mobile.core.api.business.security.Profile;
 import ar.com.oxen.nibiru.mobile.core.api.event.Event;
 import ar.com.oxen.nibiru.mobile.core.api.event.EventBus;
 import ar.com.oxen.nibiru.mobile.core.api.event.EventHandler;
@@ -20,6 +19,7 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
 import ar.com.oxen.nibiru.mobile.core.impl.mvp.BasePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
+import ar.com.oxen.nibiru.mobile.security.core.api.business.Profile;
 
 public class SamplePresenter extends BasePresenter<Display> {
 	public interface Display extends View {

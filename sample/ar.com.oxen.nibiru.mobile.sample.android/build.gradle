@@ -31,6 +31,7 @@ configurations {
 dependencies {
 	compile project(":ar.com.oxen.nibiru.mobile.sample.app")
     compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.android:${version}"
+    compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.security.android:${version}"
 }
 
 eclipse {
