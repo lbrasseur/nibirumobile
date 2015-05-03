@@ -5,7 +5,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import javax.inject.Inject;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -18,8 +17,7 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
-public class SampleDisplay extends BaseAndroidView implements Display {
-	private final LinearLayout view;
+public class SampleDisplay extends BaseAndroidView<LinearLayout> implements Display {
 	private final Button alertTrigger;
 	private final EditText nameLoad;
 	private final Button greetingTrigger;
@@ -29,38 +27,38 @@ public class SampleDisplay extends BaseAndroidView implements Display {
 
 	@Inject
 	public SampleDisplay(Context context, SampleMessages messages) {
+		super(new LinearLayout(context));
 		checkNotNull(context);
 		checkNotNull(messages);
-		view = new LinearLayout(context);
-		view.setOrientation(LinearLayout.VERTICAL);
+		asNative().setOrientation(LinearLayout.VERTICAL);
 
 		TextView mensaje = new TextView(context);
 		mensaje.setText(messages.title());
-		view.addView(mensaje);
+		asNative().addView(mensaje);
 
 		alertTrigger = new Button(context);
 		alertTrigger.setText(messages.showAlert());
-		view.addView(alertTrigger);
+		asNative().addView(alertTrigger);
 
 		nameLoad = new EditText(context);
 		nameLoad.setText("Pepe");
-		view.addView(nameLoad);
+		asNative().addView(nameLoad);
 
 		greetingTrigger = new Button(context);
 		greetingTrigger.setText(messages.greet());
-		view.addView(greetingTrigger);
+		asNative().addView(greetingTrigger);
 
 		greetingDisplay = new TextView(context);
 		greetingDisplay.setText("");
-		view.addView(greetingDisplay);
+		asNative().addView(greetingDisplay);
 
 		showLocation = new Button(context);
 		showLocation.setText(messages.getPosition());
-		view.addView(showLocation);
+		asNative().addView(showLocation);
 
 		navigateTrigger = new Button(context);
 		navigateTrigger.setText(messages.navigate());
-		view.addView(navigateTrigger);
+		asNative().addView(navigateTrigger);
 	}
 
 	@Override
@@ -91,10 +89,5 @@ public class SampleDisplay extends BaseAndroidView implements Display {
 	@Override
 	public HasClickHandler getShowLocation() {
 		return new ViewAdapter(showLocation);
-	}
-
-	@Override
-	public View asNative() {
-		return view;
 	}
 }

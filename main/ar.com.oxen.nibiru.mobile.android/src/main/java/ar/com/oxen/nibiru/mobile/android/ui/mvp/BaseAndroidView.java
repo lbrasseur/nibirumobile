@@ -1,5 +1,6 @@
 package ar.com.oxen.nibiru.mobile.android.ui.mvp;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -11,7 +12,18 @@ import android.view.View;
 /**
  * Base class for Android based views.
  */
-public abstract class BaseAndroidView implements AndroidView {
+public abstract class BaseAndroidView<V extends View> implements AndroidView {
+	private V view;
+
+	protected BaseAndroidView(V view) {
+		this.view = checkNotNull(view);
+	}
+
+	@Override
+	public V asNative() {
+		return view;
+	}
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		return false;
@@ -77,5 +89,14 @@ public abstract class BaseAndroidView implements AndroidView {
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		return false;
+	}
+
+	@SuppressWarnings("unchecked")
+	protected <T extends View> T findViewById(int id) {
+		return (T) view.findViewById(id);
+	}
+
+	protected <T extends View> T findViewById(int id, Class<T> clazz) {
+		return findViewById(id);
 	}
 }

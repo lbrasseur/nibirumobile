@@ -12,12 +12,14 @@ import ar.com.oxen.nibiru.mobile.security.core.impl.ui.LoginPresenter;
 public class SamplePresenterMapper extends BasePresenterMapper {
 	@Inject
 	public SamplePresenterMapper(Provider<LoginPresenter> loginPresenter,
+			Provider<MainMenuPresenter> mainMenuPresenter,
 			Provider<SamplePresenter> samplePresenter,
 			Provider<SecondPresenter> secondPresenter) {
 		checkNotNull(loginPresenter);
 		checkNotNull(samplePresenter);
 		map(DefaultPlaces.LOGIN, loginPresenter);
-		map(DefaultPlaces.HOME, samplePresenter);
+		map(DefaultPlaces.HOME, mainMenuPresenter);
+		map(SamplePlaces.SAMPLES, samplePresenter);
 		map(SamplePlaces.SECOND, secondPresenter);
 	}
 }

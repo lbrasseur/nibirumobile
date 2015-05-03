@@ -18,6 +18,6 @@ public class SampleEntryPoint implements EntryPoint {
 
 	@Override
 	public void onApplicationStart() {
-		placeManager.createPlace(DefaultPlaces.LOGIN).go();
+		placeManager.createPlace(DefaultPlaces.HOME).go();
 	}
 }

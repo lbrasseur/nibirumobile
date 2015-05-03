@@ -30,7 +30,8 @@
     
     <application
         android:icon="@drawable/logo_oxen"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
             android:label="@string/app_name"
             android:name="ar.com.oxen.nibiru.mobile.android.app.BootstrapActivity" >
@@ -40,23 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ar.com.oxen.nibiru.mobile.android.ui.mvp.PresenterActivity" android:exported="false">
-            <intent-filter >
-                <action android:name="ar.com.oxen.nibiru.mobile.sample.android.place.LOGIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter >
-                <action android:name="ar.com.oxen.nibiru.mobile.sample.android.place.HOME" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter >
-                <action android:name="ar.com.oxen.nibiru.mobile.sample.android.place.SECOND" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name="ar.com.oxen.nibiru.mobile.android.ui.mvp.PresenterActivity" android:exported="false"/>
     </application>
 
 </manifest>
