@@ -28,6 +28,7 @@ gwt {
 
 dependencies {
 	compile project(":ar.com.oxen.nibiru.mobile.sample.app")
+	compile project(":ar.com.oxen.nibiru.mobile.sample.mgwt")
 	compile("ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.mgwt:${version}") {
 		exclude module: 'gwt-user'
 	}

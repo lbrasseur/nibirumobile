@@ -4,10 +4,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.inject.Inject;
 
-import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import ar.com.oxen.nibiru.mobile.android.ui.mvp.BaseAndroidView;
 import ar.com.oxen.nibiru.mobile.android.ui.mvp.TextViewAdapter;
@@ -17,7 +17,7 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
 
-public class SampleDisplay extends BaseAndroidView<LinearLayout> implements Display {
+public class SampleDisplay extends BaseAndroidView<View> implements Display {
 	private final Button alertTrigger;
 	private final EditText nameLoad;
 	private final Button greetingTrigger;
@@ -26,39 +26,27 @@ public class SampleDisplay extends BaseAndroidView<LinearLayout> implements Disp
 	private final Button showLocation;
 
 	@Inject
-	public SampleDisplay(Context context, SampleMessages messages) {
-		super(new LinearLayout(context));
-		checkNotNull(context);
+	public SampleDisplay(LayoutInflater layoutInflater, SampleMessages messages) {
+		super(layoutInflater.inflate(R.layout.sample, null));
 		checkNotNull(messages);
-		asNative().setOrientation(LinearLayout.VERTICAL);
 
-		TextView mensaje = new TextView(context);
-		mensaje.setText(messages.title());
-		asNative().addView(mensaje);
+		findViewById(R.id.title, TextView.class).setText(messages.title());
 
-		alertTrigger = new Button(context);
+		alertTrigger = findViewById(R.id.alertTrigger);
 		alertTrigger.setText(messages.showAlert());
-		asNative().addView(alertTrigger);
 
-		nameLoad = new EditText(context);
-		nameLoad.setText("Pepe");
-		asNative().addView(nameLoad);
+		nameLoad = findViewById(R.id.nameLoad);
 
-		greetingTrigger = new Button(context);
+		greetingTrigger = findViewById(R.id.greetingTrigger);
 		greetingTrigger.setText(messages.greet());
-		asNative().addView(greetingTrigger);
 
-		greetingDisplay = new TextView(context);
-		greetingDisplay.setText("");
-		asNative().addView(greetingDisplay);
+		greetingDisplay = findViewById(R.id.greetingDisplay);
 
-		showLocation = new Button(context);
+		showLocation = findViewById(R.id.showLocation);
 		showLocation.setText(messages.getPosition());
-		asNative().addView(showLocation);
 
-		navigateTrigger = new Button(context);
+		navigateTrigger = findViewById(R.id.navigateTrigger);
 		navigateTrigger.setText(messages.navigate());
-		asNative().addView(navigateTrigger);
 	}
 
 	@Override

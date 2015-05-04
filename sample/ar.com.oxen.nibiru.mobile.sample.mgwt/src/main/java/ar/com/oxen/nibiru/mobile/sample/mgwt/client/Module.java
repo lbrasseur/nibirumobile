@@ -8,15 +8,16 @@ import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
 import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
-import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
 import ar.com.oxen.nibiru.mobile.gwt.app.DatabaseBootstrap;
 import ar.com.oxen.nibiru.mobile.gwt.data.GwtMobileDatabaseBootstrap;
-import ar.com.oxen.nibiru.mobile.security.gwt.service.RestAutoBeanAuthenticationServiceProvider;
 import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
+import ar.com.oxen.nibiru.mobile.sample.app.ui.MainMenuPresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
 import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
+import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
+import ar.com.oxen.nibiru.mobile.security.gwt.service.RestAutoBeanAuthenticationServiceProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -37,6 +38,7 @@ public class Module extends AbstractGinModule {
 
 		/* UI bindings */
 		bind(PresenterMapper.class).to(SamplePresenterMapper.class);
+		bind(MainMenuPresenter.Display.class).to(MainMenuDisplay.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class);
 		bind(SecondPresenter.Display.class).to(SecondDisplay.class);
 		bind(SampleMessages.class).to(GwtSampleMessages.class);

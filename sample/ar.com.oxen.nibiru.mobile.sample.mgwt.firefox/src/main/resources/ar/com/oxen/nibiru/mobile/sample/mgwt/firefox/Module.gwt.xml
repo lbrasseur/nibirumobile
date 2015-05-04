@@ -3,7 +3,7 @@
 <module rename-to="nibiru_mobile_sample">
 	<inherits name="ar.com.oxen.nibiru.mobile.mgwt.Module" />
 	<inherits name="ar.com.oxen.nibiru.mobile.security.mgwt.Module" />
-	<inherits name="ar.com.oxen.nibiru.mobile.sample.app.Module" />
+	<inherits name="ar.com.oxen.nibiru.mobile.sample.mgwt.Module" />
 	<set-property name="user.agent" value="gecko1_8" />
 	<set-property name="mgwt.formfactor" value="phone" />
 	<add-linker name="sso" />
