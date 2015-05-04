@@ -75,7 +75,7 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		UIView view = (UIView) presenter.getView().asNative();
 
 		if (!presenterStack.isEmpty()) {
-			presenterStack.peek().onStop();;
+			presenterStack.peek().onDeactivate();;
 		}
 
 		UINavigationController navigationController = (UINavigationController) mainWindow
@@ -97,6 +97,6 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		presenter.go(this);
 
 		presenterStack.push(presenter);
-		presenter.onStart();
+		presenter.onActivate();
 	}
 }

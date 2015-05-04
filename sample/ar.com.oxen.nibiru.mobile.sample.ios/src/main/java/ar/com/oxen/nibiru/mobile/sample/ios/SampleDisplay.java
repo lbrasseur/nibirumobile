@@ -21,8 +21,8 @@ import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UILabelAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UITextFieldAdapter;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter.Display;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenter.Display;
 
 public class SampleDisplay extends BaseUIViewView implements Display {
 	private final UIView container;

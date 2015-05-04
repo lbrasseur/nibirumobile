@@ -15,8 +15,8 @@ import org.robovm.apple.uikit.UIView;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter.Display;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SecondPresenter.Display;
 
 public class SecondDisplay extends BaseUIViewView implements Display {
 	private final UIView container;

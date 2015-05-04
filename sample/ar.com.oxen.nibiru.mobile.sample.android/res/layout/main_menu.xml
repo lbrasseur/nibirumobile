@@ -15,20 +15,27 @@
         android:layout_marginTop="22dp"
         android:src="@drawable/logo_oxen" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/title"
+        android:layout_marginLeft="25dp"
+        android:src="@drawable/logo_aaj" />
+    
     <TextView
         android:id="@+id/title"
-        style="@style/Text"
+        style="@style/Title"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:text="Large Text"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Large Text" />
 
     <Button
         android:id="@+id/userManagement"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
@@ -38,12 +45,12 @@
 
     <Button
         android:id="@+id/samples"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/userManagement"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:text="Button" />
+
 
 </RelativeLayout>

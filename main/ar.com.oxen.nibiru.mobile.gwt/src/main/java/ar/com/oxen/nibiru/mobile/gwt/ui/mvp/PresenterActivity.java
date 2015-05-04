@@ -29,12 +29,12 @@ public class PresenterActivity extends AbstractActivity {
 		IsWidget widget = (IsWidget) presenter.getView().asNative();
 		containerWidget.setWidget(widget);
 		presenter.go(place);
-		presenter.onStart();
+		presenter.onActivate();
 	}
 
 	@Override
 	public void onStop() {
 		super.onStop();
-		presenter.onStop();
+		presenter.onDeactivate();
 	}
 }

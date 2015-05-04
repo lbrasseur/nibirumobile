@@ -5,6 +5,6 @@
         <item>ar.com.oxen.nibiru.mobile.android.ioc.DefaultAndroidHardwareModule</item>
         <item>ar.com.oxen.nibiru.mobile.security.android.ioc.DefaultAndroidSecurityModule</item>
         <item>ar.com.oxen.nibiru.mobile.security.core.ioc.DefaultSecurityModule</item>
-        <item>ar.com.oxen.nibiru.mobile.sample.android.Module</item>
+        <item>ar.com.oxen.nibiru.mobile.sample.android.app.Module</item>
     </string-array>
 </resources>

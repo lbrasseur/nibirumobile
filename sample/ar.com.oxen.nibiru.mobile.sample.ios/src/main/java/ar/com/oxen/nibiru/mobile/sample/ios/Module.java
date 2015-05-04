@@ -9,11 +9,11 @@ import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
 import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
-import ar.com.oxen.nibiru.mobile.sample.app.app.SampleEntryPoint;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SampleMessages;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenter;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SamplePresenterMapper;
-import ar.com.oxen.nibiru.mobile.sample.app.ui.SecondPresenter;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.SampleEntryPoint;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenter;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenterMapper;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SecondPresenter;
 import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
 import ar.com.oxen.nibiru.mobile.security.java.service.JsonRestAuthenticationServiceProvider;
 

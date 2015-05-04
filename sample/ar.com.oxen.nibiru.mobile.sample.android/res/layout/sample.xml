@@ -10,17 +10,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/greetingTrigger"
-        android:layout_marginLeft="47dp"
+        android:layout_alignTop="@+id/greetingTrigger"
+        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/greetingTrigger"
+        android:gravity="center"
         android:text="Pepe" />
 
     <Button
         android:id="@+id/showLocation"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/greetingTrigger"
         android:layout_below="@+id/greetingTrigger"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:text="Button" />
 
@@ -29,13 +30,14 @@
         style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/showLocation"
         android:layout_below="@+id/showLocation"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:text="Button" />
 
     <TextView
         android:id="@+id/title"
+        style="@style/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -45,43 +47,32 @@
 
     <Button
         android:id="@+id/alertTrigger"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/title"
         android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:text="Button" />
 
     <Button
         android:id="@+id/greetingTrigger"
-        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/nameLoad"
-        android:layout_alignBottom="@+id/nameLoad"
+        android:layout_below="@+id/alertTrigger"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
         android:text="Button" />
 
     <EditText
         android:id="@+id/nameLoad"
-        style="@style/EditText"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/alertTrigger"
-        android:layout_marginTop="34dp"
-        android:layout_toLeftOf="@+id/alertTrigger"
+        android:layout_alignTop="@+id/greetingTrigger"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/greetingTrigger"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/alertTrigger"
-        android:layout_toRightOf="@+id/greetingDisplay"
-        android:ems="10" />
 
 </RelativeLayout>

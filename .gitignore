@@ -7,9 +7,9 @@ gwt-unitCache
 classes
 bin
 gen
+/sample/ar.com.oxen.nibiru.mobile.sample.gwt/src/main/webapp/nibiru_mobile_sample/
+/sample/ar.com.oxen.nibiru.mobile.sample.gwt/src/main/webapp/WEB-INF/deploy/
+/sample/ar.com.oxen.nibiru.mobile.sample.gwt/src/main/webapp/WEB-INF/lib/
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/nibiru_mobile_sample/
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/WEB-INF/deploy/
 /sample/ar.com.oxen.nibiru.mobile.sample.mgwt/src/main/webapp/WEB-INF/lib/
-/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/nibiru_mobile_sample/
-/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/WEB-INF/deploy/
-/sample/ar.com.oxen.nibiru.mobile.sample.mgwt.firefox/src/main/webapp/WEB-INF/lib/

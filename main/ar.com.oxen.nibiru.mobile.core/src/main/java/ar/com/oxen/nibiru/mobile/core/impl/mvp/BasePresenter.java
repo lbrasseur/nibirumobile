@@ -27,11 +27,11 @@ abstract public class BasePresenter<V extends View> implements Presenter<V> {
 	}
 
 	@Override
-	public void onStart() {
+	public void onActivate() {
 	}
 
 	@Override
-	public void onStop() {
+	public void onDeactivate() {
 	}
 
 	protected AlertManager getAlertManager() {
