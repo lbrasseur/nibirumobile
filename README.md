@@ -19,6 +19,7 @@ just to name the main ones.
 Please check the reference documentation and demo:
  * [Nibiru_Mobile_Reference_en.pdf](https://github.com/lbrasseur/nibirumobile/raw/master/main/docs/Nibiru_Mobile_Reference_en.pdf) (English)
  * [Online demo](http://nibiru.oxen.com.ar) (Chrome and Safari only, since it is based on [MGWT](http://www.m-gwt.com/))
+ * [Android demo](https://github.com/lbrasseur/nibirumobile/raw/master/sample/dist/NibiruMobileDemo.apk) (Android 2.2 required)
 
 Look at the [Getting Started](https://github.com/lbrasseur/nibirumobile/wiki/GettingStarted) section for a quick start. Also check the [brainstorming](https://github.com/lbrasseur/nibirumobile/wiki/Brainstorming) section for ideas about the future of the framework.
 
