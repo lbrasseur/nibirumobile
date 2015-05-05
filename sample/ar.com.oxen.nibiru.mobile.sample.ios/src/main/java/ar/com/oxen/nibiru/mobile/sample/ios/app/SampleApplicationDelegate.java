@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.sample.ios;
+package ar.com.oxen.nibiru.mobile.sample.ios.app;
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;

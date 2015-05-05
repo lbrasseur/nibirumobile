@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.sample.ios;
+package ar.com.oxen.nibiru.mobile.sample.ios.app;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -9,11 +9,23 @@ import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
 import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
+import ar.com.oxen.nibiru.mobile.sample.app.api.business.CustomerManager;
+import ar.com.oxen.nibiru.mobile.sample.app.api.data.CustomerDao;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.SampleEntryPoint;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.business.CustomerManagerImpl;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.CustomerFormPresenter;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.CustomerManagementPresenter;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.MainMenuPresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenterMapper;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SecondPresenter;
+import ar.com.oxen.nibiru.mobile.sample.ios.data.CoreDataCustomerDao;
+import ar.com.oxen.nibiru.mobile.sample.ios.ui.CustomerFormDisplay;
+import ar.com.oxen.nibiru.mobile.sample.ios.ui.CustomerManagementDisplay;
+import ar.com.oxen.nibiru.mobile.sample.ios.ui.MainMenuDisplay;
+import ar.com.oxen.nibiru.mobile.sample.ios.ui.SampleDisplay;
+import ar.com.oxen.nibiru.mobile.sample.ios.ui.SecondDisplay;
 import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
 import ar.com.oxen.nibiru.mobile.security.java.service.JsonRestAuthenticationServiceProvider;
 
@@ -35,10 +47,19 @@ public class Module extends AbstractModule {
 
 		/* UI bindings */
 		bind(PresenterMapper.class).to(SamplePresenterMapper.class);
+		bind(MainMenuPresenter.Display.class).to(MainMenuDisplay.class);
+		bind(CustomerManagementPresenter.Display.class).to(CustomerManagementDisplay.class);
+		bind(CustomerFormPresenter.Display.class).to(CustomerFormDisplay.class);
 		bind(SamplePresenter.Display.class).to(SampleDisplay.class);
 		bind(SecondPresenter.Display.class).to(SecondDisplay.class);
 		bind(SampleMessages.class).toProvider(
 				new MessageProvider<SampleMessages>(SampleMessages.class));
+
+		/* Business bindings */
+		bind(CustomerManager.class).to(CustomerManagerImpl.class);
+
+		/* Data bindings */
+		bind(CustomerDao.class).to(CoreDataCustomerDao.class);
 
 		/* Service bindings */
 		bind(ObjectMapper.class).toProvider(ObjectMapperProvider.class);

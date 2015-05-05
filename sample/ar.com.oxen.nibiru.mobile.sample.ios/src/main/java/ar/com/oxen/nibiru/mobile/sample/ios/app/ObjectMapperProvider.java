@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.sample.ios;
+package ar.com.oxen.nibiru.mobile.sample.ios.app;
 
 import javax.inject.Provider;
 

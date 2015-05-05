@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobile.sample.ios;
+package ar.com.oxen.nibiru.mobile.sample.ios.ui;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
