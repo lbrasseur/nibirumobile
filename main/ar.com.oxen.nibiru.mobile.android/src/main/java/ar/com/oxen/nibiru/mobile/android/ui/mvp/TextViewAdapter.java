@@ -17,7 +17,6 @@ public class TextViewAdapter implements HasValue<String> {
 
 	@Override
 	public void setValue(String value) {
-		checkNotNull(value);
 		textView.setText(value);
 	}
 

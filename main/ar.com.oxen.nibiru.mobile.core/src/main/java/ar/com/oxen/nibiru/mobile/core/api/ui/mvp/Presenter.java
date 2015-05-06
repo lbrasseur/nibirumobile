@@ -25,10 +25,10 @@ public interface Presenter<V extends View> {
 	/**
 	 * Callback method called when entering the presenter.
 	 */
-	void onStart();
+	void onActivate();
 
 	/**
 	 * Callback method called when leaving the presenter.
 	 */
-	void onStop();
+	void onDeactivate();
 }

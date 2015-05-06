@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import android.content.Context;
 import android.text.method.PasswordTransformationMethod;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,43 +16,42 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.security.core.api.ui.SecurityMessages;
 import ar.com.oxen.nibiru.mobile.security.core.impl.ui.LoginPresenter.Display;
 
-public class LoginDisplay extends BaseAndroidView implements Display {
+public class LoginDisplay extends BaseAndroidView<LinearLayout> implements Display {
 	private final EditText username;
 	private final EditText password;
 	private final Button login;
 	private final TextView error;
 	private final String loginError;
-	private final LinearLayout view;
 
 	@Inject
 	public LoginDisplay(Context context, SecurityMessages messages) {
+		super(new LinearLayout(context));
 		checkNotNull(context);
 		checkNotNull(messages);
-		view = new LinearLayout(context);
-		view.setOrientation(LinearLayout.VERTICAL);
+		asNative().setOrientation(LinearLayout.VERTICAL);
 
 		TextView userLabel = new TextView(context);
 		userLabel.setText(messages.user() + ":");
-		view.addView(userLabel);
+		asNative().addView(userLabel);
 
 		username = new EditText(context);
-		view.addView(username);
+		asNative().addView(username);
 
 		TextView passwordLabel = new TextView(context);
 		passwordLabel.setText(messages.password() + ":");
-		view.addView(passwordLabel);
+		asNative().addView(passwordLabel);
 
 		password = new EditText(context);
 		password
 				.setTransformationMethod(new PasswordTransformationMethod());
-		view.addView(password);
+		asNative().addView(password);
 
 		login = new Button(context);
 		login.setText(messages.login());
-		view.addView(login);
+		asNative().addView(login);
 
 		error = new TextView(context);
-		view.addView(error);
+		asNative().addView(error);
 
 		loginError = messages.loginError();
 	}
@@ -76,10 +74,5 @@ public class LoginDisplay extends BaseAndroidView implements Display {
 	@Override
 	public void showLoginError() {
 		error.setText(loginError);
-	}
-
-	@Override
-	public View asNative() {
-		return view;
 	}
 }

@@ -47,12 +47,12 @@ public class UINavigationControllerPlaceManager implements PlaceManager {
 
 	@Override
 	public void back() {
-		presenterStack.pop().onStop();
+		presenterStack.pop().onDeactivate();
 		UINavigationController navigationController = (UINavigationController) mainWindow
 				.getRootViewController();
 		navigationController.popViewController(true);
 		if (!presenterStack.isEmpty()) {
-			presenterStack.peek().onStart();
+			presenterStack.peek().onActivate();
 		}
 	}
 }

@@ -56,7 +56,6 @@ public class PresenterActivity extends RoboActivity {
 	protected void onStop() {
 		super.onStop();
 		view.onStop();
-		presenter.onStop();
 	}
 
 	@Override
@@ -95,6 +94,7 @@ public class PresenterActivity extends RoboActivity {
 	protected void onPause() {
 		super.onPause();
 		view.onPause();
+		presenter.onDeactivate();
 	}
 
 	@Override
@@ -107,13 +107,13 @@ public class PresenterActivity extends RoboActivity {
 	protected void onResume() {
 		super.onResume();
 		view.onResume();
+		presenter.onActivate();
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 		view.onStart();
-		presenter.onStart();
 	}
 
 	@Override
