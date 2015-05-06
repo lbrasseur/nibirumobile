@@ -5,10 +5,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import javax.inject.Inject;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
-import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ChangeHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.ClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
-import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasValue;
+import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.View;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
@@ -19,9 +18,9 @@ import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.CustomerFormPresenter.Displa
 
 public class CustomerFormPresenter extends BasePresenter<Display> {
 	public interface Display extends View {
-		HasValue<String> getFirstName();
+		TakesValue<String> getFirstName();
 
-		HasValue<String> getLastName();
+		TakesValue<String> getLastName();
 
 		HasClickHandler getSave();
 
@@ -54,23 +53,11 @@ public class CustomerFormPresenter extends BasePresenter<Display> {
 			updateCustomer(customerManager.createCustomer());
 		}
 
-		getView().getFirstName().setChangeHandler(new ChangeHandler() {
-			@Override
-			public void onChange() {
-				customer.setFirstName(getView().getFirstName().getValue());
-			}
-		});
-
-		getView().getLastName().setChangeHandler(new ChangeHandler() {
-			@Override
-			public void onChange() {
-				customer.setLastName(getView().getLastName().getValue());
-			}
-		});
-
 		getView().getSave().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
+				customer.setFirstName(getView().getFirstName().getValue());
+				customer.setLastName(getView().getLastName().getValue());
 				customerManager.saveCustomer(customer, new Cbk<Void>() {
 					@Override
 					public void onSuccess(Void result) {

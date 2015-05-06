@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.robovm.apple.coregraphics.CGRect;
 import org.robovm.apple.foundation.NSBundle;
 import org.robovm.apple.foundation.NSIndexPath;
 import org.robovm.apple.uikit.UIButton;
@@ -15,7 +16,6 @@ import org.robovm.apple.uikit.UITableView;
 import org.robovm.apple.uikit.UITableViewCell;
 import org.robovm.apple.uikit.UITableViewDataSourceAdapter;
 import org.robovm.apple.uikit.UITableViewDelegateAdapter;
-import org.robovm.apple.uikit.UITextView;
 import org.robovm.apple.uikit.UIView;
 import org.robovm.objc.annotation.Property;
 
@@ -33,6 +33,7 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 	private final SampleMessages messages;
 	private UIView container;
 	private UIButton add;
+	private UITableView customerList;
 	private List<Customer> customers;
 	private Customer selectedCustomer;
 	private ClickHandler rowClickHandler;
@@ -62,7 +63,7 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 
 	@Property
 	public void setCustomerList(UITableView customerList) {
-		checkNotNull(customerList);
+		this.customerList = checkNotNull(customerList);
 		customerList.setDelegate(new UITableViewDelegateAdapter() {
 			@Override
 			public void didSelectRow(UITableView tableView,
@@ -75,7 +76,7 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 			@Override
 			public long getNumberOfRowsInSection(UITableView tableView,
 					long section) {
-				return customers.size();
+				return customers != null ? customers.size() : 0;
 			}
 
 			@Override
@@ -83,7 +84,8 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 					NSIndexPath indexPath) {
 				Customer customer = customers.get((int) indexPath.getRow());
 				UITableViewCell cell = new UITableViewCell();
-				UITextView text = new UITextView();
+				UILabel text = new UILabel();
+				text.setFrame(new CGRect(20, 10, customerList.getFrame().getWidth() - 20, 32));
 				text.setText(customer.getLastName() + ", "
 						+ customer.getFirstName());
 				cell.addSubview(text);
@@ -100,6 +102,7 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 	@Override
 	public void setCustomers(List<Customer> customers) {
 		this.customers = checkNotNull(customers);
+		customerList.reloadData();
 	}
 
 	@Override

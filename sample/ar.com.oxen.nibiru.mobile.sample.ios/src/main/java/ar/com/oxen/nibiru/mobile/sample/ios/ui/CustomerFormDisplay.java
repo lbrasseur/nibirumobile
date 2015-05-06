@@ -15,6 +15,7 @@ import org.robovm.objc.annotation.Property;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasValue;
+import ar.com.oxen.nibiru.mobile.ios.ui.DefaultUITextFieldDelegate;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.BaseUIViewView;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UIButtonAdapter;
 import ar.com.oxen.nibiru.mobile.ios.ui.mvp.UITextFieldAdapter;
@@ -51,6 +52,7 @@ public class CustomerFormDisplay extends BaseUIViewView implements Display {
 	@Property
 	public void setFirstName(UITextField firstName) {
 		this.firstName = checkNotNull(firstName);
+		firstName.setDelegate(new DefaultUITextFieldDelegate());
 	}
 
 	@Property
@@ -62,6 +64,7 @@ public class CustomerFormDisplay extends BaseUIViewView implements Display {
 	@Property
 	public void setLastName(UITextField lastName) {
 		this.lastName = checkNotNull(lastName);
+		lastName.setDelegate(new DefaultUITextFieldDelegate());
 	}
 
 	@Property

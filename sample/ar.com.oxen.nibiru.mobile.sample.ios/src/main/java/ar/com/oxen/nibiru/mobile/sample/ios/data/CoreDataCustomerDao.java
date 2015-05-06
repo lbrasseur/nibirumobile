@@ -4,28 +4,22 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.robovm.apple.coredata.NSEntityDescription;
 import org.robovm.apple.coredata.NSFetchRequest;
 import org.robovm.apple.coredata.NSManagedObject;
 import org.robovm.apple.coredata.NSManagedObjectContext;
-import org.robovm.apple.coredata.NSManagedObjectModel;
-import org.robovm.apple.coredata.NSPersistentStoreCoordinator;
-import org.robovm.apple.coredata.NSPersistentStoreType;
-import org.robovm.apple.foundation.NSArray;
-import org.robovm.apple.foundation.NSBundle;
-import org.robovm.apple.foundation.NSFileManager;
 import org.robovm.apple.foundation.NSNumber;
 import org.robovm.apple.foundation.NSPredicate;
-import org.robovm.apple.foundation.NSSearchPathDirectory;
-import org.robovm.apple.foundation.NSSearchPathDomainMask;
 import org.robovm.apple.foundation.NSString;
-import org.robovm.apple.foundation.NSURL;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 import ar.com.oxen.nibiru.mobile.sample.app.api.data.Customer;
 import ar.com.oxen.nibiru.mobile.sample.app.api.data.CustomerDao;
 
 import com.google.common.base.Function;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
@@ -41,31 +35,17 @@ public class CoreDataCustomerDao implements CustomerDao {
 					.getValue(CUSTOMER_ID);
 			NSString firstName = (NSString) managedObject.getValue(FIRST_NAME);
 			NSString lastName = (NSString) managedObject.getValue(LAST_NAME);
-			return new CustomerImpl(customerId.intValue(),
-					firstName.toString(), lastName.toString());
+			return new CustomerImpl(customerId != null ? customerId.intValue()
+					: null, firstName != null ? firstName.toString() : null,
+					lastName != null ? lastName.toString() : null);
 		}
 	};
-	// TODO: fix ID generation
-	private static int idCounter = 0;
-	private final NSManagedObjectModel managedObjectModel;
-	private final NSPersistentStoreCoordinator persistentStoreCoordinator;
 	private final NSManagedObjectContext managedObjectContext;
 
-	public CoreDataCustomerDao() {
-		managedObjectModel = new NSManagedObjectModel(NSBundle.getMainBundle()
-				.findResourceURL("dataModel", "mom"));
-		persistentStoreCoordinator = new NSPersistentStoreCoordinator(
-				managedObjectModel);
-		NSArray<NSURL> nsa = NSFileManager.getDefaultManager()
-				.getURLsForDirectory(NSSearchPathDirectory.DocumentDirectory,
-						NSSearchPathDomainMask.UserDomainMask);
-		NSURL nsu = nsa.get(0).newURLByAppendingPathComponent(
-				"dataStore.sqlite");
-		persistentStoreCoordinator
-				.addPersistentStore(NSPersistentStoreType.SQLite, null, nsu, null);
-		managedObjectContext = new NSManagedObjectContext();
-		managedObjectContext
-				.setPersistentStoreCoordinator(persistentStoreCoordinator);
+	@Inject
+	public CoreDataCustomerDao(NSManagedObjectContext managedObjectContext) {
+		this.managedObjectContext = Preconditions
+				.checkNotNull(managedObjectContext);
 	}
 
 	@Override
@@ -110,20 +90,26 @@ public class CoreDataCustomerDao implements CustomerDao {
 				managedObject = Iterables.getFirst(managedObjectContext
 						.executeFetchRequest(byId(customer.getCustomerId())),
 						null);
-			} else {
-				customer.setCustomerId(++idCounter);
 			}
 			if (managedObject == null) {
 				managedObject = new NSManagedObject(
 						NSEntityDescription.getEntityByNameInContext(ENTITY,
 								managedObjectContext), managedObjectContext);
 			}
+			if (customerImpl.isNew()) {
+				managedObjectContext.save();
+				customerImpl.setCustomerId((int)managedObject.getObjectID().hash());
+			}
 			managedObject.setValue(CUSTOMER_ID,
 					NSNumber.valueOf(customer.getCustomerId()));
-			managedObject.setValue(FIRST_NAME,
-					new NSString(customer.getFirstName()));
-			managedObject.setValue(LAST_NAME,
-					new NSString(customer.getLastName()));
+			managedObject.setValue(
+					FIRST_NAME,
+					customer.getFirstName() != null ? new NSString(customer
+							.getFirstName()) : null);
+			managedObject.setValue(
+					LAST_NAME,
+					customer.getLastName() != null ? new NSString(customer
+							.getLastName()) : null);
 			managedObjectContext.save();
 			callback.onSuccess(null);
 		} catch (Exception e) {

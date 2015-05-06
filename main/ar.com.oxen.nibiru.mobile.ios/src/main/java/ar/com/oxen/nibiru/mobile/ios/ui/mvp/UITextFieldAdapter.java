@@ -30,6 +30,7 @@ public class UITextFieldAdapter implements HasValue<String> {
 
 	@Override
 	public HandlerRegistration setChangeHandler(ChangeHandler changeHandler) {
+		//TODO: this is not working!!!
 		OnValueChangedListener listener = new ChangeHandlerAdapter(
 				changeHandler);
 		textField.addOnValueChangedListener(listener);
