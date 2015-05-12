@@ -11,50 +11,59 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import ar.com.oxen.nibiru.mobile.core.api.async.Callback;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
 import ar.com.oxen.nibiru.mobile.core.api.http.HttpCallback;
 import ar.com.oxen.nibiru.mobile.core.api.http.HttpManager;
+import ar.com.oxen.nibiru.mobile.java.thread.ThreadHelper;
 
+import com.google.common.base.Supplier;
 import com.google.common.base.Throwables;
 import com.google.common.io.Closer;
 
 public class HttpClientHttpManager implements HttpManager {
 	private final String baseUrl;
+	private final HttpClient httpClient;
+	private final ThreadHelper threadHelper;
 
 	@Inject
-	public HttpClientHttpManager(@BaseUrl String baseUrl) {
+	public HttpClientHttpManager(@BaseUrl String baseUrl,
+			HttpClient httpClient, ThreadHelper threadHelper) {
 		this.baseUrl = checkNotNull(baseUrl);
+		this.httpClient = checkNotNull(httpClient);
+		this.threadHelper = checkNotNull(threadHelper);
 	}
 
 	@Override
-	public <T> void send(String url, Callback<T> callback,
-			HttpCallback<T> httpCallback) {
+	public <T> void send(final String url, final Callback<T> callback,
+			final HttpCallback<T> httpCallback) {
+		threadHelper.runOnNewThread(new Supplier<T>() {
+			@Override
+			public T get() {
+				return runAsync(url, httpCallback);
+			}
+		}, callback);
+	}
+
+	private <T> T runAsync(String url, HttpCallback<T> httpCallback) {
 		try {
 			Closer closer = Closer.create();
 			try {
-				HttpClient httpClient = new DefaultHttpClient();
-
 				HttpPost request = new HttpPost(baseUrl + url);
 				request.setEntity(new StringEntity(httpCallback.buildRequest()));
-
 				HttpResponse response = httpClient.execute(request);
-
-				callback.onSuccess(httpCallback.parseResponse(new Scanner(
-						closer.register(response.getEntity().getContent()))
-						.useDelimiter("\\A").next()));
-			} catch (Exception e) {
-				callback.onFailure(e);
+				return httpCallback.parseResponse(closer
+						.register(
+								new Scanner(response.getEntity().getContent()))
+						.useDelimiter("\\A").next());
 			} catch (Throwable e) {
-				closer.rethrow(e);
+				throw closer.rethrow(e);
 			} finally {
 				closer.close();
 			}
 		} catch (IOException ioException) {
-			Throwables.propagate(ioException);
+			throw Throwables.propagate(ioException);
 		}
 	}
-
 }

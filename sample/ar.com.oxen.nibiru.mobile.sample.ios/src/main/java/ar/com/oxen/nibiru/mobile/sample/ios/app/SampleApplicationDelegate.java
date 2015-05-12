@@ -9,6 +9,7 @@ import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
 import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultCoreDataModule;
 import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultIosHardwareModule;
 import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultIosModule;
+import ar.com.oxen.nibiru.mobile.java.ioc.DefaultJavaModule;
 import ar.com.oxen.nibiru.mobile.security.core.ioc.DefaultSecurityModule;
 import ar.com.oxen.nibiru.mobile.security.ios.ioc.DefaultIosSecurityModule;
 
@@ -19,6 +20,7 @@ public class SampleApplicationDelegate extends UIApplicationDelegateAdapter {
     public boolean didFinishLaunching(UIApplication application, 
             UIApplicationLaunchOptions launchOptions) {
 		Guice.createInjector(
+				new DefaultJavaModule(),
 				new DefaultIosModule(),
 				new DefaultIosSecurityModule(),
 				new DefaultIosHardwareModule(),
