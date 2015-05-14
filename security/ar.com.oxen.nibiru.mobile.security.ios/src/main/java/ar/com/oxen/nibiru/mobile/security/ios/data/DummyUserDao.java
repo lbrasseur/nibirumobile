@@ -1,4 +1,4 @@
-package ar.com.oxen.nibiru.mobilesecurity.ios.data;
+package ar.com.oxen.nibiru.mobile.security.ios.data;
 
 import java.util.Map;
 
