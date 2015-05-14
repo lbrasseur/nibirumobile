@@ -4,11 +4,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import org.robovm.apple.foundation.NSObject;
 import org.robovm.objc.Selector;
+import org.robovm.objc.annotation.Method;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.Looper;
 
 public class NSThreadLooper extends NSObject implements Looper {
-	private static final Selector run = Selector.register("name");
+	private static final Selector run = Selector.register("run:");
 
 	@Override
 	public void post(Runnable runnable) {
@@ -17,7 +18,8 @@ public class NSThreadLooper extends NSObject implements Looper {
 				false);
 	}
 
-	public void run(Runnable runnable) {
+	@Method
+	public void run(NSRunnableDecorator runnable) {
 		runnable.run();
 	}
 
