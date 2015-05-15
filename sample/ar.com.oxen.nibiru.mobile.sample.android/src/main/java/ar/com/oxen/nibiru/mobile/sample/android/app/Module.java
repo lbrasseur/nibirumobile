@@ -1,12 +1,9 @@
 package ar.com.oxen.nibiru.mobile.sample.android.app;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
 import ar.com.oxen.nibiru.mobile.core.api.app.EntryPoint;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
-import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 import ar.com.oxen.nibiru.mobile.sample.android.data.DatabaseHelper;
@@ -27,8 +24,6 @@ import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenterMapper;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SecondPresenter;
-import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
-import ar.com.oxen.nibiru.mobile.security.java.service.JsonRestAuthenticationServiceProvider;
 
 import com.google.inject.AbstractModule;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -63,10 +58,5 @@ public class Module extends AbstractModule {
 		/* Data bindings */
 		bind(OrmLiteSqliteOpenHelper.class).to(DatabaseHelper.class);
 		bind(CustomerDao.class).to(OrmLiteCustomerDao.class);
-
-		/* Service bindings */
-		bind(ObjectMapper.class).toProvider(ObjectMapperProvider.class);
-		bind(RemoteService.class).annotatedWith(Authentication.class)
-				.toProvider(JsonRestAuthenticationServiceProvider.class);
 	}
 }

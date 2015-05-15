@@ -6,7 +6,6 @@ import ar.com.oxen.nibiru.mobile.core.api.app.EntryPoint;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
-import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.gwt.app.DatabaseBootstrap;
 import ar.com.oxen.nibiru.mobile.gwt.data.GwtMobileDatabaseBootstrap;
@@ -28,8 +27,6 @@ import ar.com.oxen.nibiru.mobile.sample.mgwt.ui.GwtSampleMessages;
 import ar.com.oxen.nibiru.mobile.sample.mgwt.ui.MainMenuDisplay;
 import ar.com.oxen.nibiru.mobile.sample.mgwt.ui.SampleDisplay;
 import ar.com.oxen.nibiru.mobile.sample.mgwt.ui.SecondDisplay;
-import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
-import ar.com.oxen.nibiru.mobile.security.gwt.service.RestAutoBeanAuthenticationServiceProvider;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -64,11 +61,6 @@ public class Module extends AbstractGinModule {
 		/* Database bindings */
 		bind(DatabaseBootstrap.class).to(GwtMobileDatabaseBootstrap.class);
 		bind(CustomerDao.class).to(GwtMobileCustomerDao.class);
-
-		/* Service bindings */
-		bind(RemoteService.class).annotatedWith(Authentication.class)
-				.toProvider(RestAutoBeanAuthenticationServiceProvider.class);
-
 	}
 
 	public static class AppNameProvider implements Provider<String> {

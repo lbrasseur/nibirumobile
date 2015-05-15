@@ -10,7 +10,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
-import ar.com.oxen.nibiru.mobile.security.android.data.UserImpl;
 
 import com.google.common.base.Throwables;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -29,7 +28,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		checkNotNull(db);
 		checkNotNull(connectionSource);
 		try {
-			TableUtils.createTable(connectionSource, UserImpl.class);
 			TableUtils.createTable(connectionSource, CustomerImpl.class);
 		} catch (SQLException e) {
 			Throwables.propagate(e);

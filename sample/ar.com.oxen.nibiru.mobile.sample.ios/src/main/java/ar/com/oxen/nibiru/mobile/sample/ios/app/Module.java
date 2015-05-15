@@ -1,12 +1,9 @@
 package ar.com.oxen.nibiru.mobile.sample.ios.app;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
 import ar.com.oxen.nibiru.mobile.core.api.app.EntryPoint;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppName;
 import ar.com.oxen.nibiru.mobile.core.api.config.AppVersion;
 import ar.com.oxen.nibiru.mobile.core.api.config.BaseUrl;
-import ar.com.oxen.nibiru.mobile.core.api.service.RemoteService;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.java.ui.i18n.MessageProvider;
 import ar.com.oxen.nibiru.mobile.sample.app.api.business.CustomerManager;
@@ -26,8 +23,6 @@ import ar.com.oxen.nibiru.mobile.sample.ios.ui.CustomerManagementDisplay;
 import ar.com.oxen.nibiru.mobile.sample.ios.ui.MainMenuDisplay;
 import ar.com.oxen.nibiru.mobile.sample.ios.ui.SampleDisplay;
 import ar.com.oxen.nibiru.mobile.sample.ios.ui.SecondDisplay;
-import ar.com.oxen.nibiru.mobile.security.core.impl.service.Authentication;
-import ar.com.oxen.nibiru.mobile.security.java.service.JsonRestAuthenticationServiceProvider;
 
 import com.google.inject.AbstractModule;
 
@@ -60,10 +55,5 @@ public class Module extends AbstractModule {
 
 		/* Data bindings */
 		bind(CustomerDao.class).to(CoreDataCustomerDao.class);
-
-		/* Service bindings */
-		bind(ObjectMapper.class).toProvider(ObjectMapperProvider.class);
-		bind(RemoteService.class).annotatedWith(Authentication.class)
-				.toProvider(JsonRestAuthenticationServiceProvider.class);
 	}
 }

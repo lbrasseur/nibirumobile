@@ -10,8 +10,6 @@ import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultCoreDataModule;
 import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultIosHardwareModule;
 import ar.com.oxen.nibiru.mobile.ios.ioc.DefaultIosModule;
 import ar.com.oxen.nibiru.mobile.java.ioc.DefaultJavaModule;
-import ar.com.oxen.nibiru.mobile.security.core.ioc.DefaultSecurityModule;
-import ar.com.oxen.nibiru.mobile.security.ios.ioc.DefaultIosSecurityModule;
 
 import com.google.inject.Guice;
 
@@ -22,10 +20,8 @@ public class SampleApplicationDelegate extends UIApplicationDelegateAdapter {
 		Guice.createInjector(
 				new DefaultJavaModule(),
 				new DefaultIosModule(),
-				new DefaultIosSecurityModule(),
 				new DefaultIosHardwareModule(),
 				new DefaultCoreDataModule(),
-				new DefaultSecurityModule(),
 				new Module())
 				.getInstance(Bootstrap.class).onBootstrap();
 		return true;

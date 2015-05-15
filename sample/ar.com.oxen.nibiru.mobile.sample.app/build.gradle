@@ -9,5 +9,4 @@ jar {
 
 dependencies {
     compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.core:${version}"
-    compile "ar.com.oxen.nibiru.mobile:ar.com.oxen.nibiru.mobile.security.core:${version}"
 }

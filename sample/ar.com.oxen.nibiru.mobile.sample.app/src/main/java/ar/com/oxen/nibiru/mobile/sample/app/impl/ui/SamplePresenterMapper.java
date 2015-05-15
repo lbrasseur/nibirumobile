@@ -7,19 +7,19 @@ import javax.inject.Provider;
 
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.DefaultPlaces;
 import ar.com.oxen.nibiru.mobile.core.impl.mvp.BasePresenterMapper;
-import ar.com.oxen.nibiru.mobile.security.core.impl.ui.LoginPresenter;
 
 public class SamplePresenterMapper extends BasePresenterMapper {
 	@Inject
-	public SamplePresenterMapper(Provider<LoginPresenter> loginPresenter,
-			Provider<MainMenuPresenter> mainMenuPresenter,
+	public SamplePresenterMapper(Provider<MainMenuPresenter> mainMenuPresenter,
 			Provider<CustomerManagementPresenter> customerManagementPresenter,
 			Provider<CustomerFormPresenter> customerFormPresenter,
 			Provider<SamplePresenter> samplePresenter,
 			Provider<SecondPresenter> secondPresenter) {
-		checkNotNull(loginPresenter);
+		checkNotNull(mainMenuPresenter);
+		checkNotNull(customerManagementPresenter);
+		checkNotNull(customerFormPresenter);
 		checkNotNull(samplePresenter);
-		map(DefaultPlaces.LOGIN, loginPresenter);
+		checkNotNull(secondPresenter);
 		map(DefaultPlaces.HOME, mainMenuPresenter);
 		map(Places.CUSTOMER_MANAGEMENT, customerManagementPresenter);
 		map(Places.CUSTOMER_FORM, customerFormPresenter);

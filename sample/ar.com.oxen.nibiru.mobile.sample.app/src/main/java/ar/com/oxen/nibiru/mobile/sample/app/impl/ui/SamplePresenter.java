@@ -19,7 +19,6 @@ import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.PlaceManager;
 import ar.com.oxen.nibiru.mobile.core.impl.mvp.BasePresenter;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SamplePresenter.Display;
-import ar.com.oxen.nibiru.mobile.security.core.api.business.Profile;
 
 public class SamplePresenter extends BasePresenter<Display> {
 	public interface Display extends View {
@@ -38,19 +37,20 @@ public class SamplePresenter extends BasePresenter<Display> {
 
 	private final GeolocationManager geolocationManager;
 	private final EventBus eventBus;
-	private final Profile profile;
 	private final PlaceManager placeManager;
 	private final SampleMessages messages;
 	private HandlerRegistration handlerRegistration;
 
 	@Inject
-	public SamplePresenter(Display view, AlertManager alertManager,
-			GeolocationManager geolocationManager, EventBus eventBus,
-			Profile profile, PlaceManager placeManager, SampleMessages messages) {
+	public SamplePresenter(Display view,
+			AlertManager alertManager,
+			GeolocationManager geolocationManager,
+			EventBus eventBus,
+			PlaceManager placeManager,
+			SampleMessages messages) {
 		super(view, alertManager);
 		this.geolocationManager = checkNotNull(geolocationManager);
 		this.eventBus = checkNotNull(eventBus);
-		this.profile = checkNotNull(profile);
 		this.placeManager = checkNotNull(placeManager);
 		this.messages = checkNotNull(messages);
 	}
@@ -58,13 +58,13 @@ public class SamplePresenter extends BasePresenter<Display> {
 	@Override
 	public void go(Place place) {
 		getView().getGreetingDisplay().setValue(
-				messages.hi(profile.getUsername()));
+				messages.hi("Pepe"));
 
 		getView().getAlertTrigger().setClickHandler(new ClickHandler() {
 			@Override
 			public void onClick() {
-				String message = messages.testMessage(profile.getFirstName(),
-						profile.getLastName());
+				String message = messages.testMessage("Marty",
+						"Mcfly");
 				eventBus.createEvent("showAlert")
 						.addParameter("message", message).fire();
 			}
