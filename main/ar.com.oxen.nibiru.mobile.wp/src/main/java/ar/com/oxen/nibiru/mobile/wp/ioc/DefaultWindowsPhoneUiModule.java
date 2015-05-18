@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.wp.ioc;
 
+import javax.inject.Singleton;
+
 import ar.com.oxen.nibiru.mobile.core.api.app.Bootstrap;
 import ar.com.oxen.nibiru.mobile.core.api.ui.AlertManager;
 import ar.com.oxen.nibiru.mobile.core.api.ui.Looper;
@@ -18,6 +20,7 @@ public class DefaultWindowsPhoneUiModule extends AbstractGinModule {
 		bind(Looper.class).to(SchedulerLooper.class);
 
 		bind(Bootstrap.class).to(WindowsPhoneBootstrap.class);
-		bind(PlaceManager.class).to(WindowsPhonePlaceManager.class);
+		bind(PlaceManager.class).to(WindowsPhonePlaceManager.class).in(
+				Singleton.class);
 	}
 }

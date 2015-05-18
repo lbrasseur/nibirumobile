@@ -30,7 +30,7 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 	private final String id;
 	private final Map<String, Object> parameters;
 
-	public UINavigationControllerPlace(
+	UINavigationControllerPlace(
 			UIWindow mainWindow,
 			Provider<UINavigationController> navigationControllerProvider,
 			PresenterMapper presenterMapper,
@@ -75,7 +75,7 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		UIView view = (UIView) presenter.getView().asNative();
 
 		if (!presenterStack.isEmpty()) {
-			presenterStack.peek().onDeactivate();;
+			presenterStack.peek().onDeactivate();
 		}
 
 		UINavigationController navigationController = (UINavigationController) mainWindow
@@ -94,9 +94,8 @@ public class UINavigationControllerPlace extends BaseConfigurable<Place>
 		}
 		
 		navigationController.pushViewController(viewController, true);
-		presenter.go(this);
-
 		presenterStack.push(presenter);
+		presenter.go(this);
 		presenter.onActivate();
 	}
 }

@@ -16,6 +16,11 @@ public class InMemoryCustomerDao implements CustomerDao {
 	private static int lastId = 0;
 	private Map<Integer, Customer> customers = Maps.newHashMap();
 
+	public InMemoryCustomerDao() {
+		customers.put(1, new CustomerImpl(1, "Inodoro", "Pereyra"));
+		customers.put(2, new CustomerImpl(2, "Isidoro", "Canones"));
+	}
+
 	@Override
 	public void findAll(Callback<List<Customer>> callback) {
 		checkNotNull(callback);

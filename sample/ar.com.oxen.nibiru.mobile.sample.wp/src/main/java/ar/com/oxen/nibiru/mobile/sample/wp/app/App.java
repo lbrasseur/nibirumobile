@@ -6,10 +6,13 @@ import org.timepedia.exporter.client.Exportable;
 import com.google.gwt.core.client.GWT;
 
 @Export
-public class Launcher  implements Exportable  {
-	private final Injector injector = GWT.create(Injector.class);
+public class App implements Exportable {
+	private static final Injector injector = GWT.create(Injector.class);
 
-	public void launch() {
+	private App() {
+	}
+
+	public static void launch() {
 		injector.getBootstrap().onBootstrap();
 	}
 }

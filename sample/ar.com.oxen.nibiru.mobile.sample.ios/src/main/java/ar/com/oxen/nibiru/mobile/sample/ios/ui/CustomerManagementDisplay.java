@@ -86,8 +86,7 @@ public class CustomerManagementDisplay extends BaseUIViewView implements
 				UITableViewCell cell = new UITableViewCell();
 				UILabel text = new UILabel();
 				text.setFrame(new CGRect(20, 10, customerList.getFrame().getWidth() - 20, 32));
-				text.setText(customer.getLastName() + ", "
-						+ customer.getFirstName());
+				text.setText(Customer.TO_NAME.apply(customer));
 				cell.addSubview(text);
 				return cell;
 			}

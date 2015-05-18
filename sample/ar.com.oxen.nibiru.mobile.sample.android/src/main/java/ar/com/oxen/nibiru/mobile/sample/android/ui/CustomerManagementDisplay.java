@@ -55,8 +55,7 @@ public class CustomerManagementDisplay extends BaseAndroidView<View> implements
 				}
 				TextView tv = (TextView) view.findViewById(android.R.id.text1);
 				Customer customer = getItem(position);
-				tv.setText(customer.getLastName() + ", "
-						+ customer.getFirstName());
+				tv.setText(Customer.TO_NAME.apply(customer));
 				return view;
 			}
 

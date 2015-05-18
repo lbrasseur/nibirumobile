@@ -44,7 +44,7 @@ public class CustomerManagementDisplay extends BaseGwtView implements Display {
 		list = new CellList<Customer>(new BasicCell<Customer>() {
 			@Override
 			public String getDisplayString(Customer customer) {
-				return customer.getLastName() + ", " + customer.getFirstName();
+				return Customer.TO_NAME.apply(customer);
 			}
 		});
 		list.addCellSelectedHandler(new CellSelectedHandler() {

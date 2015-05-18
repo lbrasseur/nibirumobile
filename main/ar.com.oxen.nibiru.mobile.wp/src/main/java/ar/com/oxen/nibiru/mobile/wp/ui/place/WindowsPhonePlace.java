@@ -2,24 +2,37 @@ package ar.com.oxen.nibiru.mobile.wp.ui.place;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Deque;
 import java.util.Map;
 
 import ar.com.oxen.nibiru.mobile.core.api.common.Identifiable;
+import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.Presenter;
+import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.PresenterMapper;
 import ar.com.oxen.nibiru.mobile.core.api.ui.place.Place;
 import ar.com.oxen.nibiru.mobile.core.impl.common.BaseConfigurable;
 
 import com.google.common.collect.Maps;
 
-public class WindowsPhonePlace  extends BaseConfigurable<Place>
-implements Place, Identifiable<String> {
+public class WindowsPhonePlace extends BaseConfigurable<Place> implements
+		Place, Identifiable<String> {
 	private final String id;
 	private final Map<String, Object> parameters;
 	private final int order;
+	private final WindowsPhonePlaceManager placeManager;
+	private final PresenterMapper presenterMapper;
+	private final Deque<Presenter<?>> presenterStack;
 
-	public WindowsPhonePlace(String id, int order) {
+	WindowsPhonePlace(String id,
+			int order,
+			WindowsPhonePlaceManager placeManager,
+			PresenterMapper presenterMapper,
+			Deque<Presenter<?>> presenterStack) {
 		this.id = checkNotNull(id);
 		this.parameters = Maps.newHashMap();
 		this.order = order;
+		this.placeManager = checkNotNull(placeManager);
+		this.presenterMapper = checkNotNull(presenterMapper);
+		this.presenterStack = checkNotNull(presenterStack);
 	}
 
 	@Override
@@ -57,6 +70,13 @@ implements Place, Identifiable<String> {
 
 	@Override
 	public void go(boolean push) {
+		if (!presenterStack.isEmpty()) {
+			presenterStack.peek().onDeactivate();
+		}
+		if (!push) {
+			// TODO: Clear history
+			presenterStack.clear();
+		}
 		navigate(id.toLowerCase());
 	}
 
@@ -70,10 +90,17 @@ implements Place, Identifiable<String> {
 		return order > other.order;
 	}
 
-	private static native void navigate(String page) /*-{
-	  $wnd.WinJS.Navigation.navigate("/pages/" + page + "/" + page + ".html");
+	public void activatePresenter() {
+		Presenter<?> presenter = presenterMapper.getPresenter(id);
+		presenterStack.push(presenter);
+		presenter.go(this);
+		presenter.onActivate();
+	}
+
+	private native void navigate(String page) /*-{
+		var place = this;
+		$wnd.WinJS.Navigation.navigate("/pages/" + page + "/" + page + ".html").done(function () {
+			place.@ar.com.oxen.nibiru.mobile.wp.ui.place.WindowsPhonePlace::activatePresenter()();
+		});
 	}-*/;
-
-	
-
 }

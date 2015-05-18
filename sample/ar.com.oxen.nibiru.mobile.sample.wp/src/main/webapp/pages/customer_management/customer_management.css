@@ -14,32 +14,17 @@
 }
 
 .title {
-    display: table;
     font-size: large;
-    margin: auto;
-    margin-top: 10px;
+    position: absolute;
+    left: 10px;
 }
 
-.oxenLogo {
+.add {
     position: absolute;
     right: 10px;
 }
 
-.aajLogo {
-    left: 10px;
+.customers {
     position: absolute;
-    margin-top: 7px;
-    width: 75px;
-}
-
-.customerManagement {
-    display: table;
-    margin: auto;
-    margin-top: 100px;
-}
-
-.samples {
-    display: table;
-    margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
 }

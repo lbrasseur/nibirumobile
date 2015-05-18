@@ -7,6 +7,15 @@ public class CustomerImpl implements Customer {
 	private String firstName;
 	private String lastName;
 
+	CustomerImpl() {
+	}
+
+	CustomerImpl(int customerId, String firstName, String lastName) {
+		this.customerId = customerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	@Override
 	public int getCustomerId() {
 		return customerId;

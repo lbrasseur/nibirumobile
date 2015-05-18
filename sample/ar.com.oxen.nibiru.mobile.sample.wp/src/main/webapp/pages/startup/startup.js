@@ -3,7 +3,7 @@
 
     WinJS.UI.Pages.define("/pages/startup/startup.html", {
         ready: function (element, options) {
-            new ar.com.oxen.nibiru.mobile.sample.wp.app.Launcher().launch();
+            ar.com.oxen.nibiru.mobile.sample.wp.app.App.launch();
         }
     });
 })();
