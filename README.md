@@ -13,7 +13,7 @@ The components are based on JSR330 dependency injection, but implementations are
  * [HTML](http://en.wikipedia.org/wiki/HTML) platform: [GWT](http://www.gwtproject.org), [GIN](http://code.google.com/p/google-gin/), [Apache Cordova](http://incubator.apache.org/cordova/), [PhoneGap](http://phonegap.com/), [persistence.js](http://persistencejs.org/), [MGWT](http://www.m-gwt.com/).
  * [Android](https://www.android.com/) platform: [Guice](http://code.google.com/p/google-guice/), [RoboGuice](http://code.google.com/p/roboguice/), [OrmLite](http://ormlite.com/).
  * [iOS](http://www.apple.com/ios) platform: [RoboVM](http://robovm.com/).
- * [Windows Phone](https://www.windowsphone.com) platform: [WinJS](https://dev.windows.com/en-us/develop/winjs).
+ * [Windows Phone](https://www.windowsphone.com) platform: [GWT](http://www.gwtproject.org), [WinJS](https://dev.windows.com/en-us/develop/winjs).
  * [Firefox OS](https://www.mozilla.org/en-US/firefox/os) platform: [GWT](http://www.gwtproject.org).
 
 
