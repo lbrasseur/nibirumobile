@@ -1,39 +1,53 @@
 package ar.com.oxen.nibiru.mobile.sample.wp.ui;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import javax.inject.Inject;
+
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.HasClickHandler;
 import ar.com.oxen.nibiru.mobile.core.api.ui.mvp.TakesValue;
+import ar.com.oxen.nibiru.mobile.gwt.ui.mvp.HasClickHandlersAdapter;
+import ar.com.oxen.nibiru.mobile.gwt.ui.mvp.TakesValueAdapter;
 import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.CustomerFormPresenter.Display;
+import ar.com.oxen.nibiru.mobile.sample.app.impl.ui.SampleMessages;
+import ar.com.oxen.nibiru.mobile.wp.ui.mvp.BaseWindowsPhoneView;
 
-public class CustomerFormDisplay implements Display {
+import com.google.gwt.user.client.ui.Button;
 
-	@Override
-	public Object asNative() {
-		// TODO Auto-generated method stub
-		return null;
+public class CustomerFormDisplay extends BaseWindowsPhoneView implements
+		Display {
+
+	private final Button save;
+	private final Button cancel;
+
+	@Inject
+	public CustomerFormDisplay(SampleMessages messages) {
+		checkNotNull(messages);
+		label("firstNameLabel").setText(messages.firstName());
+		label("lastNameLabel").setText(messages.lastName());
+		save = button("save");
+		save.setText(messages.save());
+		cancel = button("cancel");
+		cancel.setText(messages.cancel());
 	}
 
 	@Override
 	public TakesValue<String> getFirstName() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TakesValueAdapter<>(textBox("firstName"));
 	}
 
 	@Override
 	public TakesValue<String> getLastName() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TakesValueAdapter<>(textBox("lastName"));
 	}
 
 	@Override
 	public HasClickHandler getSave() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HasClickHandlersAdapter(save);
 	}
 
 	@Override
 	public HasClickHandler getCancel() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HasClickHandlersAdapter(cancel);
 	}
-
 }

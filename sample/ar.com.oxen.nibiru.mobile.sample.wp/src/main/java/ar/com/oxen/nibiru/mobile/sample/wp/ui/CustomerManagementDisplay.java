@@ -1,5 +1,7 @@
 package ar.com.oxen.nibiru.mobile.sample.wp.ui;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,9 +17,13 @@ import ar.com.oxen.nibiru.mobile.wp.ui.mvp.BaseWindowsPhoneView;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
+import com.google.gwt.core.client.JsArrayString;
 
 public class CustomerManagementDisplay extends BaseWindowsPhoneView implements
 		Display {
+	private List<Customer> customers;
+	private Customer selectedCustomer;
+	private ClickHandler rowClickHandler;
 
 	@Inject
 	public CustomerManagementDisplay(SampleMessages messages) {
@@ -26,23 +32,42 @@ public class CustomerManagementDisplay extends BaseWindowsPhoneView implements
 
 	@Override
 	public void setCustomers(List<Customer> customers) {
-		List<String> names = ImmutableList.copyOf(Iterables.transform(
-				customers, Customer.TO_NAME));
-		setCustomersNative(names.toArray(new String[names.size()]));
+		this.customers = checkNotNull(customers);
+	    JsArrayString jsArrayString = JsArrayString.createArray().cast();
+	    for (String s : ImmutableList.copyOf(Iterables.transform(
+				customers, Customer.TO_NAME))) {
+	        jsArrayString.push(s);
+	    }
+		setCustomersNative(jsArrayString);
 	}
 
-	private static native void setCustomersNative(String[] customers) /*-{
-		var listView = $doc.getElementById("customerList");
-		var array = new Array();
-		for (n in customers) {
-			array.push({
-				text: customers[n]
-			});
-		}
-		listView.itemDataSource = new $wnd.WinJS.Binding.List(array).dataSource;
-		$wnd.WinJS.UI.processAll();
-	  	new Windows.UI.Popups.MessageDialog("ffffff").showAsync();
+	private native void setCustomersNative(JsArrayString customers) /*-{
+		var cmDisplay = this;
+		var htmlList = $doc.getElementById("customerList");
+        $wnd.WinJS.UI.process(htmlList).done(function() {
+            var listView = htmlList.winControl;
+            var array = new Array();
+            for (var n in customers) {
+                (function(index) {
+	                var row = {
+	                    rowText: customers[index],
+	                    clickEvent: $wnd.WinJS.UI.eventHandler(function (ev) {
+	                    	cmDisplay.@ar.com.oxen.nibiru.mobile.sample.wp.ui.CustomerManagementDisplay::selectCustomer(I)(index);
+					    })
+	                };
+	                array.push(row);
+                })(n);
+            }
+            listView.itemDataSource = new $wnd.WinJS.Binding.List(array).dataSource;
+        });
 	}-*/;
+
+	public void selectCustomer(int pos) {
+		selectedCustomer = customers.get(pos);
+		if (rowClickHandler != null) {
+			rowClickHandler.onClick();
+		}
+	}
 
 	@Override
 	public HasClickHandler getNewCustomer() {
@@ -51,18 +76,14 @@ public class CustomerManagementDisplay extends BaseWindowsPhoneView implements
 
 	@Override
 	public HasClickHandler getEditCustomer() {
-		// TODO Auto-generated method stub
 		return new HasClickHandler() {
-
 			@Override
 			public HandlerRegistration setClickHandler(ClickHandler clickHandler) {
-				// TODO Auto-generated method stub
+				rowClickHandler = checkNotNull(clickHandler);
 				return new HandlerRegistration() {
-
 					@Override
 					public void removeHandler() {
-						// TODO Auto-generated method stub
-
+						rowClickHandler = null;
 					}
 				};
 			}
@@ -71,8 +92,6 @@ public class CustomerManagementDisplay extends BaseWindowsPhoneView implements
 
 	@Override
 	public Customer getSelectedCustomer() {
-		// TODO Auto-generated method stub
-		return null;
+		return selectedCustomer;
 	}
-
 }
